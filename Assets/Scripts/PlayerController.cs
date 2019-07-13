@@ -7,12 +7,12 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
     public static PlayerController i;
 
+    public int currentHealth;
+
     [SerializeField] private float m_turnSpeed = 1f;
+    [SerializeField] private int m_maxHealth = 5;
 
     private Rigidbody2D m_rb;
-
-    public int currentHealth;
-    public int maxHealth = 5;
 
     public GameObject healthText;
     public GameObject directionIndicator;
@@ -21,41 +21,30 @@ public class PlayerController : MonoBehaviour {
     bool isInvincible;
     float invincibleTimer;
 
-
-    public void Collect(Collectible collectible)
-    {
-        Debug.Log("Collected");
-        if (collectible.collectibleType == COLLECTIBLETYPE.HEALTHUP)
-        {
+    public void Collect(Collectible collectible) {
+        if (collectible.collectibleType == COLLECTIBLETYPE.HEALTHUP) {
             ChangeHealth(1);
-        }
-        else if (collectible.collectibleType == COLLECTIBLETYPE.HEALTHDOWN)
-        {
+        } else if (collectible.collectibleType == COLLECTIBLETYPE.HEALTHDOWN) {
             ChangeHealth(-1);
-        }
-        else if (collectible.collectibleType == COLLECTIBLETYPE.NONE)
-        {
+        } else if (collectible.collectibleType == COLLECTIBLETYPE.NONE) {
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
+    void OnCollisionEnter2D(Collision2D col) {
         Debug.Log("COLLIDED");
         ChangeHealth(-1);
     }
 
-    void ChangeHealth(int amount)
-    {
-        if (amount < 0)
-        {
+    void ChangeHealth(int amount) {
+        if (amount < 0) {
             if (isInvincible)
                 return;
 
             isInvincible = true;
             invincibleTimer = timeInvincible;
         }
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        Debug.Log(currentHealth + "/" + maxHealth);
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, m_maxHealth);
+        Debug.Log(currentHealth + "/" + m_maxHealth);
         healthText.GetComponent<Text>().text = "HEALTH : " + currentHealth;
     }
 
@@ -67,14 +56,17 @@ public class PlayerController : MonoBehaviour {
     private void Start() {
         var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
         cinema.Follow = transform;
-        currentHealth = maxHealth;
+        currentHealth = m_maxHealth;
     }
 
     private void Update() {
-        UpdateRotation();
-        UpdateWindForce();
-        updateInvicibilityTimer();
-        
+        if (!FinishScreen.i.Visible()) {
+            UpdateRotation();
+            UpdateWindForce();
+            updateInvicibilityTimer();
+        } else {
+            UpdateTryAgain();
+        }
     }
 
     private void UpdateRotation() {
@@ -83,15 +75,12 @@ public class PlayerController : MonoBehaviour {
         directionIndicator.transform.rotation = Quaternion.Euler(0f, 0f, m_rb.rotation);
     }
 
-    private void updateInvicibilityTimer()
-    {
-        if (isInvincible)
-        {
+    private void updateInvicibilityTimer() {
+        if (isInvincible) {
             Debug.Log("invulnerable, turn red");
             GetComponentInChildren<SpriteRenderer>().color = Color.red;
             invincibleTimer -= Time.deltaTime;
-            if (invincibleTimer < 0)
-            {
+            if (invincibleTimer < 0) {
                 isInvincible = false;
                 Debug.Log("vulnerable, turn white");
                 GetComponentInChildren<SpriteRenderer>().color = Color.white;
@@ -122,5 +111,15 @@ public class PlayerController : MonoBehaviour {
             playerForce = Vector2.zero;
         }
         m_rb.AddForce(playerForce * Time.deltaTime);
+    }
+
+    private void UpdateTryAgain() {
+        if (Input.GetButtonDown("Submit")) {
+            currentHealth = m_maxHealth;
+            m_rb.rotation = 0f;
+            m_rb.velocity = Vector2.zero;
+            transform.position = Vector2.zero;
+            FinishScreen.i.Hide();
+        }
     }
 }
