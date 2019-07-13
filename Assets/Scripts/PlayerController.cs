@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour {
     public int currentHealth;
 
     [SerializeField] private float m_turnSpeed = 1f;
+    [SerializeField] private float m_dropAnchorSpeed = 1f;
+    [SerializeField] private float m_dropAnchorFriction = 1f;
     [SerializeField] private int m_maxHealth = 5;
 
     private Rigidbody2D m_rb;
@@ -17,25 +19,28 @@ public class PlayerController : MonoBehaviour {
     public GameObject healthText;
     public GameObject directionIndicator;
 
-    public float timeInvincible = 2.0f;
-    bool isInvincible;
-    float invincibleTimer;
+    private float timeInvincible = 2.0f;
+    private bool isInvincible;
+    private float invincibleTimer;
+    private bool m_isDropAnchor;
+    private float m_frictionBeforeDropAnchor;
 
     public void Collect(Collectible collectible) {
         if (collectible.collectibleType == COLLECTIBLETYPE.HEALTHUP) {
             ChangeHealth(1);
         } else if (collectible.collectibleType == COLLECTIBLETYPE.HEALTHDOWN) {
             ChangeHealth(-1);
-        } else if (collectible.collectibleType == COLLECTIBLETYPE.NONE) {
         }
     }
 
     void OnCollisionEnter2D(Collision2D col) {
-        Debug.Log("COLLIDED");
         ChangeHealth(-1);
     }
 
     void ChangeHealth(int amount) {
+        if (!FinishScreen.i.Visible()) {
+            return;
+        }
         if (amount < 0) {
             if (isInvincible)
                 return;
@@ -44,6 +49,10 @@ public class PlayerController : MonoBehaviour {
             invincibleTimer = timeInvincible;
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, m_maxHealth);
+        if (currentHealth == 0) {
+            FinishScreen.i.Lose();
+            return;
+        }
         Debug.Log(currentHealth + "/" + m_maxHealth);
         healthText.GetComponent<Text>().text = "HEALTH : " + currentHealth;
     }
@@ -56,26 +65,61 @@ public class PlayerController : MonoBehaviour {
     private void Start() {
         var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
         cinema.Follow = transform;
+        Reset();
+    }
+
+    private void Reset() {
         currentHealth = m_maxHealth;
+        m_rb.rotation = 0f;
+        m_rb.velocity = Vector2.zero;
+        transform.position = Vector2.zero;
+        m_isDropAnchor = false;
     }
 
     private void Update() {
         if (!FinishScreen.i.Visible()) {
-            UpdateRotation();
+            UpdateSailRotation();
+            UpdateDropAnchor();
             UpdateWindForce();
-            updateInvicibilityTimer();
+            UpdateInvicibilityTimer();
         } else {
             UpdateTryAgain();
         }
     }
 
-    private void UpdateRotation() {
+    private void UpdateSailRotation() {
         float h = Input.GetAxisRaw("Horizontal");
         m_rb.AddTorque(-h * m_turnSpeed * Time.deltaTime);
         directionIndicator.transform.rotation = Quaternion.Euler(0f, 0f, m_rb.rotation);
     }
 
-    private void updateInvicibilityTimer() {
+    private void UpdateDropAnchor() {
+        bool isDropAnchor = Input.GetButton("Submit");
+        if (!isDropAnchor) {
+            if (m_isDropAnchor) {
+                Debug.Log("raise anchor");
+                // Stopped drop anchor.
+                m_rb.drag = m_frictionBeforeDropAnchor;
+                m_isDropAnchor = false;
+            }
+            return;
+        } else {
+            if (!m_isDropAnchor) {
+                // Started drop anchor.
+                Debug.Log("drop anchor");
+                m_frictionBeforeDropAnchor = m_rb.drag;
+                m_rb.drag = m_dropAnchorFriction;
+                m_isDropAnchor = true;
+            }
+        }
+
+        // Drop anchor in the direction of the turn.
+        float h = Input.GetAxisRaw("Horizontal");
+        Debug.Log(h);
+        m_rb.AddTorque(-h * m_dropAnchorSpeed * Time.deltaTime);
+    }
+
+    private void UpdateInvicibilityTimer() {
         if (isInvincible) {
             Debug.Log("invulnerable, turn red");
             GetComponentInChildren<SpriteRenderer>().color = Color.red;
@@ -115,10 +159,7 @@ public class PlayerController : MonoBehaviour {
 
     private void UpdateTryAgain() {
         if (Input.GetButtonDown("Submit")) {
-            currentHealth = m_maxHealth;
-            m_rb.rotation = 0f;
-            m_rb.velocity = Vector2.zero;
-            transform.position = Vector2.zero;
+            Reset();
             FinishScreen.i.Hide();
         }
     }
