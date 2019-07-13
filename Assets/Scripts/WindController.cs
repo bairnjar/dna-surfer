@@ -26,7 +26,7 @@ public class WindController : MonoBehaviour {
     }
 
     private void Update() {
-        var rotation = Quaternion.Euler(0f, 0f, m_rotateSpeed * Time.deltaTime);
-        direction = rotation * direction;
+        // var rotation = Quaternion.Euler(0f, 0f, m_rotateSpeed * Time.deltaTime);
+        // direction = rotation * direction;
     }
 }

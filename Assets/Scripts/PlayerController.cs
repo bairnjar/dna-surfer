@@ -53,12 +53,31 @@ public class PlayerController : MonoBehaviour {
 
     private void UpdateRotation() {
         float h = Input.GetAxisRaw("Horizontal");
-        transform.Rotate(Vectors.Z(-h * m_turnSpeed * Time.deltaTime));
+        m_rb.AddTorque(-h * m_turnSpeed * Time.deltaTime);
     }
 
     private void UpdateWindForce() {
+        // Wind translated into our fake sailing simulation where:
+        // * rotation of the boat is where the boat will sail.
+        // * force on the boat is scaled such that 45deg to the
+        // wind is max force, parallel with the wind is 50%
+        // force, and perpendicular is 0%. We could use some
+        // fancy math for this but linear is easier.
         var wind = WindController.i;
-        var force = wind.StregthDirection() * Time.deltaTime;
-        m_rb.AddForce(force);
+        var windForce = wind.StregthDirection();
+        var playerDirection = (Quaternion.Euler(0, 0, m_rb.rotation) * Vector2.up).normalized;
+        var rotationToWind = Quaternion.FromToRotation(wind.direction, playerDirection);
+        var zRotation = Mathf.Min(
+                Mathf.Abs(rotationToWind.eulerAngles.z),
+                Mathf.Abs(360f - rotationToWind.eulerAngles.z));
+        var playerForce = playerDirection * wind.strength;
+        if (zRotation <= 45f) {
+            playerForce *= 1f - ((45f - zRotation) / 90f);
+        } else if (zRotation <= 90f) {
+            playerForce *= 1f - ((45f - zRotation) / 45f);
+        } else {
+            playerForce = Vector2.zero;
+        }
+        m_rb.AddForce(playerForce * Time.deltaTime);
     }
 }

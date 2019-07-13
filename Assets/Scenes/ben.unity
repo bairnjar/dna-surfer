@@ -211,7 +211,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -235,7 +235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8273101, y: 0.10970116, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -377,6 +377,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3768950174500719767, guid: fd0f736be1f464b19900c7922d82d4e1,
+        type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768950174500719766, guid: fd0f736be1f464b19900c7922d82d4e1,
+        type: 3}
+      propertyPath: m_BoundingShape2D
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd0f736be1f464b19900c7922d82d4e1, type: 3}
 --- !u!1001 &6553236860096411846
@@ -446,6 +456,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6553236859506002218, guid: 6cc38f03cd7104212be542fdc0dc45ac,
+        type: 3}
+      propertyPath: m_turnSpeed
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6553236859506002216, guid: 6cc38f03cd7104212be542fdc0dc45ac,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cc38f03cd7104212be542fdc0dc45ac, type: 3}
 --- !u!1001 &6964310081024059455
@@ -514,6 +534,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964310080513421302, guid: 1e0312855d5ad4bac8241f61e38a9405,
+        type: 3}
+      propertyPath: m_initialStrength
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e0312855d5ad4bac8241f61e38a9405, type: 3}
