@@ -6,14 +6,14 @@ using UnityEngine;
 public class WindController : MonoBehaviour {
     public static WindController i;
 
-    [SerializeField] private float m_strength = 1f;
+    [SerializeField] private float m_initialStrength = 1f;
     [SerializeField] private float m_rotateSpeed = 1f;
 
-    private HashSet<Rigidbody2D> m_rbs = new HashSet<Rigidbody2D>();
-    private Vector2 m_direction;
+    public Vector2 direction { get; private set; }
+    public float strength { get; private set; }
 
-    public void Register(Rigidbody2D rb) {
-        m_rbs.Add(rb);
+    public Vector2 StregthDirection() {
+        return direction * strength;
     }
 
     private void Awake() {
@@ -21,15 +21,12 @@ public class WindController : MonoBehaviour {
     }
 
     private void Start() {
-        m_direction = Vector2.up;
+        direction = Vector2.up;
+        strength = m_initialStrength;
     }
 
     private void Update() {
         var rotation = Quaternion.Euler(0f, 0f, m_rotateSpeed * Time.deltaTime);
-        m_direction = rotation * m_direction;
-        float force = m_strength * Time.deltaTime;
-        foreach (var rb in m_rbs) {
-            rb.AddForce(m_direction * force);
-        }
+        direction = rotation * direction;
     }
 }

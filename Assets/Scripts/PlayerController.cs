@@ -20,17 +20,23 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Start() {
-        WindController.i.Register(m_rb);
         var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
         cinema.Follow = transform;
     }
 
     private void Update() {
         UpdateRotation();
+        UpdateWindForce();
     }
 
     private void UpdateRotation() {
         float h = Input.GetAxisRaw("Horizontal");
         transform.Rotate(Vectors.Z(-h * m_turnSpeed * Time.deltaTime));
+    }
+
+    private void UpdateWindForce() {
+        var wind = WindController.i;
+        var force = wind.StregthDirection() * Time.deltaTime;
+        m_rb.AddForce(force);
     }
 }
