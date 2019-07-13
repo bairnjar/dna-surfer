@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D m_rb;
 
     private void Awake() {
-        i = this;
+        Singleton.Awake(this, ref i);
         m_rb = GetComponent<Rigidbody2D>();
     }
 

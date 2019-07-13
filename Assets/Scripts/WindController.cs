@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Btkalman.Unity.Util;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ public class WindController : MonoBehaviour {
     }
 
     private void Awake() {
-        i = this;
+        Singleton.Awake(this, ref i);
     }
 
     private void Start() {
