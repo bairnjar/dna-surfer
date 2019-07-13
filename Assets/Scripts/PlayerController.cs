@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviour {
 
     public int currentHealth;
     public int maxHealth = 5;
+
     public GameObject healthText;
+    public GameObject directionIndicator;
 
     public float timeInvincible = 2.0f;
     bool isInvincible;
@@ -54,7 +56,7 @@ public class PlayerController : MonoBehaviour {
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
-        healthText.GetComponent<Text>().text = "Health : " + currentHealth;
+        healthText.GetComponent<Text>().text = "HEALTH : " + currentHealth;
     }
 
     private void Awake() {
@@ -78,6 +80,7 @@ public class PlayerController : MonoBehaviour {
     private void UpdateRotation() {
         float h = Input.GetAxisRaw("Horizontal");
         m_rb.AddTorque(-h * m_turnSpeed * Time.deltaTime);
+        directionIndicator.transform.rotation = Quaternion.Euler(0f, 0f, m_rb.rotation);
     }
 
     private void updateInvicibilityTimer()
