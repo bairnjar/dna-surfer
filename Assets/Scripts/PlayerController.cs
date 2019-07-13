@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float m_dropAnchorSpeed = 1f;
     [SerializeField] private float m_dropAnchorFriction = 1f;
     [SerializeField] private int m_maxHealth = 5;
+    [SerializeField] private int m_shallowsFriction = 4;
+    private float m_previousDrag = 2;
 
     private Rigidbody2D m_rb;
 
@@ -65,7 +67,7 @@ public class PlayerController : MonoBehaviour {
     private void Start() {
         var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
         cinema.Follow = transform;
-        Reset();
+        //Reset();
     }
 
     private void Reset() {
@@ -163,4 +165,29 @@ public class PlayerController : MonoBehaviour {
             FinishScreen.i.Hide();
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        //Debug.Log("You're in: "+collision.name);
+        if (collision.name.Equals("shallows"))
+        {
+            m_previousDrag = m_rb.drag;
+            float newDrag = m_rb.drag + m_shallowsFriction;
+            m_rb.drag = newDrag;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+
+        //Debug.Log("You're in: "+collision.name);
+        if (collision.name.Equals("shallows"))
+        {
+
+            m_rb.drag = m_previousDrag;
+                
+        }
+    }
+
 }

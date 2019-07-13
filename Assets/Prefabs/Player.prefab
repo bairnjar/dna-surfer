@@ -185,7 +185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6553236859506002220}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 907565099922853634}
@@ -205,9 +205,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d27b967d2bef45fda269e0b712f6a4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_turnSpeed: 1
   currentHealth: 0
-  maxHealth: 5
+  m_turnSpeed: 1
+  m_dropAnchorSpeed: 1
+  m_dropAnchorFriction: 1
+  m_maxHealth: 5
+  healthText: {fileID: 0}
+  directionIndicator: {fileID: 0}
 --- !u!50 &6553236859506002216
 Rigidbody2D:
   serializedVersion: 4
