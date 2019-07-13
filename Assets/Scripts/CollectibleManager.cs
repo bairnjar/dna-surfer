@@ -24,7 +24,7 @@ public class CollectibleManager : MonoBehaviour {
             collectible.GetComponentInChildren<SpriteRenderer>().color = Color.cyan;
         }else if(randomNumber == 2)
         {
-            Debug.Log("spawnhealthdown" + randomNumber);
+            Debug.Log("spawnhealthdowngit " + randomNumber);
             collectible.collectibleType = COLLECTIBLETYPE.HEALTHDOWN;
             collectible.GetComponentInChildren<SpriteRenderer>().color = Color.black;
         }

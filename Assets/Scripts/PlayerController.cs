@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
     public static PlayerController i;
@@ -12,6 +13,12 @@ public class PlayerController : MonoBehaviour {
 
     public int currentHealth;
     public int maxHealth = 5;
+    public GameObject healthText;
+
+    public float timeInvincible = 2.0f;
+    bool isInvincible;
+    float invincibleTimer;
+
 
     public void Collect(Collectible collectible)
     {
@@ -29,10 +36,25 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log("COLLIDED");
+        ChangeHealth(-1);
+    }
+
     void ChangeHealth(int amount)
     {
+        if (amount < 0)
+        {
+            if (isInvincible)
+                return;
+
+            isInvincible = true;
+            invincibleTimer = timeInvincible;
+        }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         Debug.Log(currentHealth + "/" + maxHealth);
+        healthText.GetComponent<Text>().text = "Health : " + currentHealth;
     }
 
     private void Awake() {
@@ -49,11 +71,29 @@ public class PlayerController : MonoBehaviour {
     private void Update() {
         UpdateRotation();
         UpdateWindForce();
+        updateInvicibilityTimer();
+        
     }
 
     private void UpdateRotation() {
         float h = Input.GetAxisRaw("Horizontal");
         m_rb.AddTorque(-h * m_turnSpeed * Time.deltaTime);
+    }
+
+    private void updateInvicibilityTimer()
+    {
+        if (isInvincible)
+        {
+            Debug.Log("invulnerable, turn red");
+            GetComponentInChildren<SpriteRenderer>().color = Color.red;
+            invincibleTimer -= Time.deltaTime;
+            if (invincibleTimer < 0)
+            {
+                isInvincible = false;
+                Debug.Log("vulnerable, turn white");
+                GetComponentInChildren<SpriteRenderer>().color = Color.white;
+            }
+        }
     }
 
     private void UpdateWindForce() {
