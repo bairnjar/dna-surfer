@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D m_rb;
 
+    public void Collect(Collectible collectible) {
+        Debug.Log("Collected");
+    }
+
     private void Awake() {
         Singleton.Awake(this, ref i);
         m_rb = GetComponent<Rigidbody2D>();
