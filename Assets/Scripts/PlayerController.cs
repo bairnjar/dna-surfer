@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour {
 
     private void Start() {
         WindController.i.Register(m_rb);
+        var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
+        cinema.Follow = transform;
     }
 
     private void Update() {
