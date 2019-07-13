@@ -10,8 +10,29 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D m_rb;
 
-    public void Collect(Collectible collectible) {
+    public int currentHealth;
+    public int maxHealth = 5;
+
+    public void Collect(Collectible collectible)
+    {
         Debug.Log("Collected");
+        if (collectible.collectibleType == COLLECTIBLETYPE.HEALTHUP)
+        {
+            ChangeHealth(1);
+        }
+        else if (collectible.collectibleType == COLLECTIBLETYPE.HEALTHDOWN)
+        {
+            ChangeHealth(-1);
+        }
+        else if (collectible.collectibleType == COLLECTIBLETYPE.NONE)
+        {
+        }
+    }
+
+    void ChangeHealth(int amount)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        Debug.Log(currentHealth + "/" + maxHealth);
     }
 
     private void Awake() {
@@ -22,6 +43,7 @@ public class PlayerController : MonoBehaviour {
     private void Start() {
         var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
         cinema.Follow = transform;
+        currentHealth = maxHealth;
     }
 
     private void Update() {

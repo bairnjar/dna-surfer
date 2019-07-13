@@ -11,12 +11,27 @@ public class CollectibleManager : MonoBehaviour {
     [SerializeField] private float m_spawnRadius = 1f;
 
     private float m_lastSpawnTime;
-
+   
+   
     public void Spawn(Vector2 position) {
         var collectible = GameObject.Instantiate(m_collectiblePrefab, transform);
+        int randomNumber =Random.Range(0, 3);
+        Debug.Log("Randomnumber == " + randomNumber);
+        if (randomNumber == 1)
+        {
+            Debug.Log("spawnhealthup" + randomNumber);
+            collectible.collectibleType =COLLECTIBLETYPE.HEALTHUP;
+            collectible.GetComponentInChildren<SpriteRenderer>().color = Color.cyan;
+        }else if(randomNumber == 2)
+        {
+            Debug.Log("spawnhealthdown" + randomNumber);
+            collectible.collectibleType = COLLECTIBLETYPE.HEALTHDOWN;
+            collectible.GetComponentInChildren<SpriteRenderer>().color = Color.black;
+        }
         collectible.transform.position = position;
     }
 
+   
     private void Awake() {
         Singleton.Awake(this, ref i);
     }
