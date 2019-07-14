@@ -19,6 +19,12 @@ public class ScoreManager : MonoBehaviour {
     [Header("Score that increases when passing score gates")]
     [SerializeField] private int m_scoreGateValue = 100;
 
+    private int currentLevel = 0;
+    public float currentMultiplier = 1;
+    [SerializeField] private int[] levelScoreThresholds = { 500, 1000, 2000, 3000 };
+    [SerializeField] private float[] levelSpeedMultipliers = { 1f, 1.2f, 1.5f, 2f };
+
+
     private Dictionary<int, float> m_scores = new Dictionary<int, float>();
     private float m_autoScoreTimer = 0f;
     private float m_boostScoreTimer = 0f;
@@ -74,6 +80,11 @@ public class ScoreManager : MonoBehaviour {
         while (timer >= period) {
             m_scores[playerNumber] = GetScore(playerNumber) + value;
             timer -= period;
+            if (m_scores[playerNumber] > levelScoreThresholds[currentLevel])
+            {
+                currentLevel++;
+                currentMultiplier = levelSpeedMultipliers[currentLevel];
+            }
         }
     }
 

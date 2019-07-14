@@ -197,7 +197,7 @@ public class PlayerController : MonoBehaviour {
         var playerDirection = Quaternion.Euler(0, 0, m_rb.rotation) * Vector2.up;
         var force = playerDirection * scale * Time.deltaTime;
         force += Vector3.up * m_hillAccelleration * Time.deltaTime;
-        m_rb.AddForce(force);
+        m_rb.AddForce(force * ScoreManager.i.currentMultiplier);
     }
 
     private void UpdateTryAgain() {

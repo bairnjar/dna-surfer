@@ -43,3 +43,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebb9fb00b5c2845a8b9cf841dfaa3b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_autoScorePeriod: 1
+  m_autoScoreValue: 1
+  m_boostScorePeriod: 0.1
+  m_boostScoreValue: 1
+  m_boostTimerGracePeriod: 1
+  m_coinScoreValue: 10
+  m_scoreGateValue: 100
+  currentMultiplier: 1
+  levelScoreThresholds: f4010000e8030000d0070000b80b0000
+  levelSpeedMultipliers:
+  - 1
+  - 2
+  - 3
+  - 4
