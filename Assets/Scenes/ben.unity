@@ -652,6 +652,31 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1920016615099927069, guid: c1e1585a462d54c5ca34f80d72054682,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1920016615099927069, guid: c1e1585a462d54c5ca34f80d72054682,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1920016615099927069, guid: c1e1585a462d54c5ca34f80d72054682,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1920016615099927069, guid: c1e1585a462d54c5ca34f80d72054682,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1920016615099927069, guid: c1e1585a462d54c5ca34f80d72054682,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1e1585a462d54c5ca34f80d72054682, type: 3}
 --- !u!1 &594544298 stripped
@@ -5892,6 +5917,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3974936d15c974994890d8b07a0737ae, type: 3}
+--- !u!114 &1054022860 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5435520510506548810, guid: c1e1585a462d54c5ca34f80d72054682,
+    type: 3}
+  m_PrefabInstance: {fileID: 594544297}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1064631186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44597,6 +44634,11 @@ PrefabInstance:
       propertyPath: m_speedBoost
       value: 2000
       objectReference: {fileID: 0}
+    - target: {fileID: 6553236859506002218, guid: 6cc38f03cd7104212be542fdc0dc45ac,
+        type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 1054022860}
     - target: {fileID: 6553236859506002216, guid: 6cc38f03cd7104212be542fdc0dc45ac,
         type: 3}
       propertyPath: m_AngularDrag
