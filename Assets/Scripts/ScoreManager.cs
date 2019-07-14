@@ -77,7 +77,7 @@ public class ScoreManager : MonoBehaviour {
 
     private void UpdateScoreText() {
         string format = "{0}";
-        if (m_score >= 1000) {
+        if (m_score >= 1000000) {
             format = "{0,12:0,000,000}";
         } else if (m_score >= 1000) {
             format = "{0,12:0,000}";
