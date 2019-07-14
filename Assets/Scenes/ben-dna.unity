@@ -805,6 +805,11 @@ PrefabInstance:
       propertyPath: m_speedBoostCostPerSecond
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6553236859506002218, guid: 6cc38f03cd7104212be542fdc0dc45ac,
+        type: 3}
+      propertyPath: m_hillAccelleration
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 6553236859506002216, guid: 6cc38f03cd7104212be542fdc0dc45ac,
         type: 3}
       propertyPath: m_AngularDrag

@@ -182,7 +182,9 @@ public class PlayerController : MonoBehaviour {
             scale *= m_boostAccelleration;
         }
         var playerDirection = Quaternion.Euler(0, 0, m_rb.rotation) * Vector2.up;
-        m_rb.AddForce(playerDirection * scale * Time.deltaTime);
+        var force = playerDirection * scale * Time.deltaTime;
+        force += Vector3.up * m_hillAccelleration * Time.deltaTime;
+        m_rb.AddForce(force);
     }
 
     private void UpdateTryAgain() {
