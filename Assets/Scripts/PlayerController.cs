@@ -14,30 +14,24 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float m_dropAnchorFriction = 1f;
     [SerializeField] private int m_maxHealth = 5;
     [SerializeField] private int m_shallowsFriction = 4;
-    [SerializeField] private float m_sweetSpotDamagePeriod = 1f;
-    [SerializeField] private float m_windZeroRotation = 90f;
-    [SerializeField] private float m_windBestRotation = 45f;
-    [SerializeField] private float m_windSweetSpotRotation = 10f;
-    [SerializeField] private float m_windSweetSpotSpeedMultiplierMin = 0.7f;
-    [SerializeField] private float m_windSweetSpotSpeedMultiplierMax = 1.5f;
+    [SerializeField] private float m_accelleration = 1;
     [SerializeField] private float m_invincibilityTime = 2.0f;
     [SerializeField] private float m_speedBoost = 1000f;
     [SerializeField] private GameObject healthText;
 
     [SerializeField] private GameObject coinBar;
     [SerializeField] private int maxCoinBar;
-    private int currentCoinBar = 0;
 
     private Rigidbody2D m_rb;
+    private SpriteRenderer m_spriteRenderer;
 
     private bool isInvincible;
-    private bool isBoostAvailable = true;
     private float invincibleTimer;
     private bool m_isDropAnchor;
-    private float m_sweetSpotDamageTimer;
     private Vector3 m_startPosition;
     private Quaternion m_startRotation;
     private float m_startDrag;
+    private int currentCoinBar;
     private Dictionary<string, float> m_dragMods =
         new Dictionary<string, float>();
 
@@ -83,6 +77,7 @@ public class PlayerController : MonoBehaviour {
     private void Awake() {
         Singleton.Awake(this, ref i);
         m_rb = GetComponent<Rigidbody2D>();
+        m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Start() {
@@ -110,18 +105,12 @@ public class PlayerController : MonoBehaviour {
         ScoreManager.i.Reset();
     }
 
-    private void addToCoinBar(int amount)
-    {
-        if (amount + currentCoinBar > maxCoinBar)
-        {
+    private void addToCoinBar(int amount) {
+        if (amount + currentCoinBar > maxCoinBar) {
             currentCoinBar = maxCoinBar;
-        }
-        else if (amount+currentCoinBar < 0)
-        {
+        } else if (amount + currentCoinBar < 0) {
             currentCoinBar = 0;
-        }
-        else
-        {
+        } else {
             currentCoinBar += amount;
         }
         Debug.Log("currentCoinBar = " + currentCoinBar);
@@ -141,21 +130,19 @@ public class PlayerController : MonoBehaviour {
         if (!FinishScreen.i.Visible()) {
             UpdateSailRotation();
             UpdateDropAnchor();
-            UpdateWindForce();
+            UpdateAccelleration();
             UpdateInvicibilityTimer();
-
-            if (Input.GetKey(KeyCode.X) && isBoostAvailable) {
-                print("x key was pressed");
-                UseBoost();
-            }
-            else
-            {
-                CinemachineController.i.cameraShake = 0;
-            }
-
-
+            UpdateBoost();
         } else {
             UpdateTryAgain();
+        }
+    }
+
+    private void UpdateBoost() {
+        if (Input.GetKey(KeyCode.X)) {
+            UseBoost();
+        } else {
+            CinemachineController.i.cameraShake = 0;
         }
     }
 
@@ -165,10 +152,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void UseBoost() {
-       
-
-        if (currentCoinBar > 0)
-        {
+        if (currentCoinBar > 0) {
             CinemachineController.i.cameraShake = 1;
 
             var playerDirection = Quaternion.Euler(0, 0, m_rb.rotation) * Vector2.up;
@@ -203,72 +187,18 @@ public class PlayerController : MonoBehaviour {
 
     private void UpdateInvicibilityTimer() {
         if (isInvincible) {
-
-            GetComponentInChildren<SpriteRenderer>().color = Color.red;
+            m_spriteRenderer.color = Color.red;
             invincibleTimer -= Time.deltaTime;
             if (invincibleTimer < 0) {
                 isInvincible = false;
-
-                GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                m_spriteRenderer.color = Color.white;
             }
         }
     }
 
-    private void UpdateWindForce() {
-        var wind = WindController.i;
-        var windForce = wind.StregthDirection();
+    private void UpdateAccelleration() {
         var playerDirection = Quaternion.Euler(0, 0, m_rb.rotation) * Vector2.up;
-        var rotationToWind = Quaternion.FromToRotation(wind.direction, playerDirection);
-        var zRotation = Mathf.Min(
-                Mathf.Abs(rotationToWind.eulerAngles.z),
-                Mathf.Abs(360f - rotationToWind.eulerAngles.z));
-        var playerForce = playerDirection * wind.strength;
-
-        float sweetSpotFactor = 0f;
-        float scale = 0f;
-        if (zRotation < m_windSweetSpotRotation) {
-
-            sweetSpotFactor = (m_windSweetSpotRotation - zRotation) / m_windSweetSpotRotation;
-            scale = Mathf.Lerp(
-                m_windSweetSpotSpeedMultiplierMin,
-                m_windSweetSpotSpeedMultiplierMax,
-                sweetSpotFactor);
-            // Debug.LogFormat("sweet spot scale {0}", scale);
-
-        } else if (zRotation < m_windBestRotation) {
-
-            float zRotationOffset = zRotation - m_windSweetSpotRotation;
-            float zRotationOffsetInto = m_windBestRotation - m_windSweetSpotRotation;
-            scale = Mathf.Lerp(
-                m_windSweetSpotSpeedMultiplierMin,
-                1f,
-                1f - ((zRotationOffsetInto - zRotationOffset) / zRotationOffsetInto));
-            // Debug.LogFormat("best spot scale {0}", scale);
-        } else if (zRotation < m_windZeroRotation) {
-
-
-            float zRotationOffset = zRotation - m_windBestRotation;
-            float zRotationOffsetInto = m_windZeroRotation - m_windBestRotation;
-            scale = Mathf.Lerp(
-                0f,
-                1f,
-                (zRotationOffsetInto - zRotationOffset) / zRotationOffsetInto);
-            // Debug.LogFormat("zero spot scale {0}", scale);
-        }
-
-
-        CinemachineController.i.cameraShake = sweetSpotFactor;
-        if (sweetSpotFactor > 0) {
-            m_sweetSpotDamageTimer += Time.deltaTime;
-            if (m_sweetSpotDamageTimer >= m_sweetSpotDamagePeriod) {
-                ChangeHealth(-1);
-                m_sweetSpotDamageTimer = 0f;
-            }
-        } else {
-            m_sweetSpotDamageTimer = 0f;
-        }
-
-        m_rb.AddForce(scale * playerForce * Time.deltaTime);
+        m_rb.AddForce(playerDirection * m_accelleration * Time.deltaTime);
     }
 
     private void UpdateTryAgain() {
