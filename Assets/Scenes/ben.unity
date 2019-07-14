@@ -672,6 +672,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 594544297}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &594544301 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 712719838, guid: c1e1585a462d54c5ca34f80d72054682,
+    type: 3}
+  m_PrefabInstance: {fileID: 594544297}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &615593687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -792,11 +798,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7527056699487272113, guid: 3974936d15c974994890d8b07a0737ae,
-        type: 3}
-      propertyPath: m_Name
-      value: shallows
-      objectReference: {fileID: 0}
     - target: {fileID: 6428327324912326942, guid: 3974936d15c974994890d8b07a0737ae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -851,6 +852,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7527056699487272113, guid: 3974936d15c974994890d8b07a0737ae,
+        type: 3}
+      propertyPath: m_Name
+      value: shallows
       objectReference: {fileID: 0}
     - target: {fileID: 4573890468824307279, guid: 3974936d15c974994890d8b07a0737ae,
         type: 3}
@@ -44312,6 +44318,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3768950174500719767, guid: fd0f736be1f464b19900c7922d82d4e1,
+        type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 2758013999304113936, guid: fd0f736be1f464b19900c7922d82d4e1,
         type: 3}
       propertyPath: maxCameraShake
@@ -44331,11 +44342,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_minCameraShake
       value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3768950174500719767, guid: fd0f736be1f464b19900c7922d82d4e1,
-        type: 3}
-      propertyPath: m_Lens.OrthographicSize
-      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3768950174500719766, guid: fd0f736be1f464b19900c7922d82d4e1, type: 3}
@@ -44564,7 +44570,7 @@ PrefabInstance:
     - target: {fileID: 6553236859506002218, guid: 6cc38f03cd7104212be542fdc0dc45ac,
         type: 3}
       propertyPath: m_sweetSpotDamagePeriod
-      value: 2
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6553236859506002218, guid: 6cc38f03cd7104212be542fdc0dc45ac,
         type: 3}
@@ -44580,6 +44586,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_windBestRotation
       value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6553236859506002218, guid: 6cc38f03cd7104212be542fdc0dc45ac,
+        type: 3}
+      propertyPath: sweetSpotIndicator
+      value: 
+      objectReference: {fileID: 594544301}
+    - target: {fileID: 6553236859506002218, guid: 6cc38f03cd7104212be542fdc0dc45ac,
+        type: 3}
+      propertyPath: m_speedBoost
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 6553236859506002216, guid: 6cc38f03cd7104212be542fdc0dc45ac,
         type: 3}
