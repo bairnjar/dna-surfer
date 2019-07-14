@@ -17,9 +17,11 @@ public class HUD : MonoBehaviour {
     [SerializeField] private Player m_singlePlayer;
     [SerializeField] private Player[] m_multiPlayer;
 
+    private bool m_multiplayerHasBeenSet = false;
     private bool m_isMultiplayer = false;
 
     public void SetIsMultiplayer(bool isMulti) {
+        m_multiplayerHasBeenSet = true;
         m_isMultiplayer = isMulti;
         SetEnabled(m_singlePlayer, !isMulti);
         foreach (var player in m_multiPlayer) {
@@ -60,6 +62,8 @@ public class HUD : MonoBehaviour {
     }
 
     private void Start() {
-        SetIsMultiplayer(false);
+        if (!m_multiplayerHasBeenSet) {
+            SetIsMultiplayer(false);
+        }
     }
 }

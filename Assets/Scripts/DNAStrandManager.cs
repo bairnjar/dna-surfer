@@ -10,6 +10,7 @@ public class DNAStrandManager : MonoBehaviour {
     [SerializeField] private float m_spawnOffset;
 
     private GameObject m_lastSpawned;
+    private List<GameObject> m_spawned = new List<GameObject>();
 
     public void SpawnNext() {
         var position = Vector2.zero;
@@ -19,6 +20,15 @@ public class DNAStrandManager : MonoBehaviour {
         var dna = GameObject.Instantiate(m_DNAPrefab, transform);
         dna.transform.position = position;
         m_lastSpawned = dna;
+        m_spawned.Add(dna);
+    }
+
+    public void Reset() {
+        foreach (var dna in m_spawned) {
+            GameObject.Destroy(dna);
+        }
+        m_spawned.Clear();
+        m_lastSpawned = null;
     }
 
     private void Awake() {

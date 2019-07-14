@@ -96,6 +96,9 @@ public class PlayerController : MonoBehaviour {
     private void Start() {
         var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
         cinema.AddMember(transform, 1, 5);
+        if (playerNumber == 1) {
+            HUD.i.SetIsMultiplayer(true);
+        }
         m_startRotation = Quaternion.Euler(0, 0, playerNumber == 0 ? -30f : 30f);
         m_startDrag = m_rb.drag;
         Reset(true);
@@ -104,7 +107,7 @@ public class PlayerController : MonoBehaviour {
     private void Reset(bool start = false) {
         currentHealth = m_maxHealth;
         ScoreManager.i.resetCurrentLevel();
-        m_rb.rotation = 0f;
+        m_rb.rotation = m_startRotation.z;
         m_rb.angularVelocity = 0;
         m_rb.velocity = Vector2.zero;
         transform.position = ScoreGateController.StartPosition(playerNumber, start);
@@ -223,6 +226,7 @@ public class PlayerController : MonoBehaviour {
     private void UpdateTryAgain() {
         if (Input.GetButtonDown("Submit")) {
             FinishScreen.i.TryAgain();
+            DNAStrandManager.i.Reset();
         }
     }
 
