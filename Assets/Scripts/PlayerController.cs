@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
 
     [HideInInspector] public int currentHealth { get; private set; }
     [HideInInspector] public int playerNumber { get; private set; }
-          
+
 
     [SerializeField] private float m_turnSpeed = 1f;
     [SerializeField] private float m_dropAnchorSpeed = 1f;
@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour {
     private float m_startDrag;
     private float m_availableBoost;
     private bool m_isBoosting;
+    private bool m_isLose = false;
     private Dictionary<string, float> m_dragMods =
         new Dictionary<string, float>();
 
@@ -75,13 +76,10 @@ public class PlayerController : MonoBehaviour {
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, m_maxHealth);
         if (currentHealth == 0) {
-            if (immediate_reset)
-            {
+            if (immediate_reset) {
                 Reset();
                 return;
-            }
-            else
-            {
+            } else {
                 FinishScreen.i.Lose();
                 return;
             }
@@ -96,9 +94,9 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Start() {
-        var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
-        cinema.Follow = transform;
-        m_startRotation = Quaternion.Euler(0, 0, 60f);
+        var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
+        cinema.AddMember(transform, 1, 5);
+        m_startRotation = Quaternion.Euler(0, 0, playerNumber == 0 ? -30f : 30f);
         m_startDrag = m_rb.drag;
         Reset(true);
     }
@@ -107,31 +105,39 @@ public class PlayerController : MonoBehaviour {
         currentHealth = m_maxHealth;
         ScoreManager.i.resetCurrentLevel();
         m_rb.rotation = 0f;
+        m_rb.angularVelocity = 0;
         m_rb.velocity = Vector2.zero;
-        transform.position = start
-            ? ScoreGateController.firstGate.transform.position
-            : ScoreGateController.lastGate.transform.position;
-        if (!start) {
-            DNAStrandManager.i.SpawnNext();
-        }
+        transform.position = ScoreGateController.StartPosition(playerNumber, start);
+        m_rb.position = transform.position;
         transform.rotation = m_startRotation;
         m_isDropAnchor = false;
         isInvincible = false;
         isDistress = false;
+        m_isLose = false;
         SetAvailableBoost(0);
         ScoreManager.i.Reset();
     }
 
     private void Update() {
-        if (!FinishScreen.i.Visible()) {
-            UpdateSailRotation();
-            // UpdateDropAnchor();
-            UpdateInvicibilityTimer();
-            UpdateBoost();
-            UpdateAccelleration();
-        } else {
+        bool lose = FinishScreen.i.Visible();
+        if (lose) {
+            // Lost.
+            m_isLose = lose;
             UpdateTryAgain();
+            return;
         }
+
+        if (m_isLose) {
+            m_isLose = lose;
+            Reset();
+            return;
+        }
+
+        UpdateSailRotation();
+        // UpdateDropAnchor();
+        UpdateInvicibilityTimer();
+        UpdateBoost();
+        UpdateAccelleration();
     }
 
     private void UpdateBoost() {
@@ -216,8 +222,7 @@ public class PlayerController : MonoBehaviour {
 
     private void UpdateTryAgain() {
         if (Input.GetButtonDown("Submit")) {
-            Reset();
-            FinishScreen.i.Hide();
+            FinishScreen.i.TryAgain();
         }
     }
 

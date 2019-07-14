@@ -15,7 +15,7 @@ public class FinishScreen : MonoBehaviour {
         return m_canvas.enabled;
     }
 
-    public void Hide() {
+    public void TryAgain() {
         m_canvas.enabled = false;
     }
 

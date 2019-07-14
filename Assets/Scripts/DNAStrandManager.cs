@@ -24,9 +24,4 @@ public class DNAStrandManager : MonoBehaviour {
     private void Awake() {
         Singleton.Awake(this, ref i);
     }
-
-    private void Start() {
-        SpawnNext();
-        SpawnNext();
-    }
 }
