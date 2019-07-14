@@ -89,14 +89,16 @@ public class PlayerController : MonoBehaviour {
         cinema.Follow = transform;
         m_startRotation = Quaternion.Euler(0, 0, 60f);
         m_startDrag = m_rb.drag;
-        Reset();
+        Reset(true);
     }
 
-    private void Reset() {
+    private void Reset(bool start = false) {
         currentHealth = m_maxHealth;
         m_rb.rotation = 0f;
         m_rb.velocity = Vector2.zero;
-        transform.position = ScoreGateController.lastGate.transform.position;
+        transform.position = start
+            ? ScoreGateController.firstGate.transform.position
+            : ScoreGateController.lastGate.transform.position;
         transform.rotation = m_startRotation;
         m_isDropAnchor = false;
         isInvincible = false;

@@ -232,7 +232,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 13
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -575,33 +575,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2758013999304113936, guid: fd0f736be1f464b19900c7922d82d4e1,
-        type: 3}
-      propertyPath: maxCameraShake
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758013999304113936, guid: fd0f736be1f464b19900c7922d82d4e1,
-        type: 3}
-      propertyPath: m_maxCameraShake
-      value: 0.17
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758013999304113936, guid: fd0f736be1f464b19900c7922d82d4e1,
-        type: 3}
-      propertyPath: m_cameraShakeDelay
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 2758013999304113936, guid: fd0f736be1f464b19900c7922d82d4e1,
-        type: 3}
-      propertyPath: m_minCameraShake
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3768950174500719767, guid: fd0f736be1f464b19900c7922d82d4e1,
-        type: 3}
-      propertyPath: m_Lens.OrthographicSize
-      value: 13
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3768950174500719766, guid: fd0f736be1f464b19900c7922d82d4e1, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd0f736be1f464b19900c7922d82d4e1, type: 3}
 --- !u!1001 &4834304490882091100
 PrefabInstance:
