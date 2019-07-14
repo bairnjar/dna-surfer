@@ -7,7 +7,6 @@ public class WindController : MonoBehaviour {
     public static WindController i;
 
     [SerializeField] private float m_initialStrength = 1f;
-    [SerializeField] private float m_rotateSpeed = 1f;
     [SerializeField] private GameObject windArrow;
 
     public Vector2 direction { get; private set; }
@@ -24,11 +23,5 @@ public class WindController : MonoBehaviour {
     private void Start() {
         direction = Vector2.up;
         strength = m_initialStrength;
-    }
-
-    private void Update() {
-        // var rotation = Quaternion.Euler(0f, 0f, m_rotateSpeed * Time.deltaTime);
-        // direction = rotation * direction;
-        windArrow.transform.rotation = Quaternion.FromToRotation(Vector2.up, direction);
     }
 }

@@ -23,8 +23,6 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float m_invincibilityTime = 2.0f;
     [SerializeField] private float m_speedBoost = 1000f;
     [SerializeField] private GameObject healthText;
-    [SerializeField] private GameObject directionIndicator;
-    [SerializeField] private GameObject sweetSpotIndicator;
 
     [SerializeField] private GameObject coinBar;
     [SerializeField] private int maxCoinBar;
@@ -159,7 +157,6 @@ public class PlayerController : MonoBehaviour {
     private void UpdateSailRotation() {
         float h = Input.GetAxisRaw("Horizontal");
         m_rb.AddTorque(-h * m_turnSpeed * Time.deltaTime);
-        directionIndicator.transform.rotation = Quaternion.Euler(0f, 0f, m_rb.rotation);
     }
 
     private void UseBoost() {
@@ -223,8 +220,7 @@ public class PlayerController : MonoBehaviour {
         float sweetSpotFactor = 0f;
         float scale = 0f;
         if (zRotation < m_windSweetSpotRotation) {
-            //sweetSpotIndicator.SetActive(false);
-            //isBoostAvailable = false;
+
             sweetSpotFactor = (m_windSweetSpotRotation - zRotation) / m_windSweetSpotRotation;
             scale = Mathf.Lerp(
                 m_windSweetSpotSpeedMultiplierMin,
@@ -233,8 +229,7 @@ public class PlayerController : MonoBehaviour {
             // Debug.LogFormat("sweet spot scale {0}", scale);
 
         } else if (zRotation < m_windBestRotation) {
-            //sweetSpotIndicator.SetActive(true);
-            //isBoostAvailable = true;
+
             float zRotationOffset = zRotation - m_windSweetSpotRotation;
             float zRotationOffsetInto = m_windBestRotation - m_windSweetSpotRotation;
             scale = Mathf.Lerp(
@@ -243,8 +238,7 @@ public class PlayerController : MonoBehaviour {
                 1f - ((zRotationOffsetInto - zRotationOffset) / zRotationOffsetInto));
             // Debug.LogFormat("best spot scale {0}", scale);
         } else if (zRotation < m_windZeroRotation) {
-            //sweetSpotIndicator.SetActive(false);
-            //isBoostAvailable = false;
+
 
             float zRotationOffset = zRotation - m_windBestRotation;
             float zRotationOffsetInto = m_windZeroRotation - m_windBestRotation;
