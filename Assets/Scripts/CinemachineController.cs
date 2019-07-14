@@ -47,5 +47,6 @@ public class CinemachineController : MonoBehaviour {
             Random.Range(0f, cameraShakeAmount),
             Random.Range(0f, cameraShakeAmount),
             0f);
+
     }
 }

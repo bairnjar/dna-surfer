@@ -21,12 +21,16 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float m_windSweetSpotSpeedMultiplierMin = 0.7f;
     [SerializeField] private float m_windSweetSpotSpeedMultiplierMax = 1.5f;
     [SerializeField] private float m_invincibilityTime = 2.0f;
+    [SerializeField] private float m_speedBoost = 1000f;
+
     [SerializeField] private GameObject healthText;
     [SerializeField] private GameObject directionIndicator;
+    [SerializeField] private GameObject sweetSpotIndicator;
 
     private Rigidbody2D m_rb;
 
     private bool isInvincible;
+    private bool isBoostAvailable;
     private float invincibleTimer;
     private bool m_isDropAnchor;
     private float m_sweetSpotDamageTimer;
@@ -72,8 +76,10 @@ public class PlayerController : MonoBehaviour {
     private void Start() {
         var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
         cinema.Follow = transform;
+
         m_startPosition = transform.position;
         m_startDrag = m_rb.drag;
+
         Reset();
     }
 
@@ -91,6 +97,14 @@ public class PlayerController : MonoBehaviour {
             UpdateDropAnchor();
             UpdateWindForce();
             UpdateInvicibilityTimer();
+
+            if (Input.GetKey(KeyCode.X) && isBoostAvailable)
+            {
+                print("x key was pressed");
+                UseBoost();
+            }
+
+
         } else {
             UpdateTryAgain();
         }
@@ -100,6 +114,11 @@ public class PlayerController : MonoBehaviour {
         float h = Input.GetAxisRaw("Horizontal");
         m_rb.AddTorque(-h * m_turnSpeed * Time.deltaTime);
         directionIndicator.transform.rotation = Quaternion.Euler(0f, 0f, m_rb.rotation);
+    }
+
+    private void UseBoost(){
+        var playerDirection = Quaternion.Euler(0, 0, m_rb.rotation) * Vector2.up;
+        m_rb.AddForce(playerDirection * m_speedBoost * Time.deltaTime);
     }
 
     private void UpdateDropAnchor() {
@@ -126,10 +145,12 @@ public class PlayerController : MonoBehaviour {
 
     private void UpdateInvicibilityTimer() {
         if (isInvincible) {
+
             GetComponentInChildren<SpriteRenderer>().color = Color.red;
             invincibleTimer -= Time.deltaTime;
             if (invincibleTimer < 0) {
                 isInvincible = false;
+
                 GetComponentInChildren<SpriteRenderer>().color = Color.white;
             }
         }
@@ -148,6 +169,8 @@ public class PlayerController : MonoBehaviour {
         float sweetSpotFactor = 0f;
         float scale = 0f;
         if (zRotation < m_windSweetSpotRotation) {
+            sweetSpotIndicator.SetActive(false);
+            isBoostAvailable = false;
             sweetSpotFactor = (m_windSweetSpotRotation - zRotation) / m_windSweetSpotRotation;
             scale = Mathf.Lerp(
                 m_windSweetSpotSpeedMultiplierMin,
@@ -156,6 +179,8 @@ public class PlayerController : MonoBehaviour {
             // Debug.LogFormat("sweet spot scale {0}", scale);
 
         } else if (zRotation < m_windBestRotation) {
+            sweetSpotIndicator.SetActive(true);
+            isBoostAvailable = true;
             float zRotationOffset = zRotation - m_windSweetSpotRotation;
             float zRotationOffsetInto = m_windBestRotation - m_windSweetSpotRotation;
             scale = Mathf.Lerp(
@@ -164,6 +189,9 @@ public class PlayerController : MonoBehaviour {
                 1f - ((zRotationOffsetInto - zRotationOffset) / zRotationOffsetInto));
             // Debug.LogFormat("best spot scale {0}", scale);
         } else if (zRotation < m_windZeroRotation) {
+            sweetSpotIndicator.SetActive(false);
+            isBoostAvailable = false;
+
             float zRotationOffset = zRotation - m_windBestRotation;
             float zRotationOffsetInto = m_windZeroRotation - m_windBestRotation;
             scale = Mathf.Lerp(
@@ -173,6 +201,7 @@ public class PlayerController : MonoBehaviour {
             // Debug.LogFormat("zero spot scale {0}", scale);
         }
 
+        
         CinemachineController.i.cameraShake = sweetSpotFactor;
         if (sweetSpotFactor > 0) {
             m_sweetSpotDamageTimer += Time.deltaTime;
