@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour {
     private float m_frictionBeforeDropAnchor;
     private float m_previousDrag;
     private float m_sweetSpotDamageTimer;
+    private Vector3 m_startPosition;
 
     public void Collect(Collectible collectible) {
         if (collectible.collectibleType == COLLECTIBLETYPE.HEALTHUP) {
@@ -41,11 +42,11 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col) {
+    private void OnCollisionEnter2D(Collision2D col) {
         ChangeHealth(-1);
     }
 
-    void ChangeHealth(int amount) {
+    private void ChangeHealth(int amount) {
         if (amount < 0) {
             if (isInvincible)
                 return;
@@ -70,14 +71,15 @@ public class PlayerController : MonoBehaviour {
     private void Start() {
         var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
         cinema.Follow = transform;
-        //Reset();
+        m_startPosition = transform.position;
+        Reset();
     }
 
     private void Reset() {
         currentHealth = m_maxHealth;
         m_rb.rotation = 0f;
         m_rb.velocity = Vector2.zero;
-        transform.position = Vector2.zero;
+        transform.position = m_startPosition;
         m_isDropAnchor = false;
     }
 
@@ -102,7 +104,6 @@ public class PlayerController : MonoBehaviour {
         bool isDropAnchor = Input.GetButton("Submit");
         if (!isDropAnchor) {
             if (m_isDropAnchor) {
-                Debug.Log("raise anchor");
                 // Stopped drop anchor.
                 m_rb.drag = m_frictionBeforeDropAnchor;
                 m_isDropAnchor = false;
@@ -111,7 +112,6 @@ public class PlayerController : MonoBehaviour {
         } else {
             if (!m_isDropAnchor) {
                 // Started drop anchor.
-                Debug.Log("drop anchor");
                 m_frictionBeforeDropAnchor = m_rb.drag;
                 m_rb.drag = m_dropAnchorFriction;
                 m_isDropAnchor = true;
@@ -120,18 +120,15 @@ public class PlayerController : MonoBehaviour {
 
         // Drop anchor in the direction of the turn.
         float h = Input.GetAxisRaw("Horizontal");
-        Debug.Log(h);
         m_rb.AddTorque(-h * m_dropAnchorSpeed * Time.deltaTime);
     }
 
     private void UpdateInvicibilityTimer() {
         if (isInvincible) {
-            Debug.Log("invulnerable, turn red");
             GetComponentInChildren<SpriteRenderer>().color = Color.red;
             invincibleTimer -= Time.deltaTime;
             if (invincibleTimer < 0) {
                 isInvincible = false;
-                Debug.Log("vulnerable, turn white");
                 GetComponentInChildren<SpriteRenderer>().color = Color.white;
             }
         }
@@ -197,7 +194,6 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        //Debug.Log("You're in: "+collision.name);
         if (collision.name.Equals("shallows")) {
             m_previousDrag = m_rb.drag;
             float newDrag = m_rb.drag + m_shallowsFriction;
@@ -206,7 +202,6 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-        //Debug.Log("You're in: "+collision.name);
         if (collision.name.Equals("shallows")) {
 
             m_rb.drag = m_previousDrag;

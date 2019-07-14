@@ -6,6 +6,7 @@ using UnityEngine;
 public class CinemachineController : MonoBehaviour {
     public static CinemachineController i;
 
+    [SerializeField] private float m_minCameraShake = 0.05f;
     [SerializeField] private float m_maxCameraShake = 0.1f;
     [SerializeField] private float m_cameraShakeDelay = 0.05f;
 
@@ -40,11 +41,11 @@ public class CinemachineController : MonoBehaviour {
         }
 
         m_cameraShakeTimer = 0f;
-        float cameraShakeAmount = cameraShake * m_maxCameraShake;
+        float cameraShakeRange = Mathf.Abs(m_maxCameraShake - m_minCameraShake);
+        float cameraShakeAmount = m_minCameraShake + cameraShake * cameraShakeRange;
         m_cameraOffset.m_Offset = new Vector3(
             Random.Range(0f, cameraShakeAmount),
             Random.Range(0f, cameraShakeAmount),
             0f);
-        Debug.Log(m_cameraOffset.m_Offset);
     }
 }
