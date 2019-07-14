@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Reset(bool start = false) {
         currentHealth = m_maxHealth;
+        ScoreManager.i.resetCurrentLevel();
         m_rb.rotation = 0f;
         m_rb.velocity = Vector2.zero;
         transform.position = start

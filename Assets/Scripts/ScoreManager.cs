@@ -80,11 +80,8 @@ public class ScoreManager : MonoBehaviour {
         while (timer >= period) {
             m_scores[playerNumber] = GetScore(playerNumber) + value;
             timer -= period;
-            if (m_scores[playerNumber] > levelScoreThresholds[currentLevel])
-            {
-                currentLevel++;
-                currentMultiplier = levelSpeedMultipliers[currentLevel];
-            }
+
+            checkCompleteLevel(playerNumber);
         }
     }
 
@@ -100,5 +97,21 @@ public class ScoreManager : MonoBehaviour {
             m_scores[playerNumber] = score;
         }
         return score;
+    }
+
+    public void resetCurrentLevel()
+    {
+        currentLevel = 0;
+        currentMultiplier = levelSpeedMultipliers[currentLevel];
+    }
+
+
+    private void checkCompleteLevel(int playerNumber)
+    {
+        if (m_scores[playerNumber] > levelScoreThresholds[currentLevel])
+        {
+            currentLevel++;
+            currentMultiplier = levelSpeedMultipliers[currentLevel];
+        }
     }
 }

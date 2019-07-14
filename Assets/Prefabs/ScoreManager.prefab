@@ -51,9 +51,10 @@ MonoBehaviour:
   m_coinScoreValue: 10
   m_scoreGateValue: 100
   currentMultiplier: 1
-  levelScoreThresholds: f4010000e8030000d0070000b80b0000
+  levelScoreThresholds: f4010000e8030000d0070000b80b0000a00f0000
   levelSpeedMultipliers:
   - 1
+  - 1.2
+  - 1.5
+  - 1.7
   - 2
-  - 3
-  - 4
