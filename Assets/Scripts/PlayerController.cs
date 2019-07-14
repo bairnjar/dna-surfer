@@ -22,10 +22,10 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float m_windSweetSpotSpeedMultiplierMax = 1.5f;
     [SerializeField] private float m_invincibilityTime = 2.0f;
     [SerializeField] private float m_speedBoost = 1000f;
-
     [SerializeField] private GameObject healthText;
     [SerializeField] private GameObject directionIndicator;
     [SerializeField] private GameObject sweetSpotIndicator;
+    [SerializeField] private Text scoreText;
 
     private Rigidbody2D m_rb;
 
@@ -38,12 +38,19 @@ public class PlayerController : MonoBehaviour {
     private float m_startDrag;
     private Dictionary<string, float> m_dragMods =
         new Dictionary<string, float>();
+    private int m_score = 0;
 
     public void Collect(Collectible collectible) {
-        if (collectible.collectibleType == COLLECTIBLETYPE.HEALTHUP) {
-            ChangeHealth(1);
-        } else if (collectible.collectibleType == COLLECTIBLETYPE.HEALTHDOWN) {
-            ChangeHealth(-1);
+        switch (collectible.collectibleType) {
+            case COLLECTIBLETYPE.HEALTHUP:
+                ChangeHealth(1);
+                break;
+            case COLLECTIBLETYPE.HEALTHDOWN:
+                ChangeHealth(-1);
+                break;
+            case COLLECTIBLETYPE.COIN:
+                SetScore(m_score + 1);
+                break;
         }
     }
 
@@ -89,6 +96,12 @@ public class PlayerController : MonoBehaviour {
         m_rb.velocity = Vector2.zero;
         transform.position = m_startPosition;
         m_isDropAnchor = false;
+        SetScore(0);
+    }
+
+    private void SetScore(int score) {
+        m_score = score;
+        scoreText.text = score + "";
     }
 
     private void Update() {
@@ -98,8 +111,7 @@ public class PlayerController : MonoBehaviour {
             UpdateWindForce();
             UpdateInvicibilityTimer();
 
-            if (Input.GetKey(KeyCode.X) && isBoostAvailable)
-            {
+            if (Input.GetKey(KeyCode.X) && isBoostAvailable) {
                 print("x key was pressed");
                 UseBoost();
             }
@@ -116,7 +128,7 @@ public class PlayerController : MonoBehaviour {
         directionIndicator.transform.rotation = Quaternion.Euler(0f, 0f, m_rb.rotation);
     }
 
-    private void UseBoost(){
+    private void UseBoost() {
         var playerDirection = Quaternion.Euler(0, 0, m_rb.rotation) * Vector2.up;
         m_rb.AddForce(playerDirection * m_speedBoost * Time.deltaTime);
     }
@@ -201,7 +213,7 @@ public class PlayerController : MonoBehaviour {
             // Debug.LogFormat("zero spot scale {0}", scale);
         }
 
-        
+
         CinemachineController.i.cameraShake = sweetSpotFactor;
         if (sweetSpotFactor > 0) {
             m_sweetSpotDamageTimer += Time.deltaTime;
