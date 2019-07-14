@@ -29,10 +29,11 @@ public class PlayerController : MonoBehaviour {
     private bool isInvincible;
     private float invincibleTimer;
     private bool m_isDropAnchor;
-    private float m_frictionBeforeDropAnchor;
-    private float m_previousDrag;
     private float m_sweetSpotDamageTimer;
     private Vector3 m_startPosition;
+    private float m_startDrag;
+    private Dictionary<string, float> m_dragMods =
+        new Dictionary<string, float>();
 
     public void Collect(Collectible collectible) {
         if (collectible.collectibleType == COLLECTIBLETYPE.HEALTHUP) {
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour {
         var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
         cinema.Follow = transform;
         m_startPosition = transform.position;
+        m_startDrag = m_rb.drag;
         Reset();
     }
 
@@ -105,15 +107,14 @@ public class PlayerController : MonoBehaviour {
         if (!isDropAnchor) {
             if (m_isDropAnchor) {
                 // Stopped drop anchor.
-                m_rb.drag = m_frictionBeforeDropAnchor;
+                RestoreDrag("UpdateDropAnchor");
                 m_isDropAnchor = false;
             }
             return;
         } else {
             if (!m_isDropAnchor) {
                 // Started drop anchor.
-                m_frictionBeforeDropAnchor = m_rb.drag;
-                m_rb.drag = m_dropAnchorFriction;
+                SetDrag("UpdateDropAnchor", m_dropAnchorFriction);
                 m_isDropAnchor = true;
             }
         }
@@ -195,17 +196,35 @@ public class PlayerController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.name.Equals("shallows")) {
-            m_previousDrag = m_rb.drag;
-            float newDrag = m_rb.drag + m_shallowsFriction;
-            m_rb.drag = newDrag;
+            SetDrag("shallows", m_rb.drag + m_shallowsFriction);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
         if (collision.name.Equals("shallows")) {
+            RestoreDrag("shallows");
+        }
+    }
 
-            m_rb.drag = m_previousDrag;
+    private void SetDrag(string key, float val) {
+        m_dragMods[key] = val;
+        foreach (var kv in m_dragMods) {
+            if (m_rb.drag < kv.Value) {
+                m_rb.drag = kv.Value;
+            }
+        }
+    }
 
+    private void RestoreDrag(string key) {
+        m_dragMods.Remove(key);
+        if (m_dragMods.Count == 0) {
+            m_rb.drag = m_startDrag;
+            return;
+        }
+        foreach (var kv in m_dragMods) {
+            if (m_rb.drag < kv.Value) {
+                m_rb.drag = kv.Value;
+            }
         }
     }
 }

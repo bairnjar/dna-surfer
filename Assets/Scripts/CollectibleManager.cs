@@ -14,6 +14,7 @@ public class CollectibleManager : MonoBehaviour {
 
     public void Spawn(Vector2 position) {
         var collectible = GameObject.Instantiate(m_collectiblePrefab, transform);
+        // Only spawn health up/down.
         int randomNumber = Random.Range(0, 2);
         // Debug.Log("Randomnumber == " + randomNumber);
         if (randomNumber == 0) {
