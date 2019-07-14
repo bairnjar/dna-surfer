@@ -598,17 +598,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3768950174500719767, guid: fd0f736be1f464b19900c7922d82d4e1,
+    - target: {fileID: 2758013999304113936, guid: fd0f736be1f464b19900c7922d82d4e1,
         type: 3}
-      propertyPath: m_Lens.OrthographicSize
-      value: 10
+      propertyPath: maxCameraShake
+      value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 3768950174500719766, guid: fd0f736be1f464b19900c7922d82d4e1,
+    - target: {fileID: 2758013999304113936, guid: fd0f736be1f464b19900c7922d82d4e1,
         type: 3}
-      propertyPath: m_BoundingShape2D
-      value: 
+      propertyPath: m_maxCameraShake
+      value: 0.17
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2758013999304113936, guid: fd0f736be1f464b19900c7922d82d4e1,
+        type: 3}
+      propertyPath: m_cameraShakeDelay
+      value: 0.03
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3768950174500719766, guid: fd0f736be1f464b19900c7922d82d4e1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fd0f736be1f464b19900c7922d82d4e1, type: 3}
 --- !u!1001 &4834304490882091100
 PrefabInstance:
@@ -804,7 +810,7 @@ PrefabInstance:
     - target: {fileID: 6553236859506002218, guid: 6cc38f03cd7104212be542fdc0dc45ac,
         type: 3}
       propertyPath: m_turnSpeed
-      value: 45
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 6553236859506002218, guid: 6cc38f03cd7104212be542fdc0dc45ac,
         type: 3}
@@ -826,10 +832,20 @@ PrefabInstance:
       propertyPath: m_dropAnchorFriction
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6553236859506002218, guid: 6cc38f03cd7104212be542fdc0dc45ac,
+        type: 3}
+      propertyPath: m_windSweetSpotSpeedMultiplierMax
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6553236859506002216, guid: 6cc38f03cd7104212be542fdc0dc45ac,
         type: 3}
       propertyPath: m_AngularDrag
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6553236859506002216, guid: 6cc38f03cd7104212be542fdc0dc45ac,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cc38f03cd7104212be542fdc0dc45ac, type: 3}
@@ -844,6 +860,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FinishLine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949171333331597874, guid: 521589c16f4f945ffaae6ddfc14814fc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6949171333331597872, guid: 521589c16f4f945ffaae6ddfc14814fc,
         type: 3}
@@ -972,7 +993,7 @@ PrefabInstance:
     - target: {fileID: 6964310080513421302, guid: 1e0312855d5ad4bac8241f61e38a9405,
         type: 3}
       propertyPath: m_initialStrength
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 6964310080513421302, guid: 1e0312855d5ad4bac8241f61e38a9405,
         type: 3}

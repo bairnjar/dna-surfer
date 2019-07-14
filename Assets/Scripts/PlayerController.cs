@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
     public static PlayerController i;
 
-    public int currentHealth;
+    [HideInInspector] public int currentHealth;
 
     [SerializeField] private float m_turnSpeed = 1f;
     [SerializeField] private float m_dropAnchorSpeed = 1f;
@@ -16,10 +16,15 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private int m_shallowsFriction = 4;
     private float m_previousDrag = 2;
 
-    private Rigidbody2D m_rb;
+    [SerializeField] private float m_windZeroRotation = 90f;
+    [SerializeField] private float m_windBestRotation = 45f;
+    [SerializeField] private float m_windSweetSpotRotation = 10f;
+    [SerializeField] private float m_windSweetSpotSpeedMultiplierMin = 0.7f;
+    [SerializeField] private float m_windSweetSpotSpeedMultiplierMax = 1.5f;
+    [SerializeField] private GameObject healthText;
+    [SerializeField] private GameObject directionIndicator;
 
-    public GameObject healthText;
-    public GameObject directionIndicator;
+    private Rigidbody2D m_rb;
 
     private float timeInvincible = 2.0f;
     private bool isInvincible;
@@ -40,9 +45,6 @@ public class PlayerController : MonoBehaviour {
     }
 
     void ChangeHealth(int amount) {
-        if (!FinishScreen.i.Visible()) {
-            return;
-        }
         if (amount < 0) {
             if (isInvincible)
                 return;
@@ -135,28 +137,45 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void UpdateWindForce() {
-        // Wind translated into our fake sailing simulation where:
-        // * rotation of the boat is where the boat will sail.
-        // * force on the boat is scaled such that 45deg to the
-        // wind is max force, parallel with the wind is 50%
-        // force, and perpendicular is 0%. We could use some
-        // fancy math for this but linear is easier.
         var wind = WindController.i;
         var windForce = wind.StregthDirection();
-        var playerDirection = (Quaternion.Euler(0, 0, m_rb.rotation) * Vector2.up).normalized;
+        var playerDirection = Quaternion.Euler(0, 0, m_rb.rotation) * Vector2.up;
         var rotationToWind = Quaternion.FromToRotation(wind.direction, playerDirection);
         var zRotation = Mathf.Min(
                 Mathf.Abs(rotationToWind.eulerAngles.z),
                 Mathf.Abs(360f - rotationToWind.eulerAngles.z));
         var playerForce = playerDirection * wind.strength;
-        if (zRotation <= 45f) {
-            playerForce *= 1f - ((45f - zRotation) / 90f);
-        } else if (zRotation <= 90f) {
-            playerForce *= 1f - ((45f - zRotation) / 45f);
-        } else {
-            playerForce = Vector2.zero;
+
+        float sweetSpotFactor = 0f;
+        float scale = 0f;
+        if (zRotation < m_windSweetSpotRotation) {
+            sweetSpotFactor = (m_windSweetSpotRotation - zRotation) / m_windSweetSpotRotation;
+            scale = Mathf.Lerp(
+                m_windSweetSpotSpeedMultiplierMin,
+                m_windSweetSpotSpeedMultiplierMax,
+                sweetSpotFactor);
+            // Debug.LogFormat("sweet spot scale {0}", scale);
+
+        } else if (zRotation < m_windBestRotation) {
+            float zRotationOffset = zRotation - m_windSweetSpotRotation;
+            float zRotationOffsetInto = m_windBestRotation - m_windSweetSpotRotation;
+            scale = Mathf.Lerp(
+                m_windSweetSpotSpeedMultiplierMin,
+                1f,
+                1f - ((zRotationOffsetInto - zRotationOffset) / zRotationOffsetInto));
+            // Debug.LogFormat("best spot scale {0}", scale);
+        } else if (zRotation < m_windZeroRotation) {
+            float zRotationOffset = zRotation - m_windBestRotation;
+            float zRotationOffsetInto = m_windZeroRotation - m_windBestRotation;
+            scale = Mathf.Lerp(
+                0f,
+                1f,
+                (zRotationOffsetInto - zRotationOffset) / zRotationOffsetInto);
+            // Debug.LogFormat("zero spot scale {0}", scale);
         }
-        m_rb.AddForce(playerForce * Time.deltaTime);
+
+        CinemachineController.i.cameraShake = sweetSpotFactor;
+        m_rb.AddForce(scale * playerForce * Time.deltaTime);
     }
 
     private void UpdateTryAgain() {
