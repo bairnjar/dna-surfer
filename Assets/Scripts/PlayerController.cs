@@ -97,6 +97,9 @@ public class PlayerController : MonoBehaviour {
         transform.position = start
             ? ScoreGateController.firstGate.transform.position
             : ScoreGateController.lastGate.transform.position;
+        if (!start) {
+            DNAStrandManager.i.SpawnNext();
+        }
         transform.rotation = m_startRotation;
         m_isDropAnchor = false;
         isInvincible = false;
