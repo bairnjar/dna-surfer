@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FinishLine : MonoBehaviour {
+public class DNACollider : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.gameObject.tag == "Player") {
-            FinishScreen.i.Win();
+        if (collider.tag == "Player") {
+            PlayerController.i.SetHealth(0);
         }
     }
 }

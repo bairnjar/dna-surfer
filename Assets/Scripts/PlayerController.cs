@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour {
     private bool m_isDropAnchor;
     private float m_sweetSpotDamageTimer;
     private Vector3 m_startPosition;
+    private Quaternion m_startRotation;
     private float m_startDrag;
     private Dictionary<string, float> m_dragMods =
         new Dictionary<string, float>();
@@ -49,7 +50,7 @@ public class PlayerController : MonoBehaviour {
                 ChangeHealth(-1);
                 break;
             case COLLECTIBLETYPE.COIN:
-                SetScore(m_score + 1);
+                IncrScore();
                 break;
         }
     }
@@ -58,11 +59,14 @@ public class PlayerController : MonoBehaviour {
         ChangeHealth(-1);
     }
 
-    private void ChangeHealth(int amount) {
+    public void SetHealth(int health) {
+        ChangeHealth(health - currentHealth);
+    }
+
+    public void ChangeHealth(int amount) {
         if (amount < 0) {
             if (isInvincible)
                 return;
-
             isInvincible = true;
             invincibleTimer = m_invincibilityTime;
         }
@@ -83,10 +87,8 @@ public class PlayerController : MonoBehaviour {
     private void Start() {
         var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
         cinema.Follow = transform;
-
-        m_startPosition = transform.position;
+        m_startRotation = Quaternion.Euler(0, 0, 60f);
         m_startDrag = m_rb.drag;
-
         Reset();
     }
 
@@ -94,9 +96,15 @@ public class PlayerController : MonoBehaviour {
         currentHealth = m_maxHealth;
         m_rb.rotation = 0f;
         m_rb.velocity = Vector2.zero;
-        transform.position = m_startPosition;
+        transform.position = ScoreGateController.lastGate.transform.position;
+        transform.rotation = m_startRotation;
         m_isDropAnchor = false;
+        isInvincible = false;
         SetScore(0);
+    }
+
+    public void IncrScore() {
+        SetScore(m_score + 1);
     }
 
     private void SetScore(int score) {
