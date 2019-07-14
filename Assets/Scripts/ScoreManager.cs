@@ -16,6 +16,8 @@ public class ScoreManager : MonoBehaviour {
     [SerializeField] private float m_boostTimerGracePeriod = 1f;
     [Header("Score that increases when collecting coins")]
     [SerializeField] private int m_coinScoreValue = 10;
+    [Header("Score that increases when passing score gates")]
+    [SerializeField] private int m_scoreGateValue = 100;
     [Header("Other")]
     [SerializeField] private Text m_scoreText;
 
@@ -33,12 +35,22 @@ public class ScoreManager : MonoBehaviour {
         m_scoreText.text = m_score + "";
     }
 
+    public void PassScoreGate() {
+        m_score += m_scoreGateValue;
+        m_scoreText.text = m_score + "";
+    }
+
+    public void Reset() {
+        m_score = 0;
+        m_scoreText.text = "0";
+    }
+
     private void Awake() {
         Singleton.Awake(this, ref i);
     }
 
     private void Start() {
-        m_score = 0;
+        Reset();
     }
 
     private void Update() {
