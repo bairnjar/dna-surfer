@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 6553236859506002221}
   - component: {fileID: 6553236859506002218}
   - component: {fileID: 6553236859506002216}
-  - component: {fileID: 3705202700850876600}
+  - component: {fileID: 3579836136399595972}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -210,6 +210,14 @@ MonoBehaviour:
   m_dropAnchorSpeed: 1
   m_dropAnchorFriction: 1
   m_maxHealth: 5
+  m_shallowsFriction: 4
+  m_sweetSpotDamagePeriod: 1
+  m_windZeroRotation: 90
+  m_windBestRotation: 45
+  m_windSweetSpotRotation: 10
+  m_windSweetSpotSpeedMultiplierMin: 1
+  m_windSweetSpotSpeedMultiplierMax: 1.5
+  m_invincibilityTime: 2
   healthText: {fileID: 0}
   directionIndicator: {fileID: 0}
 --- !u!50 &6553236859506002216
@@ -233,8 +241,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &3705202700850876600
-BoxCollider2D:
+--- !u!70 &3579836136399595972
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -247,15 +255,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.64, y: 1}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.55, y: 0.95}
+  m_Direction: 0
