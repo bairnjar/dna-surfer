@@ -9,6 +9,7 @@ public class ScoreGateController : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collider) {
         if (collider.tag == "Player") {
             PlayerController.i.IncrScore();
+            DNAStrandManager.i.SpawnNext();
         }
     }
 
