@@ -17,9 +17,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float m_accelleration = 1;
     [SerializeField] private float m_hillAccelleration = 1f;
     [SerializeField] private float m_invincibilityTime = 2.0f;
-    [SerializeField] private GameObject healthText;
     [Header("Boost")]
-    [SerializeField] private GameObject coinBar;
     [SerializeField] private float m_coinBoostValue = 1f;
     [SerializeField] private float m_speedBoostCostPerSecond = 1f;
     [SerializeField] private float m_maxSpeedBoost = 10f;
@@ -74,8 +72,7 @@ public class PlayerController : MonoBehaviour {
             FinishScreen.i.Lose();
             return;
         }
-        Debug.Log(currentHealth + "/" + m_maxHealth);
-        healthText.GetComponent<Text>().text = "HEALTH : " + currentHealth;
+        HUD.i.SetHealth(currentHealth);
     }
 
     private void Awake() {
@@ -135,7 +132,7 @@ public class PlayerController : MonoBehaviour {
 
     private void SetAvailableBoost(float boost) {
         m_availableBoost = Mathf.Clamp(boost, 0, m_maxSpeedBoost);
-        coinBar.GetComponent<Image>().fillAmount = m_availableBoost / m_maxSpeedBoost;
+        HUD.i.SetBoost(m_availableBoost / m_maxSpeedBoost);
     }
 
     private void UpdateSailRotation() {

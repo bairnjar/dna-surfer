@@ -18,8 +18,6 @@ public class ScoreManager : MonoBehaviour {
     [SerializeField] private int m_coinScoreValue = 10;
     [Header("Score that increases when passing score gates")]
     [SerializeField] private int m_scoreGateValue = 100;
-    [Header("Other")]
-    [SerializeField] private Text m_scoreText;
 
     private int m_score;
     private float m_autoScoreTimer = 0f;
@@ -76,12 +74,6 @@ public class ScoreManager : MonoBehaviour {
     }
 
     private void UpdateScoreText() {
-        string format = "{0}";
-        if (m_score >= 1000000) {
-            format = "{0,12:0,000,000}";
-        } else if (m_score >= 1000) {
-            format = "{0,12:0,000}";
-        }
-        m_scoreText.text = string.Format(format, m_score);
+        HUD.i.SetScore(m_score);
     }
 }
