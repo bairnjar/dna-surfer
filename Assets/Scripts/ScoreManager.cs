@@ -32,17 +32,17 @@ public class ScoreManager : MonoBehaviour {
 
     public void CollectCoin() {
         m_score += m_coinScoreValue;
-        m_scoreText.text = m_score + "";
+        UpdateScoreText();
     }
 
     public void PassScoreGate() {
         m_score += m_scoreGateValue;
-        m_scoreText.text = m_score + "";
+        UpdateScoreText();
     }
 
     public void Reset() {
         m_score = 0;
-        m_scoreText.text = "0";
+        UpdateScoreText();
     }
 
     private void Awake() {
@@ -55,13 +55,15 @@ public class ScoreManager : MonoBehaviour {
 
     private void Update() {
         int score = m_score;
-        UpdatePeriodicScore(m_autoScorePeriod, m_autoScoreValue, ref m_autoScoreTimer);
+        if (!FinishScreen.i.Visible()) {
+            UpdatePeriodicScore(m_autoScorePeriod, m_autoScoreValue, ref m_autoScoreTimer);
+        }
         if (m_boostingTimer > 0) {
             UpdatePeriodicScore(m_boostScorePeriod, m_boostScoreValue, ref m_boostScoreTimer);
             m_boostingTimer = Mathf.Max(m_boostScoreTimer - Time.deltaTime, 0f);
         }
         if (score != m_score) {
-            m_scoreText.text = score + "";
+            UpdateScoreText();
         }
     }
 
@@ -71,5 +73,15 @@ public class ScoreManager : MonoBehaviour {
             m_score += value;
             timer -= period;
         }
+    }
+
+    private void UpdateScoreText() {
+        string format = "{0}";
+        if (m_score >= 1000) {
+            format = "{0,12:0,000,000}";
+        } else if (m_score >= 1000) {
+            format = "{0,12:0,000}";
+        }
+        m_scoreText.text = string.Format(format, m_score);
     }
 }
