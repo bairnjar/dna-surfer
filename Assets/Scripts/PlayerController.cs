@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private GameObject healthText;
     [SerializeField] private GameObject directionIndicator;
     [SerializeField] private GameObject sweetSpotIndicator;
-    [SerializeField] private Text scoreText;
 
     private Rigidbody2D m_rb;
 
@@ -39,7 +38,6 @@ public class PlayerController : MonoBehaviour {
     private float m_startDrag;
     private Dictionary<string, float> m_dragMods =
         new Dictionary<string, float>();
-    private int m_score = 0;
 
     public void Collect(Collectible collectible) {
         switch (collectible.collectibleType) {
@@ -50,7 +48,7 @@ public class PlayerController : MonoBehaviour {
                 ChangeHealth(-1);
                 break;
             case COLLECTIBLETYPE.COIN:
-                IncrScore();
+                ScoreManager.i.CollectCoin();
                 break;
         }
     }
@@ -102,16 +100,7 @@ public class PlayerController : MonoBehaviour {
         transform.rotation = m_startRotation;
         m_isDropAnchor = false;
         isInvincible = false;
-        SetScore(0);
-    }
-
-    public void IncrScore() {
-        SetScore(m_score + 1);
-    }
-
-    private void SetScore(int score) {
-        m_score = score;
-        scoreText.text = score + "";
+        ScoreManager.i.Reset();
     }
 
     private void Update() {
@@ -141,6 +130,7 @@ public class PlayerController : MonoBehaviour {
     private void UseBoost() {
         var playerDirection = Quaternion.Euler(0, 0, m_rb.rotation) * Vector2.up;
         m_rb.AddForce(playerDirection * m_speedBoost * Time.deltaTime);
+        ScoreManager.i.Boost();
     }
 
     private void UpdateDropAnchor() {
