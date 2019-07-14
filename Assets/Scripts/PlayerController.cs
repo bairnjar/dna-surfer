@@ -26,10 +26,14 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private GameObject directionIndicator;
     [SerializeField] private GameObject sweetSpotIndicator;
 
+    [SerializeField] private GameObject coinBar;
+    [SerializeField] private int maxCoinBar;
+    private int currentCoinBar = 0;
+
     private Rigidbody2D m_rb;
 
     private bool isInvincible;
-    private bool isBoostAvailable;
+    private bool isBoostAvailable = true;
     private float invincibleTimer;
     private bool m_isDropAnchor;
     private float m_sweetSpotDamageTimer;
@@ -49,6 +53,7 @@ public class PlayerController : MonoBehaviour {
                 break;
             case COLLECTIBLETYPE.COIN:
                 ScoreManager.i.CollectCoin();
+                addToCoinBar(10);
                 break;
         }
     }
@@ -106,6 +111,33 @@ public class PlayerController : MonoBehaviour {
         ScoreManager.i.Reset();
     }
 
+    private void addToCoinBar(int amount)
+    {
+        if (amount + currentCoinBar > maxCoinBar)
+        {
+            currentCoinBar = maxCoinBar;
+        }
+        else if (amount+currentCoinBar < 0)
+        {
+            currentCoinBar = 0;
+        }
+        else
+        {
+            currentCoinBar += amount;
+        }
+        Debug.Log("currentCoinBar = " + currentCoinBar);
+        Debug.Log("maxCoinBar = " + maxCoinBar);
+        float ccb = (float)currentCoinBar;
+        float mcb = (float)maxCoinBar;
+
+        var percent = ccb / mcb;
+        var percent2 = Mathf.Lerp(0, 1, percent);
+        Debug.Log("filamount= percent2 " + percent2);
+        coinBar.GetComponent<Image>().fillAmount = percent2;
+
+
+    }
+
     private void Update() {
         if (!FinishScreen.i.Visible()) {
             UpdateSailRotation();
@@ -131,9 +163,16 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void UseBoost() {
-        var playerDirection = Quaternion.Euler(0, 0, m_rb.rotation) * Vector2.up;
-        m_rb.AddForce(playerDirection * m_speedBoost * Time.deltaTime);
-        ScoreManager.i.Boost();
+       
+
+        if (currentCoinBar > 0)
+        {
+            var playerDirection = Quaternion.Euler(0, 0, m_rb.rotation) * Vector2.up;
+            m_rb.AddForce(playerDirection * m_speedBoost * Time.deltaTime);
+            ScoreManager.i.Boost();
+            addToCoinBar(-1);
+        }
+
     }
 
     private void UpdateDropAnchor() {
@@ -184,8 +223,8 @@ public class PlayerController : MonoBehaviour {
         float sweetSpotFactor = 0f;
         float scale = 0f;
         if (zRotation < m_windSweetSpotRotation) {
-            sweetSpotIndicator.SetActive(false);
-            isBoostAvailable = false;
+            //sweetSpotIndicator.SetActive(false);
+            //isBoostAvailable = false;
             sweetSpotFactor = (m_windSweetSpotRotation - zRotation) / m_windSweetSpotRotation;
             scale = Mathf.Lerp(
                 m_windSweetSpotSpeedMultiplierMin,
@@ -194,8 +233,8 @@ public class PlayerController : MonoBehaviour {
             // Debug.LogFormat("sweet spot scale {0}", scale);
 
         } else if (zRotation < m_windBestRotation) {
-            sweetSpotIndicator.SetActive(true);
-            isBoostAvailable = true;
+            //sweetSpotIndicator.SetActive(true);
+            //isBoostAvailable = true;
             float zRotationOffset = zRotation - m_windSweetSpotRotation;
             float zRotationOffsetInto = m_windBestRotation - m_windSweetSpotRotation;
             scale = Mathf.Lerp(
@@ -204,8 +243,8 @@ public class PlayerController : MonoBehaviour {
                 1f - ((zRotationOffsetInto - zRotationOffset) / zRotationOffsetInto));
             // Debug.LogFormat("best spot scale {0}", scale);
         } else if (zRotation < m_windZeroRotation) {
-            sweetSpotIndicator.SetActive(false);
-            isBoostAvailable = false;
+            //sweetSpotIndicator.SetActive(false);
+            //isBoostAvailable = false;
 
             float zRotationOffset = zRotation - m_windBestRotation;
             float zRotationOffsetInto = m_windZeroRotation - m_windBestRotation;
