@@ -19,7 +19,7 @@ public class ScoreManager : MonoBehaviour {
     [Header("Score that increases when passing score gates")]
     [SerializeField] private int m_scoreGateValue = 100;
 
-    private int m_score;
+    private Dictionary<int, float> m_scores = new Dictionary<int, float>();
     private float m_autoScoreTimer = 0f;
     private float m_boostScoreTimer = 0f;
     private float m_boostingTimer = 0f;
@@ -28,19 +28,21 @@ public class ScoreManager : MonoBehaviour {
         m_boostingTimer = m_boostTimerGracePeriod;
     }
 
-    public void CollectCoin() {
-        m_score += m_coinScoreValue;
-        UpdateScoreText();
+    public void CollectCoin(int playerNumber) {
+        m_scores[playerNumber] = GetScore(playerNumber) + m_coinScoreValue;
+        UpdateScoreText(playerNumber);
     }
 
-    public void PassScoreGate() {
-        m_score += m_scoreGateValue;
-        UpdateScoreText();
+    public void PassScoreGate(int playerNumber) {
+        m_scores[playerNumber] = GetScore(playerNumber) + m_scoreGateValue;
+        UpdateScoreText(playerNumber);
     }
 
     public void Reset() {
-        m_score = 0;
-        UpdateScoreText();
+        m_scores.Clear();
+        for (int i = 0; i < PlayerController.numPlayers; i++) {
+            UpdateScoreText(i);
+        }
     }
 
     private void Awake() {
@@ -52,28 +54,40 @@ public class ScoreManager : MonoBehaviour {
     }
 
     private void Update() {
-        int score = m_score;
-        if (!FinishScreen.i.Visible()) {
-            UpdatePeriodicScore(m_autoScorePeriod, m_autoScoreValue, ref m_autoScoreTimer);
-        }
-        if (m_boostingTimer > 0) {
-            UpdatePeriodicScore(m_boostScorePeriod, m_boostScoreValue, ref m_boostScoreTimer);
-            m_boostingTimer = Mathf.Max(m_boostScoreTimer - Time.deltaTime, 0f);
-        }
-        if (score != m_score) {
-            UpdateScoreText();
+        for (int playerNumber = 0; playerNumber < PlayerController.numPlayers; playerNumber++) {
+            float score = GetScore(playerNumber);
+            if (!FinishScreen.i.Visible()) {
+                UpdatePeriodicScore(playerNumber, m_autoScorePeriod, m_autoScoreValue, ref m_autoScoreTimer);
+            }
+            if (m_boostingTimer > 0) {
+                UpdatePeriodicScore(playerNumber, m_boostScorePeriod, m_boostScoreValue, ref m_boostScoreTimer);
+                m_boostingTimer = Mathf.Max(m_boostScoreTimer - Time.deltaTime, 0f);
+            }
+            if (score != GetScore(playerNumber)) {
+                UpdateScoreText(playerNumber);
+            }
         }
     }
 
-    private void UpdatePeriodicScore(float period, int value, ref float timer) {
+    private void UpdatePeriodicScore(int playerNumber, float period, int value, ref float timer) {
         timer += Time.deltaTime;
         while (timer >= period) {
-            m_score += value;
+            m_scores[playerNumber] = GetScore(playerNumber) + value;
             timer -= period;
         }
     }
 
-    private void UpdateScoreText() {
-        HUD.i.SetScore(m_score);
+    private void UpdateScoreText(int playerNumber) {
+        HUD.i.SetScore(Mathf.RoundToInt(GetScore(playerNumber)), playerNumber);
+    }
+
+    private float GetScore(int playerNumber) {
+        float score = 0;
+        if (m_scores.ContainsKey(playerNumber)) {
+            score = m_scores[playerNumber];
+        } else {
+            m_scores[playerNumber] = score;
+        }
+        return score;
     }
 }

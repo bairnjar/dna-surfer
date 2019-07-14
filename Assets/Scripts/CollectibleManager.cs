@@ -42,13 +42,13 @@ public class CollectibleManager : MonoBehaviour {
     }
 
     private void UpdateSpawn() {
-        float time = Time.time;
-        if (time - m_lastSpawnTime < m_spawnPeriod) {
-            return;
-        }
-        m_lastSpawnTime = time;
-        var player = PlayerController.i;
-        var rot = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
-        Spawn((rot * Vector2.up) * m_spawnRadius + player.transform.position);
+        // float time = Time.time;
+        // if (time - m_lastSpawnTime < m_spawnPeriod) {
+        //     return;
+        // }
+        // m_lastSpawnTime = time;
+        // var player = PlayerController.i;
+        // var rot = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
+        // Spawn((rot * Vector2.up) * m_spawnRadius + player.transform.position);
     }
 }

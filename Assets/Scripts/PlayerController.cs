@@ -5,9 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
-    public static PlayerController i;
+    public static int numPlayers = 0;
 
-    [HideInInspector] public int currentHealth;
+    [HideInInspector] public int currentHealth { get; private set; }
+    [HideInInspector] public int playerNumber { get; private set; }
 
     [SerializeField] private float m_turnSpeed = 1f;
     [SerializeField] private float m_dropAnchorSpeed = 1f;
@@ -48,7 +49,7 @@ public class PlayerController : MonoBehaviour {
                 ChangeHealth(-1);
                 break;
             case COLLECTIBLETYPE.COIN:
-                ScoreManager.i.CollectCoin();
+                ScoreManager.i.CollectCoin(playerNumber);
                 SetAvailableBoost(m_availableBoost + m_coinBoostValue);
                 break;
         }
@@ -74,13 +75,13 @@ public class PlayerController : MonoBehaviour {
             FinishScreen.i.Lose();
             return;
         }
-        HUD.i.SetHealth(currentHealth);
+        HUD.i.SetHealth(currentHealth, playerNumber);
     }
 
     private void Awake() {
-        Singleton.Awake(this, ref i);
         m_rb = GetComponent<Rigidbody2D>();
         m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        playerNumber = numPlayers++;
     }
 
     private void Start() {
@@ -154,7 +155,7 @@ public class PlayerController : MonoBehaviour {
 
     private void SetAvailableBoost(float boost) {
         m_availableBoost = Mathf.Clamp(boost, 0, m_maxSpeedBoost);
-        HUD.i.SetBoost(m_availableBoost / m_maxSpeedBoost);
+        HUD.i.SetBoost(m_availableBoost / m_maxSpeedBoost, playerNumber);
     }
 
     private void UpdateSailRotation() {

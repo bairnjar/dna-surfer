@@ -7,26 +7,42 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour {
     public static HUD i;
 
-    [SerializeField] private Text healthText;
-    [SerializeField] private Text scoreText;
-    [SerializeField] private Image boostImage;
-
-    public void SetHealth(int health) {
-        healthText.text = "Health: " + health;
+    [System.Serializable]
+    public struct Player {
+        public Text healthText;
+        public Text scoreText;
+        public Image boostImage;
     }
 
-    public void SetScore(int score) {
+    [SerializeField] private Player m_singlePlayer;
+    [SerializeField] private Player[] m_multiPlayer;
+
+    private bool m_isMultiplayer = false;
+
+    public void SetIsMultiplayer(bool isMulti) {
+        m_isMultiplayer = isMulti;
+    }
+
+    public void SetHealth(int health, int playerNumber) {
+        GetPlayer(playerNumber).healthText.text = "Health: " + health;
+    }
+
+    public void SetScore(int score, int playerNumber) {
         string format = "{0}";
         if (score >= 1000000) {
             format = "{0,12:0,000,000}";
         } else if (score >= 1000) {
             format = "{0,12:0,000}";
         }
-        scoreText.text = string.Format(format, score);
+        GetPlayer(playerNumber).scoreText.text = string.Format(format, score);
     }
 
-    public void SetBoost(float pct) {
-        boostImage.fillAmount = Mathf.Clamp(pct, 0f, 1f);
+    public void SetBoost(float pct, int playerNumber) {
+        GetPlayer(playerNumber).boostImage.fillAmount = Mathf.Clamp(pct, 0f, 1f);
+    }
+
+    private Player GetPlayer(int playerNumber) {
+        return m_isMultiplayer ? m_multiPlayer[playerNumber] : m_singlePlayer;
     }
 
     private void Awake() {

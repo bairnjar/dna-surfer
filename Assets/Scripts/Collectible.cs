@@ -9,10 +9,9 @@ public class Collectible : MonoBehaviour {
     public COLLECTIBLETYPE collectibleType;
 
     private void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.gameObject.tag == "Player") {
-            var player = PlayerController.i;
-            player.Collect(this);
-            GameObject.Destroy(gameObject);
+        if (collider.tag == "Player") {
+            collider.gameObject.GetComponent<PlayerController>().Collect(this);
+            GameObject.Destroy(this.gameObject);
         }
     }
 }

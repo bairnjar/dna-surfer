@@ -7,8 +7,9 @@ public class ScoreGateController : MonoBehaviour {
     public static ScoreGateController lastGate;
 
     private void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.tag == "Player") {
-            ScoreManager.i.PassScoreGate();
+        var player = collider.gameObject.GetComponent<PlayerController>();
+        if (player) {
+            ScoreManager.i.PassScoreGate(player.playerNumber);
             DNAStrandManager.i.SpawnNext();
         }
     }

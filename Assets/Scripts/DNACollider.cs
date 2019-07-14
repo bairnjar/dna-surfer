@@ -8,34 +8,31 @@ public class DNACollider : MonoBehaviour {
 
 
     private void OnTriggerEnter2D(Collider2D collider) {
-
-        if (collider.tag == "Player" && hardCollider) {
-            PlayerController.i.SetHealth(0);
-        }
-        else if (collider.tag == "Player" && !hardCollider)
-        {
-            Debug.Log("Distress!");
-            PlayerController.i.InDistress();
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D collider)
-    {
-
-        if (collider.tag == "Player" && !hardCollider)
-        {
-            Debug.Log("Distress!");
-            PlayerController.i.InDistress();
+        var player = GetPlayer(collider);
+        if (player) {
+            if (hardCollider) {
+                player.SetHealth(0);
+            } else {
+                player.InDistress();
+            }
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collider)
-    {
-
-        if (collider.tag == "Player" && !hardCollider)
-        {
-            PlayerController.i.EndDistress();
-
+    private void OnTriggerStay2D(Collider2D collider) {
+        var player = GetPlayer(collider);
+        if (player && !hardCollider) {
+            player.InDistress();
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collider) {
+        var player = GetPlayer(collider);
+        if (player && !hardCollider) {
+            player.EndDistress();
+        }
+    }
+
+    private PlayerController GetPlayer(Collider2D collider) {
+        return collider.gameObject.GetComponent<PlayerController>();
     }
 }
