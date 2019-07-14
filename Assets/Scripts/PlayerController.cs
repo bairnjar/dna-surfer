@@ -14,23 +14,24 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float m_dropAnchorFriction = 1f;
     [SerializeField] private int m_maxHealth = 5;
     [SerializeField] private int m_shallowsFriction = 4;
-    private float m_previousDrag = 2;
-
+    [SerializeField] private float m_sweetSpotDamagePeriod = 1f;
     [SerializeField] private float m_windZeroRotation = 90f;
     [SerializeField] private float m_windBestRotation = 45f;
     [SerializeField] private float m_windSweetSpotRotation = 10f;
     [SerializeField] private float m_windSweetSpotSpeedMultiplierMin = 0.7f;
     [SerializeField] private float m_windSweetSpotSpeedMultiplierMax = 1.5f;
+    [SerializeField] private float m_invincibilityTime = 2.0f;
     [SerializeField] private GameObject healthText;
     [SerializeField] private GameObject directionIndicator;
 
     private Rigidbody2D m_rb;
 
-    private float timeInvincible = 2.0f;
     private bool isInvincible;
     private float invincibleTimer;
     private bool m_isDropAnchor;
     private float m_frictionBeforeDropAnchor;
+    private float m_previousDrag;
+    private float m_sweetSpotDamageTimer;
 
     public void Collect(Collectible collectible) {
         if (collectible.collectibleType == COLLECTIBLETYPE.HEALTHUP) {
@@ -50,7 +51,7 @@ public class PlayerController : MonoBehaviour {
                 return;
 
             isInvincible = true;
-            invincibleTimer = timeInvincible;
+            invincibleTimer = m_invincibilityTime;
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, m_maxHealth);
         if (currentHealth == 0) {
@@ -175,6 +176,16 @@ public class PlayerController : MonoBehaviour {
         }
 
         CinemachineController.i.cameraShake = sweetSpotFactor;
+        if (sweetSpotFactor > 0) {
+            m_sweetSpotDamageTimer += Time.deltaTime;
+            if (m_sweetSpotDamageTimer >= m_sweetSpotDamagePeriod) {
+                ChangeHealth(-1);
+                m_sweetSpotDamageTimer = 0f;
+            }
+        } else {
+            m_sweetSpotDamageTimer = 0f;
+        }
+
         m_rb.AddForce(scale * playerForce * Time.deltaTime);
     }
 
@@ -185,28 +196,21 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
+    private void OnTriggerEnter2D(Collider2D collision) {
         //Debug.Log("You're in: "+collision.name);
-        if (collision.name.Equals("shallows"))
-        {
+        if (collision.name.Equals("shallows")) {
             m_previousDrag = m_rb.drag;
             float newDrag = m_rb.drag + m_shallowsFriction;
             m_rb.drag = newDrag;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-
+    private void OnTriggerExit2D(Collider2D collision) {
         //Debug.Log("You're in: "+collision.name);
-        if (collision.name.Equals("shallows"))
-        {
+        if (collision.name.Equals("shallows")) {
 
             m_rb.drag = m_previousDrag;
-                
+
         }
     }
-
 }
