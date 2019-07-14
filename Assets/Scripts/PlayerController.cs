@@ -147,6 +147,10 @@ public class PlayerController : MonoBehaviour {
                 print("x key was pressed");
                 UseBoost();
             }
+            else
+            {
+                CinemachineController.i.cameraShake = 0;
+            }
 
 
         } else {
@@ -164,6 +168,8 @@ public class PlayerController : MonoBehaviour {
 
         if (currentCoinBar > 0)
         {
+            CinemachineController.i.cameraShake = 1;
+
             var playerDirection = Quaternion.Euler(0, 0, m_rb.rotation) * Vector2.up;
             m_rb.AddForce(playerDirection * m_speedBoost * Time.deltaTime);
             ScoreManager.i.Boost();

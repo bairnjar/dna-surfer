@@ -278,6 +278,11 @@ PrefabInstance:
       propertyPath: m_Lens.OrthographicSize
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 2758013999304113936, guid: fd0f736be1f464b19900c7922d82d4e1,
+        type: 3}
+      propertyPath: m_maxCameraShake
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3768950174500719766, guid: fd0f736be1f464b19900c7922d82d4e1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fd0f736be1f464b19900c7922d82d4e1, type: 3}
