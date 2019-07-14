@@ -251,7 +251,7 @@ PrefabInstance:
     - target: {fileID: 5397725803075869361, guid: c1e1585a462d54c5ca34f80d72054682,
         type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: HUD
       objectReference: {fileID: 0}
     - target: {fileID: 5397725803075869365, guid: c1e1585a462d54c5ca34f80d72054682,
         type: 3}
