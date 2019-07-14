@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour {
     private void Update() {
         if (!FinishScreen.i.Visible()) {
             UpdateSailRotation();
-            UpdateDropAnchor();
+            // UpdateDropAnchor();
             UpdateInvicibilityTimer();
             UpdateBoost();
             UpdateAccelleration();
@@ -123,32 +123,25 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void UpdateBoost() {
-        if (Input.GetKey(KeyCode.X) && m_availableBoost > 0) {
+        if (InputButton("Boost") && m_availableBoost > 0) {
             ScoreManager.i.Boost();
             SetAvailableBoost(m_availableBoost - m_speedBoostCostPerSecond * Time.deltaTime);
             m_isBoosting = true;
-            Debug.Log("Camerashake = 1");
             CinemachineController.i.cameraShake = 1;
         } else {
             m_isBoosting = false;
-            Debug.Log("Camerashake = 0");
-            if (!isDistress)
-            {
+            if (!isDistress) {
                 CinemachineController.i.cameraShake = 0;
             }
         }
     }
 
-    public void InDistress()
-    {
-        Debug.Log("Camerashake = 1");
+    public void InDistress() {
         isDistress = true;
         CinemachineController.i.cameraShake = 2;
     }
 
-    public void EndDistress()
-    {
-        Debug.Log("Camerashake = 0");
+    public void EndDistress() {
         isDistress = false;
         CinemachineController.i.cameraShake = 0;
     }
@@ -159,31 +152,31 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void UpdateSailRotation() {
-        float h = Input.GetAxisRaw("Horizontal");
+        float h = InputAxisRaw("Horizontal");
         m_rb.AddTorque(-h * m_turnSpeed * Time.deltaTime);
     }
 
-    private void UpdateDropAnchor() {
-        bool isDropAnchor = Input.GetButton("Submit");
-        if (!isDropAnchor) {
-            if (m_isDropAnchor) {
-                // Stopped drop anchor.
-                RestoreDrag("UpdateDropAnchor");
-                m_isDropAnchor = false;
-            }
-            return;
-        } else {
-            if (!m_isDropAnchor) {
-                // Started drop anchor.
-                SetDrag("UpdateDropAnchor", m_dropAnchorFriction);
-                m_isDropAnchor = true;
-            }
-        }
+    // private void UpdateDropAnchor() {
+    //     bool isDropAnchor = Input.GetButton("Submit" + playerNumber);
+    //     if (!isDropAnchor) {
+    //         if (m_isDropAnchor) {
+    //             // Stopped drop anchor.
+    //             RestoreDrag("UpdateDropAnchor");
+    //             m_isDropAnchor = false;
+    //         }
+    //         return;
+    //     } else {
+    //         if (!m_isDropAnchor) {
+    //             // Started drop anchor.
+    //             SetDrag("UpdateDropAnchor", m_dropAnchorFriction);
+    //             m_isDropAnchor = true;
+    //         }
+    //     }
 
-        // Drop anchor in the direction of the turn.
-        float h = Input.GetAxisRaw("Horizontal");
-        m_rb.AddTorque(-h * m_dropAnchorSpeed * Time.deltaTime);
-    }
+    //     // Drop anchor in the direction of the turn.
+    //     float h = Input.GetAxisRaw("Horizontal" + playerNumber);
+    //     m_rb.AddTorque(-h * m_dropAnchorSpeed * Time.deltaTime);
+    // }
 
     private void UpdateInvicibilityTimer() {
         if (isInvincible) {
@@ -246,5 +239,19 @@ public class PlayerController : MonoBehaviour {
                 m_rb.drag = kv.Value;
             }
         }
+    }
+
+    private bool InputButton(string id) {
+        if (playerNumber == 0) {
+            return Input.GetButton(id);
+        }
+        return Input.GetButton(id + playerNumber);
+    }
+
+    private float InputAxisRaw(string id) {
+        if (playerNumber == 0) {
+            return Input.GetAxisRaw(id);
+        }
+        return Input.GetAxisRaw(id + playerNumber);
     }
 }
