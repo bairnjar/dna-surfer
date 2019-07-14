@@ -9,9 +9,9 @@ public class HUD : MonoBehaviour {
 
     [System.Serializable]
     public struct Player {
-        public Text healthText;
         public Text scoreText;
         public Image boostImage;
+        public Image boostImageBackground;
     }
 
     [SerializeField] private Player m_singlePlayer;
@@ -21,10 +21,20 @@ public class HUD : MonoBehaviour {
 
     public void SetIsMultiplayer(bool isMulti) {
         m_isMultiplayer = isMulti;
+        SetEnabled(m_singlePlayer, !isMulti);
+        foreach (var player in m_multiPlayer) {
+            SetEnabled(player, isMulti);
+        }
+    }
+
+    private void SetEnabled(Player player, bool active) {
+        player.scoreText.enabled = active;
+        player.boostImage.enabled = active;
+        player.boostImageBackground.enabled = active;
     }
 
     public void SetHealth(int health, int playerNumber) {
-        GetPlayer(playerNumber).healthText.text = "Health: " + health;
+        // GetPlayer(playerNumber).healthText.text = "Health: " + health;
     }
 
     public void SetScore(int score, int playerNumber) {
@@ -47,5 +57,9 @@ public class HUD : MonoBehaviour {
 
     private void Awake() {
         Singleton.Awake(this, ref i);
+    }
+
+    private void Start() {
+        SetIsMultiplayer(false);
     }
 }
