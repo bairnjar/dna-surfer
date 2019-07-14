@@ -126,20 +126,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  m_turnSpeed: 1
-  m_dropAnchorSpeed: 1
-  m_dropAnchorFriction: 1
+  m_turnSpeed: 550
+  m_dropAnchorSpeed: 70
+  m_dropAnchorFriction: 6
   m_maxHealth: 5
   m_shallowsFriction: 4
-  m_accelleration: 1
-  m_hillAccelleration: 1
+  m_accelleration: 1400
+  m_hillAccelleration: 200
   m_invincibilityTime: 2
-  healthText: {fileID: 0}
-  coinBar: {fileID: 0}
   m_coinBoostValue: 1
-  m_speedBoostCostPerSecond: 1
+  m_speedBoostCostPerSecond: 2
   m_maxSpeedBoost: 10
-  m_boostAccelleration: 1.5
+  m_boostAccelleration: 2
 --- !u!50 &6553236859506002216
 Rigidbody2D:
   serializedVersion: 4
@@ -153,8 +151,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 2.7
+  m_AngularDrag: 3.5
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0

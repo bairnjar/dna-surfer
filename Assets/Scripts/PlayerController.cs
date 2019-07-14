@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour {
     private SpriteRenderer m_spriteRenderer;
 
     private bool isInvincible;
+    private bool isDistress;
+
     private float invincibleTimer;
     private bool m_isDropAnchor;
     private Vector3 m_startPosition;
@@ -102,6 +104,7 @@ public class PlayerController : MonoBehaviour {
         transform.rotation = m_startRotation;
         m_isDropAnchor = false;
         isInvincible = false;
+        isDistress = false;
         SetAvailableBoost(0);
         ScoreManager.i.Reset();
     }
@@ -123,11 +126,30 @@ public class PlayerController : MonoBehaviour {
             ScoreManager.i.Boost();
             SetAvailableBoost(m_availableBoost - m_speedBoostCostPerSecond * Time.deltaTime);
             m_isBoosting = true;
+            Debug.Log("Camerashake = 1");
             CinemachineController.i.cameraShake = 1;
         } else {
             m_isBoosting = false;
-            CinemachineController.i.cameraShake = 0;
+            Debug.Log("Camerashake = 0");
+            if (!isDistress)
+            {
+                CinemachineController.i.cameraShake = 0;
+            }
         }
+    }
+
+    public void InDistress()
+    {
+        Debug.Log("Camerashake = 1");
+        isDistress = true;
+        CinemachineController.i.cameraShake = 2;
+    }
+
+    public void EndDistress()
+    {
+        Debug.Log("Camerashake = 0");
+        isDistress = false;
+        CinemachineController.i.cameraShake = 0;
     }
 
     private void SetAvailableBoost(float boost) {
