@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
 
     [HideInInspector] public int currentHealth { get; private set; }
     [HideInInspector] public int playerNumber { get; private set; }
+          
 
     [SerializeField] private float m_turnSpeed = 1f;
     [SerializeField] private float m_dropAnchorSpeed = 1f;
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float m_speedBoostCostPerSecond = 1f;
     [SerializeField] private float m_maxSpeedBoost = 10f;
     [SerializeField] private float m_boostAccelleration = 1.5f;
+
+    [SerializeField] private bool immediate_reset = false;
 
     private Rigidbody2D m_rb;
     private SpriteRenderer m_spriteRenderer;
@@ -72,8 +75,16 @@ public class PlayerController : MonoBehaviour {
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, m_maxHealth);
         if (currentHealth == 0) {
-            FinishScreen.i.Lose();
-            return;
+            if (immediate_reset)
+            {
+                Reset();
+                return;
+            }
+            else
+            {
+                FinishScreen.i.Lose();
+                return;
+            }
         }
         HUD.i.SetHealth(currentHealth, playerNumber);
     }
@@ -139,11 +150,13 @@ public class PlayerController : MonoBehaviour {
 
     public void InDistress() {
         isDistress = true;
+        m_spriteRenderer.color = Color.red;
         CinemachineController.i.cameraShake = 2;
     }
 
     public void EndDistress() {
         isDistress = false;
+        m_spriteRenderer.color = Color.white;
         CinemachineController.i.cameraShake = 0;
     }
 
