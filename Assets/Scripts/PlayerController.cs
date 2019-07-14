@@ -15,12 +15,15 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private int m_maxHealth = 5;
     [SerializeField] private int m_shallowsFriction = 4;
     [SerializeField] private float m_accelleration = 1;
+    [SerializeField] private float m_hillAccelleration = 1f;
     [SerializeField] private float m_invincibilityTime = 2.0f;
-    [SerializeField] private float m_speedBoost = 1000f;
     [SerializeField] private GameObject healthText;
-
+    [Header("Boost")]
     [SerializeField] private GameObject coinBar;
-    [SerializeField] private int maxCoinBar;
+    [SerializeField] private float m_coinBoostValue = 1f;
+    [SerializeField] private float m_speedBoostCostPerSecond = 1f;
+    [SerializeField] private float m_maxSpeedBoost = 10f;
+    [SerializeField] private float m_boostAccelleration = 1.5f;
 
     private Rigidbody2D m_rb;
     private SpriteRenderer m_spriteRenderer;
@@ -31,7 +34,8 @@ public class PlayerController : MonoBehaviour {
     private Vector3 m_startPosition;
     private Quaternion m_startRotation;
     private float m_startDrag;
-    private int currentCoinBar;
+    private float m_availableBoost;
+    private bool m_isBoosting;
     private Dictionary<string, float> m_dragMods =
         new Dictionary<string, float>();
 
@@ -45,7 +49,7 @@ public class PlayerController : MonoBehaviour {
                 break;
             case COLLECTIBLETYPE.COIN:
                 ScoreManager.i.CollectCoin();
-                addToCoinBar(10);
+                SetAvailableBoost(m_availableBoost + m_coinBoostValue);
                 break;
         }
     }
@@ -90,7 +94,6 @@ public class PlayerController : MonoBehaviour {
 
     private void Reset(bool start = false) {
         currentHealth = m_maxHealth;
-        addToCoinBar(-1000);
         m_rb.rotation = 0f;
         m_rb.velocity = Vector2.zero;
         transform.position = start
@@ -102,65 +105,42 @@ public class PlayerController : MonoBehaviour {
         transform.rotation = m_startRotation;
         m_isDropAnchor = false;
         isInvincible = false;
+        SetAvailableBoost(0);
         ScoreManager.i.Reset();
-    }
-
-    private void addToCoinBar(int amount) {
-        if (amount + currentCoinBar > maxCoinBar) {
-            currentCoinBar = maxCoinBar;
-        } else if (amount + currentCoinBar < 0) {
-            currentCoinBar = 0;
-        } else {
-            currentCoinBar += amount;
-        }
-        Debug.Log("currentCoinBar = " + currentCoinBar);
-        Debug.Log("maxCoinBar = " + maxCoinBar);
-        float ccb = (float)currentCoinBar;
-        float mcb = (float)maxCoinBar;
-
-        var percent = ccb / mcb;
-        var percent2 = Mathf.Lerp(0, 1, percent);
-        Debug.Log("filamount= percent2 " + percent2);
-        coinBar.GetComponent<Image>().fillAmount = percent2;
-
-
     }
 
     private void Update() {
         if (!FinishScreen.i.Visible()) {
             UpdateSailRotation();
             UpdateDropAnchor();
-            UpdateAccelleration();
             UpdateInvicibilityTimer();
             UpdateBoost();
+            UpdateAccelleration();
         } else {
             UpdateTryAgain();
         }
     }
 
     private void UpdateBoost() {
-        if (Input.GetKey(KeyCode.X)) {
-            UseBoost();
+        if (Input.GetKey(KeyCode.X) && m_availableBoost > 0) {
+            ScoreManager.i.Boost();
+            SetAvailableBoost(m_availableBoost - m_speedBoostCostPerSecond * Time.deltaTime);
+            m_isBoosting = true;
+            CinemachineController.i.cameraShake = 1;
         } else {
+            m_isBoosting = false;
             CinemachineController.i.cameraShake = 0;
         }
+    }
+
+    private void SetAvailableBoost(float boost) {
+        m_availableBoost = Mathf.Clamp(boost, 0, m_maxSpeedBoost);
+        coinBar.GetComponent<Image>().fillAmount = m_availableBoost / m_maxSpeedBoost;
     }
 
     private void UpdateSailRotation() {
         float h = Input.GetAxisRaw("Horizontal");
         m_rb.AddTorque(-h * m_turnSpeed * Time.deltaTime);
-    }
-
-    private void UseBoost() {
-        if (currentCoinBar > 0) {
-            CinemachineController.i.cameraShake = 1;
-
-            var playerDirection = Quaternion.Euler(0, 0, m_rb.rotation) * Vector2.up;
-            m_rb.AddForce(playerDirection * m_speedBoost * Time.deltaTime);
-            ScoreManager.i.Boost();
-            addToCoinBar(-1);
-        }
-
     }
 
     private void UpdateDropAnchor() {
@@ -197,8 +177,12 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void UpdateAccelleration() {
+        float scale = m_accelleration;
+        if (m_isBoosting) {
+            scale *= m_boostAccelleration;
+        }
         var playerDirection = Quaternion.Euler(0, 0, m_rb.rotation) * Vector2.up;
-        m_rb.AddForce(playerDirection * m_accelleration * Time.deltaTime);
+        m_rb.AddForce(playerDirection * scale * Time.deltaTime);
     }
 
     private void UpdateTryAgain() {
