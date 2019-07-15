@@ -11,13 +11,13 @@ public class PlayerController : MonoBehaviour {
     [HideInInspector] public int playerNumber { get; private set; }
 
     [SerializeField] private float m_turnSpeed = 1f;
-    [SerializeField] private float m_dropAnchorSpeed = 1f;
-    [SerializeField] private float m_dropAnchorFriction = 1f;
-    [SerializeField] private int m_maxHealth = 5;
+    // [SerializeField] private float m_dropAnchorSpeed = 1f;
+    // [SerializeField] private float m_dropAnchorFriction = 1f;
+    // [SerializeField] private int m_maxHealth = 5;
     [SerializeField] private int m_shallowsFriction = 4;
     [SerializeField] private float m_accelleration = 1;
     [SerializeField] private float m_hillAccelleration = 1f;
-    [SerializeField] private float m_invincibilityTime = 2.0f;
+    // [SerializeField] private float m_invincibilityTime = 2.0f;
     [Header("Boost")]
     [SerializeField] private float m_coinBoostValue = 1f;
     [SerializeField] private float m_speedBoostCostPerSecond = 1f;
@@ -30,13 +30,13 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private bool immediate_reset = false;
 
     private Rigidbody2D m_rb;
-    private SpriteRenderer m_spriteRenderer;
+    private ParticleSystem m_particles;
 
     private bool isInvincible;
     private bool isDistress;
 
-    private float invincibleTimer;
-    private bool m_isDropAnchor;
+    // private float invincibleTimer;
+    // private bool m_isDropAnchor;
     private Vector3 m_startPosition;
     private Quaternion m_startRotation;
     private float m_startDrag;
@@ -49,12 +49,12 @@ public class PlayerController : MonoBehaviour {
 
     public void Collect(Collectible collectible) {
         switch (collectible.collectibleType) {
-            case COLLECTIBLETYPE.HEALTHUP:
-                ChangeHealth(1);
-                break;
-            case COLLECTIBLETYPE.HEALTHDOWN:
-                ChangeHealth(-1);
-                break;
+            // case COLLECTIBLETYPE.HEALTHUP:
+            //     ChangeHealth(1);
+            //     break;
+            // case COLLECTIBLETYPE.HEALTHDOWN:
+            //     ChangeHealth(-1);
+            //     break;
             case COLLECTIBLETYPE.COIN:
                 ScoreManager.i.CollectCoin(playerNumber);
                 SetAvailableBoost(m_availableBoost + m_coinBoostValue);
@@ -62,22 +62,22 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D col) {
-        ChangeHealth(-1);
-    }
+    // private void OnCollisionEnter2D(Collision2D col) {
+    //     ChangeHealth(-1);
+    // }
 
     public void SetHealth(int health) {
         ChangeHealth(health - currentHealth);
     }
 
     public void ChangeHealth(int amount) {
-        if (amount < 0) {
-            if (isInvincible)
-                return;
-            isInvincible = true;
-            invincibleTimer = m_invincibilityTime;
-        }
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, m_maxHealth);
+        // if (amount < 0) {
+        //     if (isInvincible)
+        //         return;
+        //     isInvincible = true;
+        //     invincibleTimer = m_invincibilityTime;
+        // }
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, 1);
         if (currentHealth == 0) {
             if (immediate_reset) {
                 Reset();
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Awake() {
         m_rb = GetComponent<Rigidbody2D>();
-        m_spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        m_particles = GetComponentInChildren<ParticleSystem>();
         playerNumber = numPlayers++;
     }
 
@@ -124,16 +124,14 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Reset(bool start = false) {
-        currentHealth = m_maxHealth;
+        currentHealth = 1;
         var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
         cinema.AddMember(transform, 1, 10);
         cinema.AddMember(m_mirror.transform, 1, 10);
 
-        if (playerNumber == 0)
-        {
+        if (playerNumber == 0) {
             ScoreManager.i.player0Alive = true;
-        }else if(playerNumber == 1)
-        {
+        } else if (playerNumber == 1) {
             ScoreManager.i.player0Alive = true;
         }
 
@@ -144,8 +142,8 @@ public class PlayerController : MonoBehaviour {
         m_rb.rotation = m_startRotation.z;
         m_rb.angularVelocity = 0;
         m_rb.velocity = Vector2.zero;
-        m_isDropAnchor = false;
-        isInvincible = false;
+        // m_isDropAnchor = false;
+        // isInvincible = false;
         isDistress = false;
         m_isLose = false;
         SetAvailableBoost(0);
@@ -169,7 +167,7 @@ public class PlayerController : MonoBehaviour {
 
         UpdateSailRotation();
         // UpdateDropAnchor();
-        UpdateInvicibilityTimer();
+        // UpdateInvicibilityTimer();
         UpdateBoost();
         UpdateAccelleration();
         UpdateMirror();
@@ -184,9 +182,11 @@ public class PlayerController : MonoBehaviour {
             ScoreManager.i.Boost();
             SetAvailableBoost(m_availableBoost - m_speedBoostCostPerSecond * Time.deltaTime);
             m_isBoosting = true;
+            m_particles.startColor = Color.yellow;
             CinemachineController.i.cameraShake = 1;
         } else {
             m_isBoosting = false;
+            m_particles.startColor = Color.white;
             if (!isDistress) {
                 CinemachineController.i.cameraShake = 0;
             }
@@ -195,13 +195,11 @@ public class PlayerController : MonoBehaviour {
 
     public void InDistress() {
         isDistress = true;
-        m_spriteRenderer.color = Color.red;
         CinemachineController.i.cameraShake = 2;
     }
 
     public void EndDistress() {
         isDistress = false;
-        m_spriteRenderer.color = Color.white;
         CinemachineController.i.cameraShake = 0;
     }
 
@@ -237,16 +235,14 @@ public class PlayerController : MonoBehaviour {
     //     m_rb.AddTorque(-h * m_dropAnchorSpeed * Time.deltaTime);
     // }
 
-    private void UpdateInvicibilityTimer() {
-        if (isInvincible) {
-            m_spriteRenderer.color = Color.red;
-            invincibleTimer -= Time.deltaTime;
-            if (invincibleTimer < 0) {
-                isInvincible = false;
-                m_spriteRenderer.color = Color.white;
-            }
-        }
-    }
+    // private void UpdateInvicibilityTimer() {
+    //     if (isInvincible) {
+    //         invincibleTimer -= Time.deltaTime;
+    //         if (invincibleTimer < 0) {
+    //             isInvincible = false;
+    //         }
+    //     }
+    // }
 
     private void UpdateAccelleration() {
         var levelMultiplier = ScoreManager.i.currentMultiplier;
