@@ -322,7 +322,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "PLAYER 1: Use arrow keys to turn left and right. \n\nPress RETURN to Boost.
+  m_Text: "PLAYER 1: Use arrow keys to turn left and right. \n\nPress X to Boost.
     \nCollect YELLOW FUEL to Boost. Boost to go fast and get more points.  \n\nGet
     5000 points to MAP THE HUMAN GENOME."
 --- !u!222 &708989070
