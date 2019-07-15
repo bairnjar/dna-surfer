@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 913584306698356132}
   m_Layer: 0
   m_Name: ColliderLeftOuterSoft
-  m_TagString: Untagged
+  m_TagString: SofaDNACollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,8 +114,8 @@ GameObject:
   - component: {fileID: 1018995718637807460}
   - component: {fileID: 6535204933588592470}
   m_Layer: 0
-  m_Name: ColliderLeftMiddleInner
-  m_TagString: Untagged
+  m_Name: ColliderLeftMiddleInnerHard
+  m_TagString: HardDNACollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,6 +174,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hardCollider: 1
+--- !u!1 &768448574039732962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5289190532093566039}
+  - component: {fileID: 193305325297033831}
+  m_Layer: 0
+  m_Name: TrackGuideP0
+  m_TagString: TrackGuideP0
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5289190532093566039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768448574039732962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.9, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3452457410598541549}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &193305325297033831
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768448574039732962}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -27.739498, y: -13.036978}
+  - {x: -25.45336, y: -4.535699}
+  - {x: -14.118164, y: 7.972715}
+  - {x: 2.174923, y: 21.92838}
+  - {x: 4.462191, y: 29.824982}
+  - {x: 3.1458669, y: 36.910923}
+  - {x: -11.692912, y: 50.09096}
+  - {x: -20.739155, y: 57.828808}
+  - {x: -27.11405, y: 64.953094}
+  - {x: -28.040628, y: 74.08511}
 --- !u!1 &876243700504276194
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +243,7 @@ GameObject:
   - component: {fileID: 2619676172558585047}
   - component: {fileID: 8922167499587191462}
   m_Layer: 0
-  m_Name: ColliderLeftUpperInner
+  m_Name: ColliderLeftUpperInnerHard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -387,6 +444,8 @@ Transform:
   - {fileID: 1893722461795321457}
   - {fileID: 2223729975629414107}
   - {fileID: 4037656276621968893}
+  - {fileID: 5289190532093566039}
+  - {fileID: 1258159998672217265}
   m_Father: {fileID: 669816047856257462}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -402,8 +461,8 @@ GameObject:
   - component: {fileID: 7344544049691362805}
   - component: {fileID: 2372621154339623891}
   m_Layer: 0
-  m_Name: ColliderRightBottomInner
-  m_TagString: Untagged
+  m_Name: ColliderRightBottomInnerHard
+  m_TagString: HardDNACollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -461,6 +520,65 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hardCollider: 1
+--- !u!1 &2764425284583317743
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1258159998672217265}
+  - component: {fileID: 60032784124930706}
+  m_Layer: 0
+  m_Name: TrackGuideP1
+  m_TagString: TrackGuideP1
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1258159998672217265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2764425284583317743}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -18.9, y: 0, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3452457410598541549}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &60032784124930706
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2764425284583317743}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -29.80447, y: -13.241251}
+  - {x: -27.034409, y: -7.1166945}
+  - {x: -24.227757, y: -2.288766}
+  - {x: -16.066431, y: 5.408225}
+  - {x: -7.4859295, y: 12.367249}
+  - {x: 1.3578396, y: 21.315578}
+  - {x: 3.883728, y: 29.7117}
+  - {x: 1.7160053, y: 37.93226}
+  - {x: -10.5517845, y: 48.718323}
+  - {x: -24.973, y: 60.52145}
+  - {x: -28.02553, y: 66.791504}
+  - {x: -28.898878, y: 74.0096}
 --- !u!1 &3207264136316093563
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,7 +592,7 @@ GameObject:
   - component: {fileID: 5241169739974486516}
   m_Layer: 0
   m_Name: ColliderMiddleInnerSoftUp
-  m_TagString: Untagged
+  m_TagString: SofaDNACollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -563,7 +681,7 @@ GameObject:
   - component: {fileID: 8993834062492596582}
   m_Layer: 0
   m_Name: ColliderRightOuterSoft
-  m_TagString: Untagged
+  m_TagString: SofaDNACollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -666,7 +784,7 @@ GameObject:
   - component: {fileID: 2627762123363585988}
   m_Layer: 0
   m_Name: ColliderLeftOuterHard
-  m_TagString: Untagged
+  m_TagString: HardDNACollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -748,7 +866,7 @@ GameObject:
   - component: {fileID: 93269316960242440}
   m_Layer: 0
   m_Name: ColliderRightOuterHard
-  m_TagString: Untagged
+  m_TagString: HardDNACollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -972,8 +1090,8 @@ GameObject:
   - component: {fileID: 3267191131202743635}
   - component: {fileID: 431726542553260878}
   m_Layer: 0
-  m_Name: ColliderRightUpperInner
-  m_TagString: Untagged
+  m_Name: ColliderRightUpperInnerHard
+  m_TagString: HardDNACollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1041,8 +1159,8 @@ GameObject:
   - component: {fileID: 3564099483370593208}
   - component: {fileID: 7223907236802477127}
   m_Layer: 0
-  m_Name: ColliderLeftBottomInner
-  m_TagString: Untagged
+  m_Name: ColliderLeftBottomInnerHard
+  m_TagString: HardDNACollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1190,8 +1308,8 @@ GameObject:
   - component: {fileID: 8919108074139655747}
   - component: {fileID: 5011341974907321240}
   m_Layer: 0
-  m_Name: ColliderRightMiddleInner
-  m_TagString: Untagged
+  m_Name: ColliderRightMiddleInnerHard
+  m_TagString: HardDNACollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1278,7 +1396,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5709599923525273905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.2, y: -16.7, z: 0}
+  m_LocalPosition: {x: -14.2, y: -14.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2204969293450451880}
@@ -1297,7 +1415,7 @@ GameObject:
   - component: {fileID: 1216952444837945832}
   m_Layer: 0
   m_Name: ColliderBottomInnerSoft
-  m_TagString: Untagged
+  m_TagString: SofaDNACollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1387,7 +1505,7 @@ GameObject:
   - component: {fileID: 6709660023353384163}
   m_Layer: 0
   m_Name: ColliderMiddleInnerSoftDown
-  m_TagString: Untagged
+  m_TagString: SofaDNACollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1476,7 +1594,7 @@ GameObject:
   - component: {fileID: 5256199217388834229}
   m_Layer: 0
   m_Name: ColliderUpperInnerSoft
-  m_TagString: Untagged
+  m_TagString: SofaDNACollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1576,7 +1694,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8860409453466274713}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.2, y: -16.7, z: 0}
+  m_LocalPosition: {x: 14.2, y: -14.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2204969293450451880}

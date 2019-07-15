@@ -125,7 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d27b967d2bef45fda269e0b712f6a4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
   m_turnSpeed: 550
   m_dropAnchorSpeed: 70
   m_dropAnchorFriction: 6
@@ -138,6 +137,9 @@ MonoBehaviour:
   m_speedBoostCostPerSecond: 2
   m_maxSpeedBoost: 10
   m_boostAccelleration: 2
+  m_rubberBandForce: 400
+  m_rubberBandAttenuationPerLevel: 0.5
+  immediate_reset: 0
 --- !u!50 &6553236859506002216
 Rigidbody2D:
   serializedVersion: 4

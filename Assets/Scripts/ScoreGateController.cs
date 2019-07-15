@@ -11,6 +11,7 @@ public class ScoreGateController : MonoBehaviour {
     public static Vector2 StartPosition(int playerNumber, bool start) {
         if (!firstGate) {
             DNAStrandManager.i.SpawnNext();
+            DNAStrandManager.i.SpawnNext();
         }
         var startObject = GameObjects.GetComponentWithTagInChildren<Transform>(
             firstGate.gameObject, "SpawnP" + playerNumber);
