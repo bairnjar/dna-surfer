@@ -141,6 +141,7 @@ public class PlayerController : MonoBehaviour {
         m_isLose = false;
         SetAvailableBoost(0);
         m_sprite.color = Color.white;
+        m_isDistress = false;
         ScoreManager.i.Reset();
     }
 
