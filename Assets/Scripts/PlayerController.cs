@@ -129,6 +129,14 @@ public class PlayerController : MonoBehaviour {
         cinema.AddMember(transform, 1, 10);
         cinema.AddMember(m_mirror.transform, 1, 10);
 
+        if (playerNumber == 0)
+        {
+            ScoreManager.i.player0Alive = true;
+        }else if(playerNumber == 1)
+        {
+            ScoreManager.i.player0Alive = true;
+        }
+
         ScoreManager.i.resetCurrentLevel();
         transform.position = ScoreGateController.StartPosition(playerNumber, start);
         transform.rotation = m_startRotation;

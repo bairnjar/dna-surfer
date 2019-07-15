@@ -19,8 +19,8 @@ public class ScoreManager : MonoBehaviour {
     [Header("Score that increases when passing score gates")]
     [SerializeField] private int m_scoreGateValue = 100;
 
-    public bool player0Alive = true;
-    public bool player1Alive = true;
+    public bool player0Alive = false;
+    public bool player1Alive = false;
 
     public int currentLevel = 0;
     public float currentMultiplier = 1;
@@ -47,8 +47,7 @@ public class ScoreManager : MonoBehaviour {
     }
 
     public void Reset() {
-        player0Alive = true;
-        player1Alive = true;
+        
         m_scores.Clear();
         for (int i = 0; i < PlayerController.numPlayers; i++) {
             UpdateScoreText(i);
