@@ -81,11 +81,29 @@ public class PlayerController : MonoBehaviour {
                 Reset();
                 return;
             } else {
-                if (!FinishScreen.i.GetComponent<Canvas>().isActiveAndEnabled)
+                if (playerNumber==0 && ScoreManager.i.player1Alive)
                 {
-                    FinishScreen.i.Lose();
+                    ScoreManager.i.player0Alive = false;
+                    var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
+                    cinema.RemoveMember(transform);
+                    cinema.RemoveMember(m_mirror.transform);
+
+                    return;
+                }else if(playerNumber == 1 && ScoreManager.i.player0Alive)
+                {
+                    ScoreManager.i.player1Alive = false;
+                    var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
+                    cinema.RemoveMember(transform);
+                    cinema.RemoveMember(m_mirror.transform);
                 }
-                return;
+                else
+                {
+                    if (!FinishScreen.i.GetComponent<Canvas>().isActiveAndEnabled)
+                    {
+                        FinishScreen.i.Lose();
+                    }
+                    return;
+                }
             }
         }
         HUD.i.SetHealth(currentHealth, playerNumber);
@@ -101,9 +119,8 @@ public class PlayerController : MonoBehaviour {
         m_mirror = GameObject.Instantiate(new GameObject(), transform);
         m_startRotation = Quaternion.Euler(0, 0, playerNumber == 0 ? -30f : 30f);
         m_startDrag = m_rb.drag;
-        var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
-        cinema.AddMember(transform, 1, 10);
-        cinema.AddMember(m_mirror.transform, 1, 10);
+       
+        
         if (playerNumber == 1) {
             HUD.i.SetIsMultiplayer(true);
         }
@@ -112,6 +129,10 @@ public class PlayerController : MonoBehaviour {
 
     private void Reset(bool start = false) {
         currentHealth = m_maxHealth;
+        var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
+        cinema.AddMember(transform, 1, 10);
+        cinema.AddMember(m_mirror.transform, 1, 10);
+
         ScoreManager.i.resetCurrentLevel();
         transform.position = ScoreGateController.StartPosition(playerNumber, start);
         transform.rotation = m_startRotation;
