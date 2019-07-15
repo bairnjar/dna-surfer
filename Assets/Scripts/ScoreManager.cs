@@ -47,7 +47,7 @@ public class ScoreManager : MonoBehaviour {
     }
 
     public void Reset() {
-        
+
         m_scores.Clear();
         for (int i = 0; i < PlayerController.numPlayers; i++) {
             UpdateScoreText(i);
@@ -59,7 +59,6 @@ public class ScoreManager : MonoBehaviour {
     }
 
     private void Start() {
-
         Reset();
     }
 

@@ -43,18 +43,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebb9fb00b5c2845a8b9cf841dfaa3b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_autoScorePeriod: 1
+  m_autoScorePeriod: 0.2
   m_autoScoreValue: 1
   m_boostScorePeriod: 0.1
   m_boostScoreValue: 1
   m_boostTimerGracePeriod: 1
-  m_coinScoreValue: 10
-  m_scoreGateValue: 100
+  m_coinScoreValue: 5
+  m_scoreGateValue: 50
+  player0Alive: 0
+  player1Alive: 0
+  currentLevel: 0
   currentMultiplier: 1
-  levelScoreThresholds: f4010000e8030000d0070000b80b0000a00f0000
+  levelScoreThresholds: c8000000f4010000e8030000d0070000b80b000088130000
   levelSpeedMultipliers:
   - 1
   - 1.2
   - 1.5
-  - 1.7
-  - 2
+  - 1.8
+  - 2.1
+  - 2.5
