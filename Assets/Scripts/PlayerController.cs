@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour {
     [HideInInspector] public int currentHealth { get; private set; }
     [HideInInspector] public int playerNumber { get; private set; }
 
-
     [SerializeField] private float m_turnSpeed = 1f;
     [SerializeField] private float m_dropAnchorSpeed = 1f;
     [SerializeField] private float m_dropAnchorFriction = 1f;
@@ -24,6 +23,9 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float m_speedBoostCostPerSecond = 1f;
     [SerializeField] private float m_maxSpeedBoost = 10f;
     [SerializeField] private float m_boostAccelleration = 1.5f;
+    [Header("Rubber banding")]
+    [SerializeField] private float m_rubberBandForce = 1f;
+    [SerializeField] private float m_rubberBandAttenuationPerLevel = 0.5f;
 
     [SerializeField] private bool immediate_reset = false;
 
@@ -81,25 +83,19 @@ public class PlayerController : MonoBehaviour {
                 Reset();
                 return;
             } else {
-                if (playerNumber==0 && ScoreManager.i.player1Alive)
-                {
+                if (playerNumber == 0 && ScoreManager.i.player1Alive) {
                     ScoreManager.i.player0Alive = false;
                     var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
                     cinema.RemoveMember(transform);
                     cinema.RemoveMember(m_mirror.transform);
-
                     return;
-                }else if(playerNumber == 1 && ScoreManager.i.player0Alive)
-                {
+                } else if (playerNumber == 1 && ScoreManager.i.player0Alive) {
                     ScoreManager.i.player1Alive = false;
                     var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
                     cinema.RemoveMember(transform);
                     cinema.RemoveMember(m_mirror.transform);
-                }
-                else
-                {
-                    if (!FinishScreen.i.GetComponent<Canvas>().isActiveAndEnabled)
-                    {
+                } else {
+                    if (!FinishScreen.i.GetComponent<Canvas>().isActiveAndEnabled) {
                         FinishScreen.i.Lose();
                     }
                     return;
@@ -119,8 +115,8 @@ public class PlayerController : MonoBehaviour {
         m_mirror = GameObject.Instantiate(new GameObject(), transform);
         m_startRotation = Quaternion.Euler(0, 0, playerNumber == 0 ? -30f : 30f);
         m_startDrag = m_rb.drag;
-       
-        
+
+
         if (playerNumber == 1) {
             HUD.i.SetIsMultiplayer(true);
         }
@@ -245,14 +241,36 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void UpdateAccelleration() {
+        var levelMultiplier = ScoreManager.i.currentMultiplier;
+        // Force from movement.
         float scale = m_accelleration;
         if (m_isBoosting) {
             scale *= m_boostAccelleration;
         }
         var playerDirection = Quaternion.Euler(0, 0, m_rb.rotation) * Vector2.up;
-        var force = playerDirection * scale * Time.deltaTime;
-        force += Vector3.up * m_hillAccelleration * Time.deltaTime;
-        m_rb.AddForce(force * ScoreManager.i.currentMultiplier);
+        Vector2 force = playerDirection * scale * Time.deltaTime * levelMultiplier;
+        // Constant forward force.
+        force += Vector2.up * m_hillAccelleration * Time.deltaTime * levelMultiplier;
+        // Rubber band to center of track.
+        Collider2D closestGuide = null;
+        Vector2 closestPoint = Vector2.zero;
+        var playerPos = m_rb.position;
+        foreach (var guide in DNAStrandManager.i.GetTrackGuides(playerNumber)) {
+            if (closestGuide == null) {
+                closestGuide = guide;
+                closestPoint = guide.ClosestPoint(playerPos);
+            } else {
+                var cp = guide.ClosestPoint(playerPos);
+                if ((cp - playerPos).magnitude < (closestPoint - playerPos).magnitude) {
+                    closestGuide = guide;
+                    closestPoint = cp;
+                }
+            }
+        }
+        var forceVector = closestPoint - playerPos;
+        force += new Vector2(forceVector.x, 0) * m_rubberBandForce * Time.deltaTime *
+            Mathf.Pow(m_rubberBandAttenuationPerLevel, ScoreManager.i.currentLevel);
+        m_rb.AddForce(force);
     }
 
     private void UpdateTryAgain() {

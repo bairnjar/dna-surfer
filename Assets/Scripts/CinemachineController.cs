@@ -15,6 +15,9 @@ public class CinemachineController : MonoBehaviour {
     [HideInInspector] public float cameraShake;
 
     private float m_cameraShakeTimer = 0f;
+    private float m_frameTimer = 0;
+    private int m_frames = 0;
+    private int m_physicsFrames = 0;
 
     private void Awake() {
         Singleton.Awake(this, ref i);
@@ -27,6 +30,22 @@ public class CinemachineController : MonoBehaviour {
 
     private void Update() {
         UpdateCameraShake();
+        UpdateFrameTimer();
+    }
+
+    private void UpdateFrameTimer() {
+        m_frames++;
+        m_frameTimer += Time.deltaTime;
+        while (m_frameTimer >= 1) {
+            // Debug.LogFormat("{0} frames {1} physics frames", m_frames, m_physicsFrames);
+            m_frames = 0;
+            m_physicsFrames = 0;
+            m_frameTimer -= 1;
+        }
+    }
+
+    private void FixedUpdate() {
+        m_physicsFrames++;
     }
 
     private void UpdateCameraShake() {

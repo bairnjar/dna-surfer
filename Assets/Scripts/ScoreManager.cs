@@ -22,11 +22,10 @@ public class ScoreManager : MonoBehaviour {
     public bool player0Alive = true;
     public bool player1Alive = true;
 
-    private int currentLevel = 0;
+    public int currentLevel = 0;
     public float currentMultiplier = 1;
     [SerializeField] private int[] levelScoreThresholds = { 500, 1000, 2000, 3000 };
     [SerializeField] private float[] levelSpeedMultipliers = { 1f, 1.2f, 1.5f, 2f };
-
 
     private Dictionary<int, float> m_scores = new Dictionary<int, float>();
     private float m_autoScoreTimer = 0f;
@@ -105,17 +104,14 @@ public class ScoreManager : MonoBehaviour {
         return score;
     }
 
-    public void resetCurrentLevel()
-    {
+    public void resetCurrentLevel() {
         currentLevel = 0;
         currentMultiplier = levelSpeedMultipliers[currentLevel];
     }
 
 
-    private void checkCompleteLevel(int playerNumber)
-    {
-        if (m_scores[playerNumber] > levelScoreThresholds[currentLevel])
-        {
+    private void checkCompleteLevel(int playerNumber) {
+        if (m_scores[playerNumber] > levelScoreThresholds[currentLevel]) {
             currentLevel++;
             currentMultiplier = levelSpeedMultipliers[currentLevel];
         }

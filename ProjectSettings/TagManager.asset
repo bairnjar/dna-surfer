@@ -6,6 +6,12 @@ TagManager:
   tags:
   - SpawnP1
   - SpawnP0
+  - HardDNACollider
+  - SofaDNACollider
+  - SoftDNAColliderP0
+  - SoftDNAColliderP1
+  - TrackGuideP0
+  - TrackGuideP1
   layers:
   - Default
   - TransparentFX
