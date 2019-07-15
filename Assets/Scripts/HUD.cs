@@ -22,6 +22,11 @@ public class HUD : MonoBehaviour {
     private float nextLevelTextTime = 2.0f;
     private float nextLevelTextTimer;
 
+    [SerializeField] private GameObject wipeoutText;
+    private bool wipeoutTextActive;
+    private float wipeoutTextTime = 2.0f;
+    private float wipeoutTextTimer;
+
     private bool m_multiplayerHasBeenSet = false;
     private bool m_isMultiplayer = false;
 
@@ -89,6 +94,21 @@ public class HUD : MonoBehaviour {
                 nextLevelText.transform.localScale = one;
                     }
         }
+        if (wipeoutTextActive == true)
+        {
+            wipeoutTextTimer -= Time.deltaTime;
+            Vector3 grow = new Vector3(2f - wipeoutTextTimer, 2f - wipeoutTextTimer, 2f - wipeoutTextTimer);
+            wipeoutText.transform.localScale = grow;
+            //nextLevelText.transform.localScale.x = nextLevelText.transform.localScale.x=* 1.1;
+            if (wipeoutTextTimer < 0)
+            {
+                wipeoutTextActive = false;
+                wipeoutText.SetActive(false);
+                //nextLevelText.localScale.x
+                Vector3 one = new Vector3(1, 1, 1);
+                wipeoutText.transform.localScale = one;
+            }
+        }
 
     }
 
@@ -97,6 +117,15 @@ public class HUD : MonoBehaviour {
         nextLevelTextActive = true;
         nextLevelTextTimer = nextLevelTextTime;
         nextLevelText.SetActive(true);
+
+
+    }
+
+    public void ActivateWipeoutText()
+    {
+        wipeoutTextActive = true;
+        wipeoutTextTimer = wipeoutTextTime;
+        wipeoutText.SetActive(true);
 
 
     }

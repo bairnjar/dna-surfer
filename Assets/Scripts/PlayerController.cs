@@ -84,14 +84,26 @@ public class PlayerController : MonoBehaviour {
                 return;
             } else {
                 if (playerNumber == 0 && ScoreManager.i.player1Alive) {
+                    //if (ScoreManager.i.player0Alive)
+                    //{
+                        HUD.i.ActivateWipeoutText();
+                    //}
                     ScoreManager.i.player0Alive = false;
                     var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
+                    
                     cinema.RemoveMember(transform);
                     cinema.RemoveMember(m_mirror.transform);
                     return;
                 } else if (playerNumber == 1 && ScoreManager.i.player0Alive) {
+
+                    //if (ScoreManager.i.player1Alive)
+                    //{
+                        HUD.i.ActivateWipeoutText();
+                    //}
+
                     ScoreManager.i.player1Alive = false;
                     var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
+                    
                     cinema.RemoveMember(transform);
                     cinema.RemoveMember(m_mirror.transform);
                 } else {
