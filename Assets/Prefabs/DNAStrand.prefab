@@ -185,8 +185,8 @@ GameObject:
   - component: {fileID: 5289190532093566039}
   - component: {fileID: 193305325297033831}
   m_Layer: 0
-  m_Name: TrackGuideP0
-  m_TagString: TrackGuideP0
+  m_Name: TrackGuideP1
+  m_TagString: TrackGuideP1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -531,8 +531,8 @@ GameObject:
   - component: {fileID: 1258159998672217265}
   - component: {fileID: 60032784124930706}
   m_Layer: 0
-  m_Name: TrackGuideP1
-  m_TagString: TrackGuideP1
+  m_Name: TrackGuideP0
+  m_TagString: TrackGuideP0
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -964,8 +964,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -2.03, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
-  - {fileID: 8929777589112604478}
   - {fileID: 8005899787217991192}
+  - {fileID: 8929777589112604478}
   m_Father: {fileID: 669816047856257462}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1382,8 +1382,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8929777589112604478}
   m_Layer: 0
-  m_Name: SpawnP0
-  m_TagString: SpawnP0
+  m_Name: SpawnP1
+  m_TagString: SpawnP1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1400,7 +1400,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2204969293450451880}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7534339563156467780
 GameObject:
@@ -1680,8 +1680,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8005899787217991192}
   m_Layer: 0
-  m_Name: SpawnP1
-  m_TagString: SpawnP1
+  m_Name: SpawnP0
+  m_TagString: SpawnP0
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1698,7 +1698,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2204969293450451880}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9034422902104331753
 GameObject:

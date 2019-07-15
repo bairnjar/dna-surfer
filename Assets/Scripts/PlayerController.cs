@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Start() {
         m_mirror = GameObject.Instantiate(new GameObject(), transform);
-        m_startRotation = Quaternion.Euler(0, 0, playerNumber == 0 ? -30f : 30f);
+        m_startRotation = Quaternion.Euler(0, 0, playerNumber == 0 ? 30f : -30f);
         m_startDrag = m_rb.drag;
         if (playerNumber == 1) {
             HUD.i.SetIsMultiplayer(true);

@@ -1060,14 +1060,14 @@ MonoBehaviour:
     boostImageBackground: {fileID: 1477101689}
     nameText: {fileID: 6310701192738833532}
   m_multiPlayer:
-  - scoreText: {fileID: 304873417283037340}
-    boostImage: {fileID: 7040749151687686091}
-    boostImageBackground: {fileID: 2517850760735071659}
-    nameText: {fileID: 2780854297604298757}
   - scoreText: {fileID: 3921801006183893290}
     boostImage: {fileID: 4992594767164022059}
     boostImageBackground: {fileID: 1763058475158706589}
     nameText: {fileID: 7198525428749905288}
+  - scoreText: {fileID: 304873417283037340}
+    boostImage: {fileID: 7040749151687686091}
+    boostImageBackground: {fileID: 2517850760735071659}
+    nameText: {fileID: 2780854297604298757}
   nextLevelText: {fileID: 1023857397}
   wipeoutText: {fileID: 2065062922}
 --- !u!1 &5985279636088276336
