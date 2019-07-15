@@ -17,6 +17,11 @@ public class HUD : MonoBehaviour {
     [SerializeField] private Player m_singlePlayer;
     [SerializeField] private Player[] m_multiPlayer;
 
+    [SerializeField] private GameObject nextLevelText;
+    private bool nextLevelTextActive;
+    private float nextLevelTextTime = 2.0f;
+    private float nextLevelTextTimer;
+
     private bool m_multiplayerHasBeenSet = false;
     private bool m_isMultiplayer = false;
 
@@ -65,5 +70,34 @@ public class HUD : MonoBehaviour {
         if (!m_multiplayerHasBeenSet) {
             SetIsMultiplayer(false);
         }
+        nextLevelTextTimer = nextLevelTextTime;
+    }
+
+    public void Update()
+    {
+        if (nextLevelTextActive == true)
+        {
+            nextLevelTextTimer -= Time.deltaTime;
+            Vector3 grow = new Vector3(2f - nextLevelTextTimer, 2f - nextLevelTextTimer, 2f - nextLevelTextTimer);
+            nextLevelText.transform.localScale = grow; 
+            //nextLevelText.transform.localScale.x = nextLevelText.transform.localScale.x=* 1.1;
+                    if (nextLevelTextTimer < 0) {
+                        nextLevelTextActive = false;
+                        nextLevelText.SetActive(false);
+                //nextLevelText.localScale.x
+                Vector3 one = new Vector3(1, 1, 1);
+                nextLevelText.transform.localScale = one;
+                    }
+        }
+
+    }
+
+    public void ActivateNextLevelText()
+    {
+        nextLevelTextActive = true;
+        nextLevelTextTimer = nextLevelTextTime;
+        nextLevelText.SetActive(true);
+
+
     }
 }
