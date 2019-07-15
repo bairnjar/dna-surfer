@@ -115,11 +115,21 @@ public class FinishScreen : MonoBehaviour {
 
     public void DisplayScores() {
         score1Name.GetComponent<Text>().text = PlayerPrefs.GetString("1S");
-        score1Number.GetComponent<Text>().text = PlayerPrefs.GetFloat("1F").ToString();
+        score1Number.GetComponent<Text>().text = FormatScore(PlayerPrefs.GetFloat("1F"));
         score2Name.GetComponent<Text>().text = PlayerPrefs.GetString("2S");
-        score2Number.GetComponent<Text>().text = PlayerPrefs.GetFloat("2F").ToString();
+        score2Number.GetComponent<Text>().text = FormatScore(PlayerPrefs.GetFloat("2F"));
         score3Name.GetComponent<Text>().text = PlayerPrefs.GetString("3S");
-        score3Number.GetComponent<Text>().text = PlayerPrefs.GetFloat("3F").ToString();
+        score3Number.GetComponent<Text>().text = FormatScore(PlayerPrefs.GetFloat("3F"));
+    }
 
+    private string FormatScore(float fScore) {
+        int score = Mathf.RoundToInt(fScore);
+        string format = "{0}";
+        if (score >= 1000000) {
+            format = "{0,12:0,000,000}";
+        } else if (score >= 1000) {
+            format = "{0,12:0,000}";
+        }
+        return string.Format(format, score);
     }
 }
