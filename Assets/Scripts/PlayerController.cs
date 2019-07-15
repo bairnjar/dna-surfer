@@ -81,7 +81,10 @@ public class PlayerController : MonoBehaviour {
                 Reset();
                 return;
             } else {
-                FinishScreen.i.Lose();
+                if (!FinishScreen.i.GetComponent<Canvas>().isActiveAndEnabled)
+                {
+                    FinishScreen.i.Lose();
+                }
                 return;
             }
         }

@@ -56,6 +56,7 @@ public class ScoreManager : MonoBehaviour {
     }
 
     private void Start() {
+
         Reset();
     }
 
@@ -89,7 +90,7 @@ public class ScoreManager : MonoBehaviour {
         HUD.i.SetScore(Mathf.RoundToInt(GetScore(playerNumber)), playerNumber);
     }
 
-    private float GetScore(int playerNumber) {
+    public float GetScore(int playerNumber) {
         float score = 0;
         if (m_scores.ContainsKey(playerNumber)) {
             score = m_scores[playerNumber];
