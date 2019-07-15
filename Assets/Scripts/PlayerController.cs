@@ -84,10 +84,10 @@ public class PlayerController : MonoBehaviour {
                 return;
             } else {
                 if (playerNumber == 0 && ScoreManager.i.player1Alive) {
-                    //if (ScoreManager.i.player0Alive)
-                    //{
+                    if (ScoreManager.i.player0Alive)
+                    {
                         HUD.i.ActivateWipeoutText();
-                    //}
+                    }
                     ScoreManager.i.player0Alive = false;
                     var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
                     
@@ -96,10 +96,10 @@ public class PlayerController : MonoBehaviour {
                     return;
                 } else if (playerNumber == 1 && ScoreManager.i.player0Alive) {
 
-                    //if (ScoreManager.i.player1Alive)
-                    //{
+                    if (ScoreManager.i.player1Alive)
+                    {
                         HUD.i.ActivateWipeoutText();
-                    //}
+                    }
 
                     ScoreManager.i.player1Alive = false;
                     var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour {
         if (playerNumber == 0) {
             ScoreManager.i.player0Alive = true;
         } else if (playerNumber == 1) {
-            ScoreManager.i.player0Alive = true;
+            ScoreManager.i.player1Alive = true;
         }
 
         ScoreManager.i.resetCurrentLevel();
