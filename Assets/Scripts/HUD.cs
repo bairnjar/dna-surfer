@@ -12,6 +12,7 @@ public class HUD : MonoBehaviour {
         public Text scoreText;
         public Image boostImage;
         public Image boostImageBackground;
+        public Text nameText;
     }
 
     [SerializeField] private Player m_singlePlayer;
@@ -29,24 +30,35 @@ public class HUD : MonoBehaviour {
 
     private bool m_multiplayerHasBeenSet = false;
     private bool m_isMultiplayer = false;
+    private Dictionary<int, string> m_names = new Dictionary<int, string>();
 
     public void SetIsMultiplayer(bool isMulti) {
         m_multiplayerHasBeenSet = true;
         m_isMultiplayer = isMulti;
-        SetEnabled(m_singlePlayer, !isMulti);
+        SetEnabled(0, m_singlePlayer, !isMulti);
+        int i = 0;
         foreach (var player in m_multiPlayer) {
-            SetEnabled(player, isMulti);
+            SetEnabled(i++, player, isMulti);
         }
     }
 
-    private void SetEnabled(Player player, bool active) {
+    private void SetEnabled(int playerNumber, Player player, bool active) {
         player.scoreText.enabled = active;
         player.boostImage.enabled = active;
         player.boostImageBackground.enabled = active;
+        player.nameText.enabled = active;
+        if (m_names.ContainsKey(playerNumber)) {
+            player.nameText.text = m_names[playerNumber];
+        }
     }
 
     public void SetHealth(int health, int playerNumber) {
         // GetPlayer(playerNumber).healthText.text = "Health: " + health;
+    }
+
+    public void SetName(string name, int playerNumber) {
+        GetPlayer(playerNumber).nameText.text = name;
+        m_names[playerNumber] = name;
     }
 
     public void SetScore(int score, int playerNumber) {
@@ -78,30 +90,26 @@ public class HUD : MonoBehaviour {
         nextLevelTextTimer = nextLevelTextTime;
     }
 
-    public void Update()
-    {
-        if (nextLevelTextActive == true)
-        {
+    public void Update() {
+        if (nextLevelTextActive == true) {
             nextLevelTextTimer -= Time.deltaTime;
             Vector3 grow = new Vector3(2f - nextLevelTextTimer, 2f - nextLevelTextTimer, 2f - nextLevelTextTimer);
-            nextLevelText.transform.localScale = grow; 
+            nextLevelText.transform.localScale = grow;
             //nextLevelText.transform.localScale.x = nextLevelText.transform.localScale.x=* 1.1;
-                    if (nextLevelTextTimer < 0) {
-                        nextLevelTextActive = false;
-                        nextLevelText.SetActive(false);
+            if (nextLevelTextTimer < 0) {
+                nextLevelTextActive = false;
+                nextLevelText.SetActive(false);
                 //nextLevelText.localScale.x
                 Vector3 one = new Vector3(1, 1, 1);
                 nextLevelText.transform.localScale = one;
-                    }
+            }
         }
-        if (wipeoutTextActive == true)
-        {
+        if (wipeoutTextActive == true) {
             wipeoutTextTimer -= Time.deltaTime;
             Vector3 grow = new Vector3(2f - wipeoutTextTimer, 2f - wipeoutTextTimer, 2f - wipeoutTextTimer);
             wipeoutText.transform.localScale = grow;
             //nextLevelText.transform.localScale.x = nextLevelText.transform.localScale.x=* 1.1;
-            if (wipeoutTextTimer < 0)
-            {
+            if (wipeoutTextTimer < 0) {
                 wipeoutTextActive = false;
                 wipeoutText.SetActive(false);
                 //nextLevelText.localScale.x
@@ -112,8 +120,7 @@ public class HUD : MonoBehaviour {
 
     }
 
-    public void ActivateNextLevelText()
-    {
+    public void ActivateNextLevelText() {
         nextLevelTextActive = true;
         nextLevelTextTimer = nextLevelTextTime;
         nextLevelText.SetActive(true);
@@ -121,8 +128,7 @@ public class HUD : MonoBehaviour {
 
     }
 
-    public void ActivateWipeoutText()
-    {
+    public void ActivateWipeoutText() {
         wipeoutTextActive = true;
         wipeoutTextTimer = wipeoutTextTime;
         wipeoutText.SetActive(true);

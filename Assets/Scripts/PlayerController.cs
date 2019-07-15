@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
     public static int numPlayers = 0;
+    public static List<PlayerController> players = new List<PlayerController>();
 
     [HideInInspector] public int currentHealth { get; private set; }
     [HideInInspector] public int playerNumber { get; private set; }
@@ -68,26 +69,24 @@ public class PlayerController : MonoBehaviour {
                 return;
             } else {
                 if (playerNumber == 0 && ScoreManager.i.player1Alive) {
-                    if (ScoreManager.i.player0Alive)
-                    {
+                    if (ScoreManager.i.player0Alive) {
                         HUD.i.ActivateWipeoutText();
                     }
                     ScoreManager.i.player0Alive = false;
                     var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
-                    
+
                     cinema.RemoveMember(transform);
                     cinema.RemoveMember(m_mirror.transform);
                     return;
                 } else if (playerNumber == 1 && ScoreManager.i.player0Alive) {
 
-                    if (ScoreManager.i.player1Alive)
-                    {
+                    if (ScoreManager.i.player1Alive) {
                         HUD.i.ActivateWipeoutText();
                     }
 
                     ScoreManager.i.player1Alive = false;
                     var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
-                    
+
                     cinema.RemoveMember(transform);
                     cinema.RemoveMember(m_mirror.transform);
                 } else {
@@ -105,17 +104,17 @@ public class PlayerController : MonoBehaviour {
         m_rb = GetComponent<Rigidbody2D>();
         playerNumber = numPlayers++;
         playerName = NameGenerator.Name();
+        players.Add(this);
     }
 
     private void Start() {
         m_mirror = GameObject.Instantiate(new GameObject(), transform);
         m_startRotation = Quaternion.Euler(0, 0, playerNumber == 0 ? -30f : 30f);
         m_startDrag = m_rb.drag;
-
-
         if (playerNumber == 1) {
             HUD.i.SetIsMultiplayer(true);
         }
+        HUD.i.SetName(playerName, playerNumber);
         Reset(true);
     }
 

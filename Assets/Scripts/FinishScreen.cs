@@ -64,7 +64,7 @@ public class FinishScreen : MonoBehaviour {
 
             Debug.Log("writePlayer1 score to 1");
             PlayerPrefs.SetFloat("1F", player1Score);
-            PlayerPrefs.SetString("1S", "Player 1....");
+            PlayerPrefs.SetString("1S", PlayerController.players[0].playerName);
             Debug.Log("Access 1 is: " + PlayerPrefs.GetFloat("1F"));
 
         } else if (player1Score > PlayerPrefs.GetFloat("2F")) {
@@ -72,12 +72,12 @@ public class FinishScreen : MonoBehaviour {
             PlayerPrefs.SetString("3S", PlayerPrefs.GetString("2S"));
             Debug.Log("writePlayer1 score to 2");
             PlayerPrefs.SetFloat("2F", player1Score);
-            PlayerPrefs.SetString("2S", "Player 1....");
+            PlayerPrefs.SetString("2S", PlayerController.players[0].playerName);
 
         } else if (player1Score > PlayerPrefs.GetFloat("3F")) {
             Debug.Log("writePlayer1 score to 3");
             PlayerPrefs.SetFloat("3F", player1Score);
-            PlayerPrefs.SetString("3S", "Player 1....");
+            PlayerPrefs.SetString("3S", PlayerController.players[0].playerName);
         } else {
             Debug.Log("don't write player 1 score");
         }
@@ -93,7 +93,7 @@ public class FinishScreen : MonoBehaviour {
             Debug.Log("writePlayer2 score to 1");
 
             PlayerPrefs.SetFloat("1F", player2Score);
-            PlayerPrefs.SetString("1S", "Player 2....");
+            PlayerPrefs.SetString("1S", PlayerController.players[1].playerName);
 
         } else if (player2Score > PlayerPrefs.GetFloat("2F")) {
             PlayerPrefs.SetFloat("3F", PlayerPrefs.GetFloat("2F"));
@@ -101,13 +101,13 @@ public class FinishScreen : MonoBehaviour {
 
             Debug.Log("writePlayer2 score to 2");
             PlayerPrefs.SetFloat("2F", player2Score);
-            PlayerPrefs.SetString("2S", "Player 2....");
+            PlayerPrefs.SetString("2S", PlayerController.players[1].playerName);
 
         } else if (player2Score > PlayerPrefs.GetFloat("3F")) {
 
             Debug.Log("writePlayer2 score to 3");
             PlayerPrefs.SetFloat("3F", player2Score);
-            PlayerPrefs.SetString("3S", "Player 1....");
+            PlayerPrefs.SetString("3S", PlayerController.players[1].playerName);
         } else {
             Debug.Log("don't write Player2 score");
         }
