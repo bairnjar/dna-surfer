@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour {
     private bool m_isLose = false;
     private Dictionary<string, float> m_dragMods =
         new Dictionary<string, float>();
+    private GameObject m_mirror;
 
     public void Collect(Collectible collectible) {
         switch (collectible.collectibleType) {
@@ -94,25 +95,27 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Start() {
+        m_mirror = GameObject.Instantiate(new GameObject(), transform);
+        m_startRotation = Quaternion.Euler(0, 0, playerNumber == 0 ? -30f : 30f);
+        m_startDrag = m_rb.drag;
         var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
-        cinema.AddMember(transform, 1, 5);
+        cinema.AddMember(transform, 1, 10);
+        cinema.AddMember(m_mirror.transform, 1, 10);
         if (playerNumber == 1) {
             HUD.i.SetIsMultiplayer(true);
         }
-        m_startRotation = Quaternion.Euler(0, 0, playerNumber == 0 ? -30f : 30f);
-        m_startDrag = m_rb.drag;
         Reset(true);
     }
 
     private void Reset(bool start = false) {
         currentHealth = m_maxHealth;
         ScoreManager.i.resetCurrentLevel();
+        transform.position = ScoreGateController.StartPosition(playerNumber, start);
+        transform.rotation = m_startRotation;
+        m_rb.position = transform.position;
         m_rb.rotation = m_startRotation.z;
         m_rb.angularVelocity = 0;
         m_rb.velocity = Vector2.zero;
-        transform.position = ScoreGateController.StartPosition(playerNumber, start);
-        m_rb.position = transform.position;
-        transform.rotation = m_startRotation;
         m_isDropAnchor = false;
         isInvincible = false;
         isDistress = false;
@@ -141,6 +144,11 @@ public class PlayerController : MonoBehaviour {
         UpdateInvicibilityTimer();
         UpdateBoost();
         UpdateAccelleration();
+        UpdateMirror();
+    }
+
+    private void UpdateMirror() {
+        m_mirror.transform.position = new Vector2(-transform.position.x, transform.position.y);
     }
 
     private void UpdateBoost() {
