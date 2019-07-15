@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
 
     [HideInInspector] public int currentHealth { get; private set; }
     [HideInInspector] public int playerNumber { get; private set; }
+    [HideInInspector] public string playerName { get; private set; }
 
     [SerializeField] private float m_turnSpeed = 1f;
     [SerializeField] private int m_shallowsFriction = 4;
@@ -54,10 +55,6 @@ public class PlayerController : MonoBehaviour {
                 break;
         }
     }
-
-    // private void OnCollisionEnter2D(Collision2D col) {
-    //     ChangeHealth(-1);
-    // }
 
     public void SetHealth(int health) {
         ChangeHealth(health - currentHealth);
@@ -107,6 +104,7 @@ public class PlayerController : MonoBehaviour {
     private void Awake() {
         m_rb = GetComponent<Rigidbody2D>();
         playerNumber = numPlayers++;
+        playerName = NameGenerator.Name();
     }
 
     private void Start() {
@@ -178,7 +176,6 @@ public class PlayerController : MonoBehaviour {
             lerp = 2 - lerp;
         }
         m_sprite.color = Color.Lerp(m_distressColorEnd, m_distressColorEnd, lerp);
-        Debug.Log("lerp " + lerp + " color " + m_sprite.color);
         m_distressFlashTimer += Time.deltaTime;
         if (m_distressFlashTimer >= 2 * m_distressFlashPeriod) {
             m_distressFlashTimer -= 2 * m_distressFlashPeriod;
