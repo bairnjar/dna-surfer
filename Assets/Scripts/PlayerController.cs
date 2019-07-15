@@ -11,13 +11,9 @@ public class PlayerController : MonoBehaviour {
     [HideInInspector] public int playerNumber { get; private set; }
 
     [SerializeField] private float m_turnSpeed = 1f;
-    // [SerializeField] private float m_dropAnchorSpeed = 1f;
-    // [SerializeField] private float m_dropAnchorFriction = 1f;
-    // [SerializeField] private int m_maxHealth = 5;
     [SerializeField] private int m_shallowsFriction = 4;
     [SerializeField] private float m_accelleration = 1;
     [SerializeField] private float m_hillAccelleration = 1f;
-    // [SerializeField] private float m_invincibilityTime = 2.0f;
     [Header("Boost")]
     [SerializeField] private float m_coinBoostValue = 1f;
     [SerializeField] private float m_speedBoostCostPerSecond = 1f;
@@ -26,17 +22,20 @@ public class PlayerController : MonoBehaviour {
     [Header("Rubber banding")]
     [SerializeField] private float m_rubberBandForce = 1f;
     [SerializeField] private float m_rubberBandAttenuationPerLevel = 0.5f;
+    [Header("In distresss")]
+    [SerializeField] private Color m_distressColorStart;
+    [SerializeField] private Color m_distressColorEnd;
+    [SerializeField] private float m_distressFlashPeriod;
+    [Header("Components")]
+    [SerializeField] private ParticleSystem m_backParticles;
+    [SerializeField] private SpriteRenderer m_sprite;
 
     [SerializeField] private bool immediate_reset = false;
 
     private Rigidbody2D m_rb;
-    private ParticleSystem m_particles;
 
-    private bool isInvincible;
-    private bool isDistress;
-
-    // private float invincibleTimer;
-    // private bool m_isDropAnchor;
+    private bool m_isDistress;
+    private float m_distressFlashTimer;
     private Vector3 m_startPosition;
     private Quaternion m_startRotation;
     private float m_startDrag;
@@ -49,12 +48,6 @@ public class PlayerController : MonoBehaviour {
 
     public void Collect(Collectible collectible) {
         switch (collectible.collectibleType) {
-            // case COLLECTIBLETYPE.HEALTHUP:
-            //     ChangeHealth(1);
-            //     break;
-            // case COLLECTIBLETYPE.HEALTHDOWN:
-            //     ChangeHealth(-1);
-            //     break;
             case COLLECTIBLETYPE.COIN:
                 ScoreManager.i.CollectCoin(playerNumber);
                 SetAvailableBoost(m_availableBoost + m_coinBoostValue);
@@ -71,12 +64,6 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void ChangeHealth(int amount) {
-        // if (amount < 0) {
-        //     if (isInvincible)
-        //         return;
-        //     isInvincible = true;
-        //     invincibleTimer = m_invincibilityTime;
-        // }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, 1);
         if (currentHealth == 0) {
             if (immediate_reset) {
@@ -119,7 +106,6 @@ public class PlayerController : MonoBehaviour {
 
     private void Awake() {
         m_rb = GetComponent<Rigidbody2D>();
-        m_particles = GetComponentInChildren<ParticleSystem>();
         playerNumber = numPlayers++;
     }
 
@@ -154,11 +140,10 @@ public class PlayerController : MonoBehaviour {
         m_rb.rotation = m_startRotation.z;
         m_rb.angularVelocity = 0;
         m_rb.velocity = Vector2.zero;
-        // m_isDropAnchor = false;
-        // isInvincible = false;
-        isDistress = false;
+        m_distressFlashTimer = 0;
         m_isLose = false;
         SetAvailableBoost(0);
+        m_sprite.color = Color.white;
         ScoreManager.i.Reset();
     }
 
@@ -178,11 +163,26 @@ public class PlayerController : MonoBehaviour {
         }
 
         UpdateSailRotation();
-        // UpdateDropAnchor();
-        // UpdateInvicibilityTimer();
         UpdateBoost();
         UpdateAccelleration();
         UpdateMirror();
+        UpdateInDistress();
+    }
+
+    private void UpdateInDistress() {
+        if (!m_isDistress) {
+            return;
+        }
+        float lerp = m_distressFlashTimer / m_distressFlashPeriod;
+        if (lerp > 1) {
+            lerp = 2 - lerp;
+        }
+        m_sprite.color = Color.Lerp(m_distressColorEnd, m_distressColorEnd, lerp);
+        Debug.Log("lerp " + lerp + " color " + m_sprite.color);
+        m_distressFlashTimer += Time.deltaTime;
+        if (m_distressFlashTimer >= 2 * m_distressFlashPeriod) {
+            m_distressFlashTimer -= 2 * m_distressFlashPeriod;
+        }
     }
 
     private void UpdateMirror() {
@@ -194,25 +194,24 @@ public class PlayerController : MonoBehaviour {
             ScoreManager.i.Boost();
             SetAvailableBoost(m_availableBoost - m_speedBoostCostPerSecond * Time.deltaTime);
             m_isBoosting = true;
-            m_particles.startColor = Color.yellow;
+            m_backParticles.startColor = Color.yellow;
             CinemachineController.i.cameraShake = 1;
         } else {
             m_isBoosting = false;
-            m_particles.startColor = Color.white;
-            if (!isDistress) {
-                CinemachineController.i.cameraShake = 0;
-            }
+            m_backParticles.startColor = Color.white;
+            CinemachineController.i.cameraShake = 0;
         }
     }
 
     public void InDistress() {
-        isDistress = true;
-        CinemachineController.i.cameraShake = 2;
+        m_isDistress = true;
+        m_distressFlashTimer = 0;
     }
 
     public void EndDistress() {
-        isDistress = false;
-        CinemachineController.i.cameraShake = 0;
+        m_isDistress = false;
+        m_sprite.color = Color.white;
+        m_distressFlashTimer = 0;
     }
 
     private void SetAvailableBoost(float boost) {
@@ -224,37 +223,6 @@ public class PlayerController : MonoBehaviour {
         float h = InputAxisRaw("Horizontal");
         m_rb.AddTorque(-h * m_turnSpeed * Time.deltaTime);
     }
-
-    // private void UpdateDropAnchor() {
-    //     bool isDropAnchor = Input.GetButton("Submit" + playerNumber);
-    //     if (!isDropAnchor) {
-    //         if (m_isDropAnchor) {
-    //             // Stopped drop anchor.
-    //             RestoreDrag("UpdateDropAnchor");
-    //             m_isDropAnchor = false;
-    //         }
-    //         return;
-    //     } else {
-    //         if (!m_isDropAnchor) {
-    //             // Started drop anchor.
-    //             SetDrag("UpdateDropAnchor", m_dropAnchorFriction);
-    //             m_isDropAnchor = true;
-    //         }
-    //     }
-
-    //     // Drop anchor in the direction of the turn.
-    //     float h = Input.GetAxisRaw("Horizontal" + playerNumber);
-    //     m_rb.AddTorque(-h * m_dropAnchorSpeed * Time.deltaTime);
-    // }
-
-    // private void UpdateInvicibilityTimer() {
-    //     if (isInvincible) {
-    //         invincibleTimer -= Time.deltaTime;
-    //         if (invincibleTimer < 0) {
-    //             isInvincible = false;
-    //         }
-    //     }
-    // }
 
     private void UpdateAccelleration() {
         var levelMultiplier = ScoreManager.i.currentMultiplier;

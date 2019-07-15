@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 138399999486415091}
   - component: {fileID: 6539855352158522639}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: BackParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,9 +114,9 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 1
-      minScalar: 5
+      minMaxState: 3
+      scalar: 0.6
+      minScalar: 0.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4879,19 +4879,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_turnSpeed: 550
-  m_dropAnchorSpeed: 70
-  m_dropAnchorFriction: 6
-  m_maxHealth: 5
   m_shallowsFriction: 4
   m_accelleration: 1400
   m_hillAccelleration: 200
-  m_invincibilityTime: 2
   m_coinBoostValue: 1
   m_speedBoostCostPerSecond: 2
   m_maxSpeedBoost: 10
   m_boostAccelleration: 2
-  m_rubberBandForce: 400
-  m_rubberBandAttenuationPerLevel: 0.5
+  m_rubberBandForce: 200
+  m_rubberBandAttenuationPerLevel: 0.15
+  m_distressColorStart: {r: 1, g: 0.5235849, b: 0.5235849, a: 1}
+  m_distressColorEnd: {r: 1, g: 0.43867922, b: 0.43867922, a: 1}
+  m_distressFlashPeriod: 0.5
+  m_backParticles: {fileID: 138399999486415091}
+  m_sprite: {fileID: 6541644355144204179}
   immediate_reset: 0
 --- !u!50 &6553236859506002216
 Rigidbody2D:
