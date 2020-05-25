@@ -15,6 +15,8 @@ public class HUD : MonoBehaviour {
         public Text nameText;
     }
 
+    public Text rightbuttClickOuter;
+    public Text leftbuttClickInner;
     [SerializeField] private Player m_singlePlayer;
     [SerializeField] private Player[] m_multiPlayer;
 
@@ -59,6 +61,15 @@ public class HUD : MonoBehaviour {
     public void SetName(string name, int playerNumber) {
         GetPlayer(playerNumber).nameText.text = name;
         m_names[playerNumber] = name;
+    }
+
+    public void SetRightClickText(float clickNumber)
+    {
+        rightbuttClickOuter.text = "-" + clickNumber;
+    }
+    public void SetLeftClickText(int clickNumber)
+    {
+        leftbuttClickInner.text = "-" + clickNumber;
     }
 
     public void SetScore(int score, int playerNumber) {

@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float m_speedBoostCostPerSecond = 1f;
     [SerializeField] private float m_maxSpeedBoost = 10f;
     [SerializeField] private float m_boostAccelleration = 1.5f;
+    [SerializeField] private float m_boostMagnetism = 3f;
     [Header("Rubber banding")]
     [SerializeField] private float m_rubberBandForce = 1f;
     [SerializeField] private float m_rubberBandAttenuationPerLevel = 0.5f;
@@ -34,8 +35,17 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] private bool immediate_reset = false;
 
-    private Rigidbody2D m_rb;
+    private int rightClickCount = 0;
+    private int leftClickCount = 0;
 
+    private Rigidbody2D m_rb;
+    private bool m_uiReset = false;
+
+
+    private float m_screenClickRotation = 0f;
+    private bool leftClicked = false;
+    private bool rightClicked = false;
+    private bool useAllBoost = false;
     private bool m_isDistress;
     private float m_distressFlashTimer;
     private Vector3 m_startPosition;
@@ -53,6 +63,9 @@ public class PlayerController : MonoBehaviour {
             case COLLECTIBLETYPE.COIN:
                 ScoreManager.i.CollectCoin(playerNumber);
                 SetAvailableBoost(m_availableBoost + m_coinBoostValue);
+                break;
+            case COLLECTIBLETYPE.BOOST:
+                pressUseAllBoost();
                 break;
         }
     }
@@ -119,7 +132,11 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Reset(bool start = false) {
+        useAllBoost = false;
         currentHealth = 1;
+        DnaEater.i.Reset();
+        leftClicked = false;
+        rightClicked = false;
         var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
         cinema.AddMember(transform, 1, 10);
         cinema.AddMember(m_mirror.transform, 1, 10);
@@ -143,6 +160,7 @@ public class PlayerController : MonoBehaviour {
         m_sprite.color = Color.white;
         m_isDistress = false;
         ScoreManager.i.Reset();
+        m_uiReset = false;
     }
 
     private void Update() {
@@ -167,6 +185,42 @@ public class PlayerController : MonoBehaviour {
         UpdateInDistress();
     }
 
+    public void setRotation(float h)
+    {
+        m_screenClickRotation = h;
+    }
+
+    public void pressLeftButton()
+    {
+        leftClicked = true;
+        leftClickCount++;
+        HUD.i.SetLeftClickText(leftClickCount);
+    }
+
+    public void pressUseAllBoost()
+    {
+        useAllBoost = true;
+       
+    }
+
+    public void releaseLeftButton()
+    {
+        leftClicked = false;
+    }
+
+    public void pressRightButton()
+    {
+        rightClicked = true;
+        rightClickCount++;
+        HUD.i.SetRightClickText(rightClickCount);
+    }
+
+    public void releaseRightButton()
+    {
+        rightClicked = false;
+    }
+
+
     private void UpdateInDistress() {
         if (!m_isDistress) {
             return;
@@ -187,16 +241,25 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void UpdateBoost() {
-        if (InputButton("Boost") && m_availableBoost > 0) {
+        if (m_availableBoost <= 0)
+        {
+            useAllBoost = false;
+        }
+        if ((InputButton("Boost")|| useAllBoost) && m_availableBoost > 0) {
             ScoreManager.i.Boost();
             SetAvailableBoost(m_availableBoost - m_speedBoostCostPerSecond * Time.deltaTime);
             m_isBoosting = true;
-            m_backParticles.startColor = Color.yellow;
+            
+            m_backParticles.emissionRate = 20f;
+            //m_backParticles.startColor = Color.yellow;
             CinemachineController.i.cameraShake = 1;
+            DNAStrandManager.i.ActivateWalls(true);
         } else {
             m_isBoosting = false;
-            m_backParticles.startColor = Color.white;
+            m_backParticles.emissionRate = 5f;
+            //m_backParticles.startColor = Color.white;
             CinemachineController.i.cameraShake = 0;
+            DNAStrandManager.i.ActivateWalls(false);
         }
     }
 
@@ -217,25 +280,64 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void UpdateSailRotation() {
+        
         float h = InputAxisRaw("Horizontal");
+        if (leftClicked && rightClicked) {
+            h = 0;
+        }
+        else if (leftClicked)
+        {
+            h = -1;
+        }else if (rightClicked)
+        {
+            h = 1;
+        }
+        else
+        {
+            h = InputAxisRaw("Horizontal");
+        }
+       // h = 0;
+       // h = 
+//        Debug.Log("horizontalvalue =" + h);
         m_rb.AddTorque(-h * m_turnSpeed * Time.deltaTime);
     }
 
     private void UpdateAccelleration() {
-        var levelMultiplier = ScoreManager.i.currentMultiplier;
+        var levelMultiplier = DNAStrandManager.i.currentSpeedMultiplier;
         // Force from movement.
         float scale = m_accelleration;
+        float curBoostMagnetism;
+
+
+        
+
         if (m_isBoosting) {
             scale *= m_boostAccelleration;
+            curBoostMagnetism = m_boostMagnetism;
+
         }
+        else
+        {
+            curBoostMagnetism = 1; 
+        }
+
         var playerDirection = Quaternion.Euler(0, 0, m_rb.rotation) * Vector2.up;
+
         Vector2 force = playerDirection * scale * Time.deltaTime * levelMultiplier;
-        // Constant forward force.
+       
+
+
+
         force += Vector2.up * m_hillAccelleration * Time.deltaTime * levelMultiplier;
+        
+       
         // Rubber band to center of track.
         Collider2D closestGuide = null;
         Vector2 closestPoint = Vector2.zero;
+       
         var playerPos = m_rb.position;
+        //Debug.Log("PlayerPos without Offset is: " + m_rb.position.x + ", " + playerPos.y);
+        //Debug.Log("PlayerPos with Offset is: " + playerPos.x + ", " + playerPos.y);
         foreach (var guide in DNAStrandManager.i.GetTrackGuides(playerNumber)) {
             if (closestGuide == null) {
                 closestGuide = guide;
@@ -248,17 +350,25 @@ public class PlayerController : MonoBehaviour {
                 }
             }
         }
+
         var forceVector = closestPoint - playerPos;
-        force += new Vector2(forceVector.x, 0) * m_rubberBandForce * Time.deltaTime *
-            Mathf.Pow(m_rubberBandAttenuationPerLevel, ScoreManager.i.currentLevel);
+        force += new Vector2(forceVector.x, 0) * m_rubberBandForce * Time.deltaTime * curBoostMagnetism*
+            Mathf.Pow(m_rubberBandAttenuationPerLevel, DNAStrandManager.i.currentRubberBandReduction);
+        
+
         m_rb.AddForce(force);
     }
 
-    private void UpdateTryAgain() {
-        if (Input.GetButtonDown("Submit")) {
+    public void UpdateTryAgain() {
+        if (Input.GetButtonDown("Submit") || m_uiReset == true) {
             FinishScreen.i.TryAgain();
             DNAStrandManager.i.Reset();
         }
+    }
+
+    public void UITryAgain()
+    {
+        m_uiReset = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -306,6 +416,7 @@ public class PlayerController : MonoBehaviour {
         if (playerNumber == 0) {
             return Input.GetAxisRaw(id);
         }
+        
         return Input.GetAxisRaw(id + playerNumber);
     }
 }

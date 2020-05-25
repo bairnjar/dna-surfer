@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum COLLECTIBLETYPE { HEALTHUP, HEALTHDOWN, COIN }
+public enum COLLECTIBLETYPE { HEALTHUP, HEALTHDOWN, COIN, BOOST }
 
 public class Collectible : MonoBehaviour {
     public COLLECTIBLETYPE collectibleType;

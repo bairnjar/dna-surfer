@@ -1025,5 +1025,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: m_DNAPrefab.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: m_DNAPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 9034422902104331753, guid: 84040519623964ac18fc14515c530163,
+        type: 3}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: m_DNAPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 9034422902104331753, guid: c01b2530a844648fd8975ef82a0be394,
+        type: 3}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: m_DNAPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 9034422902104331753, guid: 755ca4e30862442918e8649ef6a9543b,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8946710687514834981a314a370b8ce, type: 3}

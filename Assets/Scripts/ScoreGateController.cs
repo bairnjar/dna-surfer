@@ -24,6 +24,7 @@ public class ScoreGateController : MonoBehaviour {
             m_didPass = true;
             ScoreManager.i.PassScoreGate(player.playerNumber);
             DNAStrandManager.i.SpawnNext();
+            DNAStrandManager.i.ScoreIncrement();
         }
     }
 
