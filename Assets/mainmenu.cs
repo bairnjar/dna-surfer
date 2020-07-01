@@ -48,6 +48,26 @@ public class mainmenu : MonoBehaviour
 
     }
 
+    public void loadOnePlayerGameEasy()
+    {
+        string name = SceneManager.GetActiveScene().name;
+
+        SceneManager.UnloadSceneAsync(name);
+
+        SceneManager.LoadScene("ben-dna1p-easy", LoadSceneMode.Single);
+
+    }
+
+    public void loadOnePlayerGameHard()
+    {
+        string name = SceneManager.GetActiveScene().name;
+
+        SceneManager.UnloadSceneAsync(name);
+
+        SceneManager.LoadScene("ben-dna1p-hard", LoadSceneMode.Single);
+
+    }
+
     public void loadTwoPlayerGameIntro1()
     {
         string name = SceneManager.GetActiveScene().name;

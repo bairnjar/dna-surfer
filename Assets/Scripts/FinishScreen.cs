@@ -14,6 +14,8 @@ public class FinishScreen : MonoBehaviour {
     [SerializeField] private GameObject score3Name;
     [SerializeField] private GameObject score3Number;
     private Canvas m_canvas;
+    [SerializeField] private GameObject winText;
+    [SerializeField] private GameObject continueText;
 
     public bool Visible() {
         return m_canvas.enabled;
@@ -25,10 +27,14 @@ public class FinishScreen : MonoBehaviour {
 
     public void Win() {
         m_canvas.enabled = true;
+        winText.SetActive(true);
+        continueText.SetActive(false);
     }
 
     public void Lose() {
         m_canvas.enabled = true;
+        winText.SetActive(false);
+        continueText.SetActive(false);
         float player1Score = ScoreManager.i.GetScore(0);
         float player2Score = ScoreManager.i.GetScore(1);
         Debug.Log("PLAYER 1 SCORE: " + player1Score);
@@ -44,6 +50,14 @@ public class FinishScreen : MonoBehaviour {
         }
 
         DisplayScores();
+    }
+
+    public void Continue()
+    {
+        m_canvas.enabled = true;
+        continueText.SetActive(true);
+        winText.SetActive(false);
+        
     }
 
     private void Awake() {

@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Instructions2P2.unity
     guid: d9beb742bdd4841b483d332ba5ef6b09
+  - enabled: 1
+    path: Assets/Scenes/ben-dna1p-easy.unity
+    guid: 080f2b290fc4e41a4a945484b8fc4344
+  - enabled: 1
+    path: Assets/Scenes/ben-dna1p-hard.unity
+    guid: 0634b7aaf228f4fdfa53bc2601415473
   m_configObjects: {}

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Btkalman.Unity.Util;
+using Btkalman.Cinemachine;
 
 
 public class DnaEater : MonoBehaviour
 {
     public static DnaEater i;
-    public static float FollowDistance = 30f;
+    public static float FollowDistance = 40f;
     private Rigidbody2D m_rb;
     private Vector2 startPosition;
     [SerializeField] private float m_accelleration = 1;

@@ -15,12 +15,17 @@ public class HUD : MonoBehaviour {
         public Text nameText;
     }
 
-    public Text rightbuttClickOuter;
-    public Text leftbuttClickInner;
+    public List<Image> lives;
+    public Image blueImage;
+    public Image blueImageBackground;
+    public GameObject vaccineButton;
+
+   // public Text rightbuttClickOuter;
+   // public Text leftbuttClickInner;
     [SerializeField] private Player m_singlePlayer;
     [SerializeField] private Player[] m_multiPlayer;
 
-    [SerializeField] private GameObject nextLevelText;
+    [SerializeField] private Text nextLevelText;
     private bool nextLevelTextActive;
     private float nextLevelTextTime = 2.0f;
     private float nextLevelTextTimer;
@@ -44,6 +49,26 @@ public class HUD : MonoBehaviour {
         }
     }
 
+    public void setLives(int i)
+    {
+
+        foreach(Image life in lives)
+        {
+            life.gameObject.SetActive(false);
+        }
+
+        int j = 0;
+        foreach (Image life in lives)
+        {
+            if (j< i)
+            {
+                life.gameObject.SetActive(true);
+            }
+            j++;
+
+        }
+    }
+
     private void SetEnabled(int playerNumber, Player player, bool active) {
         player.scoreText.enabled = active;
         player.boostImage.enabled = active;
@@ -63,14 +88,14 @@ public class HUD : MonoBehaviour {
         m_names[playerNumber] = name;
     }
 
-    public void SetRightClickText(float clickNumber)
-    {
-        rightbuttClickOuter.text = "-" + clickNumber;
-    }
-    public void SetLeftClickText(int clickNumber)
-    {
-        leftbuttClickInner.text = "-" + clickNumber;
-    }
+    //public void SetRightClickText(float clickNumber)
+    //{
+    //    rightbuttClickOuter.text = "-" + clickNumber;
+    //}
+    //public void SetLeftClickText(int clickNumber)
+   // {
+    //    leftbuttClickInner.text = "-" + clickNumber;
+   // }
 
     public void SetScore(int score, int playerNumber) {
         string format = "{0}";
@@ -84,6 +109,19 @@ public class HUD : MonoBehaviour {
 
     public void SetBoost(float pct, int playerNumber) {
         GetPlayer(playerNumber).boostImage.fillAmount = Mathf.Clamp(pct, 0f, 1f);
+    }
+
+    public void SetBlue(float pct, int playerNumber)
+    {
+        if (pct >= 1f)
+        {
+            vaccineButton.SetActive(true);
+        }
+        else
+        {
+            vaccineButton.SetActive(false);
+        }
+        blueImage.fillAmount = Mathf.Clamp(pct, 0f, 1f);
     }
 
     private Player GetPlayer(int playerNumber) {
@@ -109,7 +147,7 @@ public class HUD : MonoBehaviour {
             //nextLevelText.transform.localScale.x = nextLevelText.transform.localScale.x=* 1.1;
             if (nextLevelTextTimer < 0) {
                 nextLevelTextActive = false;
-                nextLevelText.SetActive(false);
+                nextLevelText.gameObject.SetActive(false);
                 //nextLevelText.localScale.x
                 Vector3 one = new Vector3(1, 1, 1);
                 nextLevelText.transform.localScale = one;
@@ -131,10 +169,13 @@ public class HUD : MonoBehaviour {
 
     }
 
-    public void ActivateNextLevelText() {
+    public void ActivateNextLevelText(string levelName) {
+        Debug.Log("ACTIVATE " + levelName);
         nextLevelTextActive = true;
         nextLevelTextTimer = nextLevelTextTime;
-        nextLevelText.SetActive(true);
+        nextLevelText.text = levelName;
+        nextLevelText.gameObject.SetActive(true);
+        
 
 
     }

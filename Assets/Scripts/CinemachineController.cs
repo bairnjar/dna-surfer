@@ -50,7 +50,7 @@ public class CinemachineController : MonoBehaviour {
 
     private void UpdateCameraShake() {
         if (cameraShake == 0) {
-            m_cameraOffset.m_Offset = Vector3.zero;
+          //  m_cameraOffset.m_Offset = Vector3.zero;
             return;
         }
 

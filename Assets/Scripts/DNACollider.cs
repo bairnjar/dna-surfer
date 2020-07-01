@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class DNACollider : MonoBehaviour {
     public bool hardCollider = true;
+    public bool levelExit = false;
 
     private void OnTriggerEnter2D(Collider2D collider) {
         var player = GetPlayer(collider);
         if (player) {
-            if (hardCollider) {
+            if (hardCollider)
+            {
                 player.SetHealth(0);
-            } else {
+            }
+            else if (levelExit)
+            {
+                player.exitLevel();
+            }
+            else { 
                 player.InDistress();
             }
         }

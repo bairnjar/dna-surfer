@@ -112,7 +112,7 @@ public class ScoreManager : MonoBehaviour {
         if (m_scores[playerNumber] > levelScoreThresholds[currentLevel]) {
             currentLevel++;
             currentMultiplier = levelSpeedMultipliers[currentLevel];
-            HUD.i.ActivateNextLevelText();
+            //HUD.i.ActivateNextLevelText();
         }
     }
 }
