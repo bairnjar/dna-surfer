@@ -6,7 +6,7 @@ using UnityEngine;
 public class DNAStrandManager : MonoBehaviour {
     public static DNAStrandManager i;
 
-    private int currentLevel = 0;
+    [SerializeField] public int currentLevel = 0;
     private int currentCheckpoint = 0;
     public bool currentSafe = false;
     private int currentDNA=0;
