@@ -184,6 +184,15 @@ public class PlayerController : MonoBehaviour {
         }
         HUD.i.SetName(playerName, playerNumber);
         Reset(true);
+
+        // Testing - Reese
+        if (PlayerPrefs.GetFloat("turnSpeed") == 0)
+            Debug.LogError("turnSpeed PlayerPref value not set in main menu.", this);
+        else
+        {
+            m_turnSpeed = PlayerPrefs.GetFloat("turnSpeed");
+            Debug.Log("TurnSpeed: " + m_turnSpeed, this);
+        }
     }
 
     private void Reset(bool start = false) {
