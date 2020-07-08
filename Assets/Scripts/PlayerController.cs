@@ -167,7 +167,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Awake() {
         m_rb = GetComponent<Rigidbody2D>();
-        playerNumber = numPlayers++;
+        playerNumber = 0;
         playerName = NameGenerator.Name();
         players.Add(this);
     }
@@ -520,6 +520,16 @@ public class PlayerController : MonoBehaviour {
         {
             m_uiReset = true;
         }
+    }
+
+    public void LoadMenu()
+    {
+        string name = SceneManager.GetActiveScene().name;
+        m_isVaccined = false;
+        DNAStrandManager.i.Reset();
+        SceneManager.UnloadSceneAsync(name);
+
+        SceneManager.LoadScene("MenuScreen", LoadSceneMode.Single);
     }
 
     public void turnOnVaccine()

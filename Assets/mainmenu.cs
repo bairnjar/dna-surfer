@@ -20,15 +20,6 @@ public class mainmenu : MonoBehaviour
         
     }
 
-    public void LoadMenu()
-    {
-        string name = SceneManager.GetActiveScene().name;
-
-        SceneManager.UnloadSceneAsync(name);
-
-        SceneManager.LoadScene("MenuScreen", LoadSceneMode.Single);
-    }
-
     public void loadOnePlayerGameIntro1()
     {
         string name = SceneManager.GetActiveScene().name;
