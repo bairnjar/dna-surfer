@@ -173,6 +173,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Start() {
+        DNAStrandManager.i.populateDictionary();
+        DNAStrandManager.i.StartDNAStrand();
         m_mirror = GameObject.Instantiate(new GameObject(), transform);
         m_startRotation = Quaternion.Euler(0, 0, playerNumber == 0 ? 30f : -30f);
         m_isVaccined = false;

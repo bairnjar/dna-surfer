@@ -9,7 +9,9 @@ public class ScoreGateController : MonoBehaviour {
     private bool m_didPass = false;
 
     public static Vector2 StartPosition(int playerNumber, bool start) {
+        Debug.Log("boop EXAM");
         if (!firstGate) {
+            Debug.Log("scoregate1");
             DNAStrandManager.i.SpawnNext();
             DNAStrandManager.i.SpawnNext();
         }

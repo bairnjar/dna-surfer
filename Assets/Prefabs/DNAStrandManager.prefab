@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7860941478821045737}
   - component: {fileID: 485655622}
+  - component: {fileID: -6495313891297827184}
+  - component: {fileID: 8379952529395408162}
   m_Layer: 0
   m_Name: DNAStrandManager
   m_TagString: Untagged
@@ -43,6 +45,746 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 319f906f64393493ebe8eb6b2f062b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DNAPrefab: {fileID: 9034422902104331753, guid: 84040519623964ac18fc14515c530163,
+  currentLevel: 0
+  currentSafe: 0
+  currentSpeedMultiplier: 1
+  currentRubberBandReduction: 1
+  currentChaseWaveSpeedMultiplier: 1
+  levels:
+  - Name: SERUM TEST
+    firstTileRightEntryDNAPrefab:
+    - 0CorridorEntry1
+    firstTileBothEntryDNAPrefab:
+    - 0CorridorEntry1
+    rightEntryDNAPrefab:
+    - 0Corridor2Stream
+    bothEntryDNAPrefab:
+    - 0Corridor2Stream
+    finalTileRightEntryDNAPrefab:
+    - 0Corridor2Stream
+    finalTileBothEntryDNAPrefab:
+    - 0Corridor2Stream
+    boostFrequency: 14
+    levelLength: 2
+    levelThresholds: 0000000001000000020000000300000004000000050000000600000007000000
+    levelSpeedMultipliers:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    levelRubberBandReduction:
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    chaseWaveSpeedMultipliers:
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    safe: 0
+    Walls: 1
+  - Name: SAFE ZONE 1
+    firstTileRightEntryDNAPrefab:
+    - 00Safe2
+    firstTileBothEntryDNAPrefab:
+    - 00Safe2
+    rightEntryDNAPrefab: []
+    bothEntryDNAPrefab:
+    - 00Safe2
+    finalTileRightEntryDNAPrefab:
+    - 00Safe2
+    finalTileBothEntryDNAPrefab:
+    - 00Safe2
+    boostFrequency: 14
+    levelLength: 1
+    levelThresholds: 0000000001000000020000000300000004000000050000000600000007000000
+    levelSpeedMultipliers:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    levelRubberBandReduction:
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    chaseWaveSpeedMultipliers:
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.5
+    safe: 1
+    Walls: 0
+  - Name: EPIDERMIS
+    firstTileRightEntryDNAPrefab: []
+    firstTileBothEntryDNAPrefab:
+    - 0CorridorLongStream
+    rightEntryDNAPrefab:
+    - 
+    bothEntryDNAPrefab:
+    - 0CorridorLongStream
+    finalTileRightEntryDNAPrefab:
+    - 0CorridorLongStream
+    finalTileBothEntryDNAPrefab:
+    - 0CorridorLongStream
+    boostFrequency: 14
+    levelLength: 3
+    levelThresholds: 0000000001000000020000000300000004000000050000000600000007000000
+    levelSpeedMultipliers:
+    - 1.05
+    - 1.1
+    - 1.1
+    - 1.1
+    - 1.1
+    - 1.1
+    - 1.1
+    - 1.1
+    levelRubberBandReduction:
+    - 0.5
+    - 0.6
+    - 0.7
+    - 0.8
+    - 0.9
+    - 1
+    - 1
+    - 1
+    chaseWaveSpeedMultipliers:
+    - 0.5
+    - 0.6
+    - 0.7
+    - 0.8
+    - 0.9
+    - 1
+    - 1
+    - 1
+    safe: 0
+    Walls: 0
+  - Name: SAFE ZONE 2
+    firstTileRightEntryDNAPrefab: []
+    firstTileBothEntryDNAPrefab: []
+    rightEntryDNAPrefab: []
+    bothEntryDNAPrefab: []
+    finalTileRightEntryDNAPrefab: []
+    finalTileBothEntryDNAPrefab: []
+    boostFrequency: 14
+    levelLength: 1
+    levelThresholds: 0000000001000000020000000300000004000000050000000600000007000000
+    levelSpeedMultipliers:
+    - 1.1
+    - 1.1
+    - 1.1
+    - 1.1
+    - 1.1
+    - 1.08
+    - 1.08
+    - 1.08
+    levelRubberBandReduction:
+    - 0.5
+    - 0.6
+    - 0.7
+    - 0.8
+    - 0.9
+    - 1
+    - 1
+    - 1
+    chaseWaveSpeedMultipliers:
+    - 0.5
+    - 0.6
+    - 0.7
+    - 0.8
+    - 0.9
+    - 1
+    - 1
+    - 1
+    safe: 1
+    Walls: 0
+  - Name: SUBSCAPULARIS
+    firstTileRightEntryDNAPrefab: []
+    firstTileBothEntryDNAPrefab: []
+    rightEntryDNAPrefab: []
+    bothEntryDNAPrefab: []
+    finalTileRightEntryDNAPrefab: []
+    finalTileBothEntryDNAPrefab: []
+    boostFrequency: 14
+    levelLength: 3
+    levelThresholds: 0000000001000000020000000300000004000000050000000600000007000000
+    levelSpeedMultipliers:
+    - 1.1
+    - 1.2
+    - 1.25
+    - 1.3
+    - 1.35
+    - 1.08
+    - 1.08
+    - 1.08
+    levelRubberBandReduction:
+    - 0.5
+    - 0.6
+    - 0.7
+    - 0.8
+    - 0.9
+    - 1
+    - 1
+    - 1
+    chaseWaveSpeedMultipliers:
+    - 0.5
+    - 0.6
+    - 0.7
+    - 0.8
+    - 0.9
+    - 1
+    - 1
+    - 1
+    safe: 0
+    Walls: 0
+  - Name: SAFE ZONE 3
+    firstTileRightEntryDNAPrefab: []
+    firstTileBothEntryDNAPrefab: []
+    rightEntryDNAPrefab: []
+    bothEntryDNAPrefab: []
+    finalTileRightEntryDNAPrefab: []
+    finalTileBothEntryDNAPrefab: []
+    boostFrequency: 14
+    levelLength: 1
+    levelThresholds: 0000000001000000020000000300000004000000050000000600000007000000
+    levelSpeedMultipliers:
+    - 1.3
+    - 1.3
+    - 1.3
+    - 1.3
+    - 1.3
+    - 1.3
+    - 1.3
+    - 1.3
+    levelRubberBandReduction:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    chaseWaveSpeedMultipliers:
+    - 0.5
+    - 0.6
+    - 0.7
+    - 0.8
+    - 0.9
+    - 1
+    - 1
+    - 1
+    safe: 1
+    Walls: 0
+  - Name: CEPHALIC VEIN
+    firstTileRightEntryDNAPrefab: []
+    firstTileBothEntryDNAPrefab: []
+    rightEntryDNAPrefab: []
+    bothEntryDNAPrefab: []
+    finalTileRightEntryDNAPrefab: []
+    finalTileBothEntryDNAPrefab: []
+    boostFrequency: 14
+    levelLength: 4
+    levelThresholds: 0000000001000000020000000300000004000000050000000600000007000000
+    levelSpeedMultipliers:
+    - 1.3
+    - 1.35
+    - 1.4
+    - 1.45
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    levelRubberBandReduction:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    chaseWaveSpeedMultipliers:
+    - 1.3
+    - 1.35
+    - 1.35
+    - 1.4
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    safe: 0
+    Walls: 0
+  - Name: SAFE ZONE 4
+    firstTileRightEntryDNAPrefab: []
+    firstTileBothEntryDNAPrefab: []
+    rightEntryDNAPrefab: []
+    bothEntryDNAPrefab: []
+    finalTileRightEntryDNAPrefab: []
+    finalTileBothEntryDNAPrefab: []
+    boostFrequency: 14
+    levelLength: 1
+    levelThresholds: 0000000001000000020000000300000004000000050000000600000007000000
+    levelSpeedMultipliers:
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    levelRubberBandReduction:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    chaseWaveSpeedMultipliers:
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    safe: 1
+    Walls: 0
+  - Name: AXILARY VEIN
+    firstTileRightEntryDNAPrefab: []
+    firstTileBothEntryDNAPrefab: []
+    rightEntryDNAPrefab: []
+    bothEntryDNAPrefab: []
+    finalTileRightEntryDNAPrefab: []
+    finalTileBothEntryDNAPrefab: []
+    boostFrequency: 14
+    levelLength: 5
+    levelThresholds: 0000000001000000020000000300000004000000050000000600000007000000
+    levelSpeedMultipliers:
+    - 1.5
+    - 1.55
+    - 1.6
+    - 1.65
+    - 1.7
+    - 1.7
+    - 1.7
+    - 1.7
+    levelRubberBandReduction:
+    - 1
+    - 1.1
+    - 1.1
+    - 1.2
+    - 1.2
+    - 1.2
+    - 1.2
+    - 1.2
+    chaseWaveSpeedMultipliers:
+    - 1.5
+    - 1.6
+    - 1.6
+    - 1.6
+    - 1.6
+    - 1.6
+    - 1.6
+    - 1.6
+    safe: 1
+    Walls: 0
+  - Name: SAFE ZONE 5
+    firstTileRightEntryDNAPrefab: []
+    firstTileBothEntryDNAPrefab: []
+    rightEntryDNAPrefab: []
+    bothEntryDNAPrefab: []
+    finalTileRightEntryDNAPrefab: []
+    finalTileBothEntryDNAPrefab: []
+    boostFrequency: 14
+    levelLength: 1
+    levelThresholds: 0000000001000000020000000300000004000000050000000600000007000000
+    levelSpeedMultipliers:
+    - 1.7
+    - 1.7
+    - 1.78
+    - 1.7
+    - 1.7
+    - 1.7
+    - 1.7
+    - 1.7
+    levelRubberBandReduction:
+    - 1
+    - 1.1
+    - 1.1
+    - 1.2
+    - 1.2
+    - 1.2
+    - 1.2
+    - 1.2
+    chaseWaveSpeedMultipliers:
+    - 1.5
+    - 1.6
+    - 1.6
+    - 1.6
+    - 1.6
+    - 1.6
+    - 1.6
+    - 1.6
+    safe: 1
+    Walls: 0
+  - Name: MEDIAN CUBITAL VEIN
+    firstTileRightEntryDNAPrefab: []
+    firstTileBothEntryDNAPrefab: []
+    rightEntryDNAPrefab: []
+    bothEntryDNAPrefab: []
+    finalTileRightEntryDNAPrefab: []
+    finalTileBothEntryDNAPrefab: []
+    boostFrequency: 14
+    levelLength: 6
+    levelThresholds: 0000000001000000020000000300000004000000050000000600000007000000
+    levelSpeedMultipliers:
+    - 1.7
+    - 1.75
+    - 1.8
+    - 1.85
+    - 1.9
+    - 1.9
+    - 1.9
+    - 1.9
+    levelRubberBandReduction:
+    - 1
+    - 1.2
+    - 1.2
+    - 1.3
+    - 1.3
+    - 1.3
+    - 1.3
+    - 1.3
+    chaseWaveSpeedMultipliers:
+    - 1.9
+    - 1.9
+    - 1.8
+    - 1.9
+    - 1.8
+    - 1.9
+    - 1.8
+    - 1.6
+    safe: 0
+    Walls: 0
+  - Name: SAFE ZONE 6
+    firstTileRightEntryDNAPrefab: []
+    firstTileBothEntryDNAPrefab: []
+    rightEntryDNAPrefab: []
+    bothEntryDNAPrefab: []
+    finalTileRightEntryDNAPrefab: []
+    finalTileBothEntryDNAPrefab: []
+    boostFrequency: 14
+    levelLength: 1
+    levelThresholds: 0000000001000000020000000300000004000000050000000600000007000000
+    levelSpeedMultipliers:
+    - 1.9
+    - 1.9
+    - 1.9
+    - 1.9
+    - 1.9
+    - 1.9
+    - 1.9
+    - 1.9
+    levelRubberBandReduction:
+    - 1.3
+    - 1.3
+    - 1.3
+    - 1.3
+    - 1.3
+    - 1.3
+    - 1.3
+    - 1.3
+    chaseWaveSpeedMultipliers:
+    - 1.9
+    - 1.98
+    - 1.9
+    - 1.9
+    - 1.9
+    - 1.9
+    - 1.9
+    - 1.9
+    safe: 1
+    Walls: 0
+  - Name: INFERIOR VENA CAVA
+    firstTileRightEntryDNAPrefab: []
+    firstTileBothEntryDNAPrefab: []
+    rightEntryDNAPrefab: []
+    bothEntryDNAPrefab: []
+    finalTileRightEntryDNAPrefab: []
+    finalTileBothEntryDNAPrefab: []
+    boostFrequency: 14
+    levelLength: 7
+    levelThresholds: 0000000001000000020000000300000004000000050000000600000007000000
+    levelSpeedMultipliers:
+    - 1.9
+    - 1.95
+    - 2
+    - 2.05
+    - 2.1
+    - 2.1
+    - 2.1
+    - 2.1
+    levelRubberBandReduction:
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    chaseWaveSpeedMultipliers:
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    safe: 0
+    Walls: 0
+  - Name: SAFE ZONE 7
+    firstTileRightEntryDNAPrefab: []
+    firstTileBothEntryDNAPrefab: []
+    rightEntryDNAPrefab: []
+    bothEntryDNAPrefab: []
+    finalTileRightEntryDNAPrefab: []
+    finalTileBothEntryDNAPrefab: []
+    boostFrequency: 14
+    levelLength: 1
+    levelThresholds: 0000000001000000020000000300000004000000050000000600000007000000
+    levelSpeedMultipliers:
+    - 2.1
+    - 2.1
+    - 2.1
+    - 2.1
+    - 2.1
+    - 2.1
+    - 2.1
+    - 2.1
+    levelRubberBandReduction:
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    chaseWaveSpeedMultipliers:
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    - 2
+    safe: 1
+    Walls: 0
+  - Name: SUPERIOR VENA CAVA
+    firstTileRightEntryDNAPrefab: []
+    firstTileBothEntryDNAPrefab: []
+    rightEntryDNAPrefab: []
+    bothEntryDNAPrefab: []
+    finalTileRightEntryDNAPrefab: []
+    finalTileBothEntryDNAPrefab: []
+    boostFrequency: 14
+    levelLength: 7
+    levelThresholds: 0000000001000000020000000300000004000000050000000600000007000000
+    levelSpeedMultipliers:
+    - 2.1
+    - 2.15
+    - 2.2
+    - 2.2
+    - 2.2
+    - 2.2
+    - 2.2
+    - 2.2
+    levelRubberBandReduction:
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    chaseWaveSpeedMultipliers:
+    - 2
+    - 2.2
+    - 2.2
+    - 2.2
+    - 2.2
+    - 2.2
+    - 2.2
+    - 2.2
+    safe: 0
+    Walls: 0
+  - Name: LEFT ATRIUM
+    firstTileRightEntryDNAPrefab: []
+    firstTileBothEntryDNAPrefab: []
+    rightEntryDNAPrefab: []
+    bothEntryDNAPrefab: []
+    finalTileRightEntryDNAPrefab: []
+    finalTileBothEntryDNAPrefab: []
+    boostFrequency: 14
+    levelLength: 7
+    levelThresholds: 0000000001000000020000000300000004000000050000000600000007000000
+    levelSpeedMultipliers:
+    - 2.2
+    - 2.25
+    - 2.3
+    - 2.35
+    - 2.4
+    - 2.45
+    - 2.5
+    - 2.55
+    levelRubberBandReduction:
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    - 1.5
+    chaseWaveSpeedMultipliers:
+    - 2.2
+    - 2.3
+    - 2.4
+    - 2.5
+    - 2.6
+    - 2.7
+    - 2.8
+    - 0
+    safe: 0
+    Walls: 0
+  levelKeys:
+  - 0Corridor2Stream
+  - 0Corridor3Virus
+  - 0CorridorEntry1
+  - 0CorridorLongStream
+  - 0CorridorShortStreamNoWall
+  - 0CorridorShortStreamWall
+  - 00Safe1
+  - 00Safe2
+  - 00SafeEntry1
+  - 00SafeEntry2
+  - 00SafeExit1
+  - 1ThreeGumballEntry1
+  - 1ThreeGumballEntryVirus1
+  - 1ThreeGumballEntryVirus2
+  - 1ThreeGumballExitVirus
+  - 1ThreeGumballLongStream
+  - 1ThreeGumballVirus1
+  - 1ThreeGumballVirus2
+  - 1ThreeGumballWall
+  - 2Wide1
+  - 2WideBoost1
+  - 2WideVirus1
+  - 3Normal1
+  - 3NormalVirus1
+  - 3NormalVirus2
+  - 4blob1
+  - 5DnaExit
+  levelValues:
+  - {fileID: 9034422902104331753, guid: 855632d68c3284a549324936b0585cb0, type: 3}
+  - {fileID: 9034422902104331753, guid: c5bd5696eec274e3496dd8fcece1db10, type: 3}
+  - {fileID: 9034422902104331753, guid: f82d21cfdbf184111b520330a22deb0e, type: 3}
+  - {fileID: 9034422902104331753, guid: 2cc52ed76d01944e6abc9e2760e1e8f7, type: 3}
+  - {fileID: 9034422902104331753, guid: 779c5cc6322b4418b96b67fed6471dd1, type: 3}
+  - {fileID: 9034422902104331753, guid: afd26b380e368476db462876adf04b84, type: 3}
+  - {fileID: 9034422902104331753, guid: c359c06a837d74db2bc3312016e2a0bd, type: 3}
+  - {fileID: 9034422902104331753, guid: 94e09eeec0e524b32a130c5c35e62db9, type: 3}
+  - {fileID: 9034422902104331753, guid: b2e2621821232462c8ffdd9d0f9d41ef, type: 3}
+  - {fileID: 9034422902104331753, guid: 34147d76da10942fca76d471d812d88e, type: 3}
+  - {fileID: 9034422902104331753, guid: 5e0c8e4fd104d44c4b0ea5794f1583ba, type: 3}
+  - {fileID: 9034422902104331753, guid: 236d92e3a22cb4656961bffd61b301f6, type: 3}
+  - {fileID: 9034422902104331753, guid: 96c928890120a4af1b9ca2e7752a0a4f, type: 3}
+  - {fileID: 9034422902104331753, guid: bc552d18d8658490aa7b21bd7ec73331, type: 3}
+  - {fileID: 9034422902104331753, guid: 483c1e245101244028002cafdedc0410, type: 3}
+  - {fileID: 9034422902104331753, guid: bd408a7ea20e0444ca05e685eff922e7, type: 3}
+  - {fileID: 9034422902104331753, guid: 4b6ea77f9321749ef9623f704610ba58, type: 3}
+  - {fileID: 9034422902104331753, guid: b50953802d67e4726b17d202be9246fa, type: 3}
+  - {fileID: 9034422902104331753, guid: 683f46acc91174a009c5d12e8a250578, type: 3}
+  - {fileID: 9034422902104331753, guid: cb9f9c12214934d9abfc15ab4803fc78, type: 3}
+  - {fileID: 9034422902104331753, guid: 7a49f3db148f24043b7c80a3f09bacb6, type: 3}
+  - {fileID: 9034422902104331753, guid: 273c2c76081c747f1812efeec12cd2cb, type: 3}
+  - {fileID: 9034422902104331753, guid: 47fb38a23c5194c9abf9f82c32a31052, type: 3}
+  - {fileID: 9034422902104331753, guid: e2089450872c44460823a177c43a64dc, type: 3}
+  - {fileID: 9034422902104331753, guid: 86ef5beb60ced45c689805921a9900d6, type: 3}
+  - {fileID: 9034422902104331753, guid: 99856b0b87027441eb8c447c17d9e15e, type: 3}
+  - {fileID: 9034422902104331753, guid: e90c2392725c94672b9a575dc5f80a86, type: 3}
+  m_spawnOffset: 75
+  m_lastSpawned: {fileID: 0}
+  m_spawned: []
+  m_finalZone: {fileID: 9034422902104331753, guid: e90c2392725c94672b9a575dc5f80a86,
     type: 3}
-  m_spawnOffset: 80
+--- !u!114 &-6495313891297827184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9029385693232737524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baff8732cd3074ef88b34f9cc487846d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabId: 51350629366347947
+  localRefs:
+    _Keys:
+    - {fileID: 9029385693232737524}
+    - {fileID: 7860941478821045737}
+    - {fileID: 485655622}
+    - {fileID: 11500000, guid: 319f906f64393493ebe8eb6b2f062b32, type: 3}
+    - {fileID: -6495313891297827184}
+    _Values: 911f739fe28b4657a30e3e457e0f913fbebabed6e0b1e912862f6856e024320994ec0318f2925e48
+--- !u!114 &8379952529395408162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9029385693232737524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cfcc9ceea0bf419cb3bcaf548c2600d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveChildren: 0
+  componentsToSave:
+  - {fileID: 7860941478821045737}
