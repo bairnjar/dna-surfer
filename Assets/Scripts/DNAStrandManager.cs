@@ -9,7 +9,7 @@ public class DNAStrandManager : MonoBehaviour {
     public static DNAStrandManager i;
 
     public int currentLevel = 0;
-    private int currentCheckpoint = 0;
+    [SerializeField] private int currentCheckpoint = 0;
     public bool currentSafe = false;
     private int currentDNA = 0;
     private int previousLevel = 0;
@@ -42,7 +42,14 @@ public class DNAStrandManager : MonoBehaviour {
 
     private void Start()
     {
-        //PlayerPrefs.SetInt("Checkpoint", 8);
+
+        PlayerPrefs.SetInt("Checkpoint", 4);
+    }
+
+    public void StartDNAStrand()
+    {
+        
+
         if (PlayerPrefs.GetInt("Checkpoint") != 0)
         {
             int loadingLevel = PlayerPrefs.GetInt("Checkpoint");
@@ -72,28 +79,6 @@ public class DNAStrandManager : MonoBehaviour {
             currentRubberBandReduction = levels[0].levelRubberBandReduction[0];
             currentSafe = false;
         }
-
-        //populateDictionary();
-        
-
-
-    }
-
-    public void StartDNAStrand()
-    {
-        Debug.Log("dnastrandstart");
-        currentCheckpoint = 0;
-        currentLevel = 0;
-        currentDNA = 0;
-        previousLevel = 0;
-        previousDNA = 0;
-        currentSpeedMultiplier = levels[0].levelSpeedMultipliers[0];
-        // HUD.i.SetRightClickText(currentSpeedMultiplier);
-        currentChaseWaveSpeedMultiplier = levels[0].chaseWaveSpeedMultipliers[0];
-        currentRubberBandReduction = levels[0].levelRubberBandReduction[0];
-        currentSafe = false;
-        int saveTest = 3;
-        //ES3.Save("allLevels", levels, "levelTest3.es3");
 
     }
 
