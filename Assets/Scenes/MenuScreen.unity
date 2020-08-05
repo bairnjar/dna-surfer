@@ -750,7 +750,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Slider Value: 300'
+  m_Text: 'Slider Value: 550'
 --- !u!222 &1011216843
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1266,7 +1266,7 @@ MonoBehaviour:
   m_MinValue: 300
   m_MaxValue: 800
   m_WholeNumbers: 0
-  m_Value: 300
+  m_Value: 550
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

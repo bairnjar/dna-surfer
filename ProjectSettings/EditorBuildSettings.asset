@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ben-dna1p.unity
     guid: b441bb31ca7e44df1a1791389925825f
   - enabled: 1
@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Instructions2P1.unity
     guid: 817b0fa41a2134e7c82ba84e637f6457
+  - enabled: 1
+    path: Assets/Scenes/ben-dna1p 1.unity
+    guid: d488954e685c14a88961e319b3fd749a
   - enabled: 1
     path: Assets/Scenes/Instructions2P2.unity
     guid: d9beb742bdd4841b483d332ba5ef6b09
