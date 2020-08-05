@@ -42,7 +42,7 @@ public class DNAStrandManager : MonoBehaviour {
 
     private void Start()
     {
-        PlayerPrefs.SetInt("Checkpoint", 8);
+        //PlayerPrefs.SetInt("Checkpoint", 8);
         if (PlayerPrefs.GetInt("Checkpoint") != 0)
         {
             int loadingLevel = PlayerPrefs.GetInt("Checkpoint");
