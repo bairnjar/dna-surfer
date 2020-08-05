@@ -42,7 +42,6 @@ public class DNAStrandManager : MonoBehaviour {
 
     private void Start()
     {
-<<<<<<< HEAD
         PlayerPrefs.SetInt("Checkpoint", 8);
         if (PlayerPrefs.GetInt("Checkpoint") != 0)
         {
@@ -73,7 +72,7 @@ public class DNAStrandManager : MonoBehaviour {
             currentRubberBandReduction = levels[0].levelRubberBandReduction[0];
             currentSafe = false;
         }
-=======
+
         //populateDictionary();
         
 
@@ -95,7 +94,7 @@ public class DNAStrandManager : MonoBehaviour {
         currentSafe = false;
         int saveTest = 3;
         //ES3.Save("allLevels", levels, "levelTest3.es3");
->>>>>>> cac188853f0649917082bcbb8b5671d90d1089af
+
     }
 
     public void ScoreIncrement()
