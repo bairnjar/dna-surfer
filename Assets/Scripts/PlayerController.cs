@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour {
     [HideInInspector] public int currentLives { get; private set; }
     [HideInInspector] public int playerNumber { get; private set; }
     [HideInInspector] public string playerName { get; private set; }
-
     public bool playerWon;
 
 

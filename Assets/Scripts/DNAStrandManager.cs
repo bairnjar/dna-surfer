@@ -6,7 +6,7 @@ using UnityEngine;
 public class DNAStrandManager : MonoBehaviour {
     public static DNAStrandManager i;
 
-    [SerializeField] public int currentLevel = 0;
+    public int currentLevel = 0;
     private int currentCheckpoint = 0;
     public bool currentSafe = false;
     private int currentDNA=0;
@@ -32,17 +32,36 @@ public class DNAStrandManager : MonoBehaviour {
 
     private void Start()
     {
-        currentCheckpoint = 0;
-        currentLevel = 0;
-        currentDNA = 0;
-        previousLevel = 0;
-        previousDNA = 0;
-        currentSpeedMultiplier = levels[0].levelSpeedMultipliers[0];
-       // HUD.i.SetRightClickText(currentSpeedMultiplier);
-        currentChaseWaveSpeedMultiplier = levels[0].chaseWaveSpeedMultipliers[0];
-        currentRubberBandReduction = levels[0].levelRubberBandReduction[0];
-        currentSafe = false;
+        PlayerPrefs.SetInt("Checkpoint", 8);
+        if (PlayerPrefs.GetInt("Checkpoint") != 0)
+        {
+            int loadingLevel = PlayerPrefs.GetInt("Checkpoint");
 
+            currentCheckpoint = loadingLevel;
+            currentLevel = loadingLevel;
+            currentDNA = 0;
+            previousLevel = loadingLevel;
+            previousDNA = 0;
+            currentSpeedMultiplier = levels[loadingLevel].levelSpeedMultipliers[0];
+            // HUD.i.SetRightClickText(currentSpeedMultiplier);
+            currentChaseWaveSpeedMultiplier = levels[loadingLevel].chaseWaveSpeedMultipliers[0];
+            currentRubberBandReduction = levels[loadingLevel].levelRubberBandReduction[0];
+            currentSafe = levels[loadingLevel].safe;
+        }
+
+        else
+        {
+            currentCheckpoint = 0;
+            currentLevel = 0;
+            currentDNA = 0;
+            previousLevel = 0;
+            previousDNA = 0;
+            currentSpeedMultiplier = levels[0].levelSpeedMultipliers[0];
+            // HUD.i.SetRightClickText(currentSpeedMultiplier);
+            currentChaseWaveSpeedMultiplier = levels[0].chaseWaveSpeedMultipliers[0];
+            currentRubberBandReduction = levels[0].levelRubberBandReduction[0];
+            currentSafe = false;
+        }
     }
 
     public void ScoreIncrement()
