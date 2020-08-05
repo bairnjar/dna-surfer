@@ -8,6 +8,7 @@ public class PermanentCheckPoint : MonoBehaviour
     {
         if (collider2D.GetComponent<PlayerController>() != null)
         {
+            Debug.Log("SETTING NEW CHECKPOINT");
             PlayerPrefs.SetInt("Checkpoint", DNAStrandManager.i.currentLevel);
         }
     }
