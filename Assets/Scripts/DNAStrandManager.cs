@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ES3Internal;
-using ES3Types;
+//using ES3Internal;
+//using ES3Types;
 
 public class DNAStrandManager : MonoBehaviour {
     public static DNAStrandManager i;
@@ -62,7 +62,7 @@ public class DNAStrandManager : MonoBehaviour {
         currentRubberBandReduction = levels[0].levelRubberBandReduction[0];
         currentSafe = false;
         int saveTest = 3;
-        ES3.Save("allLevels", levels, "levelTest3.es3");
+        //ES3.Save("allLevels", levels, "levelTest3.es3");
     }
 
     public void ScoreIncrement()
@@ -403,6 +403,6 @@ public class DNAStrandManager : MonoBehaviour {
         [SerializeField] public bool Walls = false;
     }
 
-    [System.Serializable] public class LevelNames : SerializableDictionary<string, GameObject> { }
+    //[System.Serializable] public class LevelNames : SerializableDictionary<string, GameObject> { }
 
 }
