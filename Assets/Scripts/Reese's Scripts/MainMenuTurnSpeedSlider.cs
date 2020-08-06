@@ -19,6 +19,8 @@ public class MainMenuTurnSpeedSlider : MonoBehaviour
         sliderText.text = "Slider Value: " + slider.value.ToString();
     }
 
+    
+
     private void OnDisable()
     {
         PlayerPrefs.SetFloat("turnSpeed", slider.value);

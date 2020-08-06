@@ -12,7 +12,7 @@ public class DNAStrandManager : MonoBehaviour {
     [SerializeField] private int currentCheckpoint = 0;
     public bool currentSafe = false;
     private int currentDNA = 0;
-    private int previousLevel = 0;
+    public int previousLevel = 0;
     private int previousDNA = 0;
     public float currentSpeedMultiplier = 1f;
     public float currentRubberBandReduction = 1f;
@@ -43,7 +43,6 @@ public class DNAStrandManager : MonoBehaviour {
     private void Start()
     {
 
-        PlayerPrefs.SetInt("Checkpoint", 4);
     }
 
     public void StartDNAStrand()
@@ -348,8 +347,17 @@ public class DNAStrandManager : MonoBehaviour {
         else
         {
             Debug.Log("Reset LIVES andcheckpoint");
-            currentCheckpoint = 0;
-            currentLevel = 0;
+            if (PlayerPrefs.GetInt("Checkpoint") != 0)
+            {
+                currentCheckpoint = PlayerPrefs.GetInt("Checkpoint");
+                currentLevel = PlayerPrefs.GetInt("Checkpoint");
+            }
+            else
+            {
+                currentCheckpoint = 0;
+                currentLevel = 0;
+            }
+             
         }
 
 

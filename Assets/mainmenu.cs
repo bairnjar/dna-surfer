@@ -98,4 +98,9 @@ public class mainmenu : MonoBehaviour
 
         SceneManager.LoadScene("ben-dna", LoadSceneMode.Single);
     }
+
+    public void ResetCheckPoint()
+    {
+        PlayerPrefs.SetInt("Checkpoint", 0);
+    }
 }
