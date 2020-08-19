@@ -4243,6 +4243,22 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[5].rightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[5].bothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[5].finalTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[5].finalTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
       propertyPath: m_DNAPrefab
       value: 
       objectReference: {fileID: 0}
@@ -7270,6 +7286,26 @@ PrefabInstance:
     - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
       propertyPath: levels.Array.data[2].firstTileRightEntryDNAPrefab.Array.data[0]
       value: 0CorridorLongStream
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[5].firstTileRightEntryDNAPrefab.Array.data[0]
+      value: 00SafeEntry1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[5].firstTileBothEntryDNAPrefab.Array.data[0]
+      value: 00Safe2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[5].bothEntryDNAPrefab.Array.data[0]
+      value: 00Safe2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[5].finalTileRightEntryDNAPrefab.Array.data[0]
+      value: 00Safe2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[5].finalTileBothEntryDNAPrefab.Array.data[0]
+      value: 00Safe2
       objectReference: {fileID: 0}
     - target: {fileID: 7860941478821045737, guid: d8946710687514834981a314a370b8ce,
         type: 3}

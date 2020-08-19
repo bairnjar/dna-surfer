@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour {
 
     [Header("Boost")]
     [SerializeField] private float m_coinBoostValue = 1f;
+    [SerializeField] private float m_boostTime = 5f;
     [SerializeField] private float m_speedBoostCostPerSecond = 1f;
     [SerializeField] private float m_maxSpeedBoost = 10f;
     [SerializeField] private float m_boostAccelleration = 1.5f;
@@ -87,7 +88,7 @@ public class PlayerController : MonoBehaviour {
             case COLLECTIBLETYPE.COIN:
                 ScoreManager.i.CollectCoin(playerNumber);
                 SetAvailableBoost(m_availableBoost + m_coinBoostValue);
-                
+
                 break;
             case COLLECTIBLETYPE.BLUE:
                 //ScoreManager.i.CollectCoin(playerNumber);
@@ -125,10 +126,10 @@ public class PlayerController : MonoBehaviour {
                         HUD.i.ActivateWipeoutText();
                     }
                     ScoreManager.i.player0Alive = false;
-                  //  var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
+                    //  var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
 
-                  //  cinema.RemoveMember(transform);
-                  //  cinema.RemoveMember(m_mirror.transform);
+                    //  cinema.RemoveMember(transform);
+                    //  cinema.RemoveMember(m_mirror.transform);
                     return;
                 } else if (playerNumber == 1 && ScoreManager.i.player0Alive) {
 
@@ -137,12 +138,12 @@ public class PlayerController : MonoBehaviour {
                     }
 
                     ScoreManager.i.player1Alive = false;
-                 //  var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
+                    //  var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
 
-                  //  cinema.RemoveMember(transform);
-                  //  cinema.RemoveMember(m_mirror.transform);
+                    //  cinema.RemoveMember(transform);
+                    //  cinema.RemoveMember(m_mirror.transform);
                 } else {
-                    
+
                     if (!FinishScreen.i.GetComponent<Canvas>().isActiveAndEnabled) {
                         currentLives--;
                         HUD.i.setLives(currentLives);
@@ -155,7 +156,7 @@ public class PlayerController : MonoBehaviour {
                             FinishScreen.i.Lose();
                         }
 
-                        
+
                     }
                     return;
                 }
@@ -198,7 +199,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Reset(bool start = false) {
         // var beforeCinemachineReset = CinemachineReset.BeforeReset(0);
-        
+
         useAllBoost = false;
         m_fuelDistress = false;
         m_isVaccined = false;
@@ -206,9 +207,9 @@ public class PlayerController : MonoBehaviour {
         DnaEater.i.Reset();
         leftClicked = false;
         rightClicked = false;
-     //  var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
-      //  cinema.AddMember(transform, 1, 10);
-      //  cinema.AddMember(m_mirror.transform, 1, 10);
+        //  var cinema = GameObject.FindObjectOfType<Cinemachine.CinemachineTargetGroup>();
+        //  cinema.AddMember(transform, 1, 10);
+        //  cinema.AddMember(m_mirror.transform, 1, 10);
 
         if (playerNumber == 0) {
             ScoreManager.i.player0Alive = true;
@@ -273,13 +274,13 @@ public class PlayerController : MonoBehaviour {
     {
         leftClicked = true;
         leftClickCount++;
-       // HUD.i.SetLeftClickText(leftClickCount);
+        // HUD.i.SetLeftClickText(leftClickCount);
     }
 
     public void pressUseAllBoost()
     {
         useAllBoost = true;
-       
+        StartCoroutine(BoostForSeconds());
     }
 
     public void releaseLeftButton()
@@ -302,7 +303,7 @@ public class PlayerController : MonoBehaviour {
 
     private void UpdateInDistress() {
         if (!m_isDistress) {
-           // CinemachineController.i.cameraShake = 0;
+            // CinemachineController.i.cameraShake = 0;
 
             return;
         }
@@ -324,10 +325,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void UpdateBoost() {
-        
+
         if (m_availableBoost <= 0)
         {
-            
+
             useAllBoost = false;
 
             if (emptyBoostDie)
@@ -346,15 +347,15 @@ public class PlayerController : MonoBehaviour {
             {
                 SetAvailableBoost(m_availableBoost - m_neutralBoostCostPerSecond);
             }
-            
+
         }
 
-        if(m_availableBoost<= m_boostDistressLevel)
+        if (m_availableBoost <= m_boostDistressLevel)
         {
             m_fuelDistress = true;
             InDistress();
         }
-        else if(m_fuelDistress)
+        else if (m_fuelDistress)
         {
             m_fuelDistress = false;
             EndDistress();
@@ -366,17 +367,17 @@ public class PlayerController : MonoBehaviour {
         }
 
 
-        if ((InputButton("Boost")|| useAllBoost) && m_availableBoost > 0) {
+        if ((InputButton("Boost") || useAllBoost) && m_availableBoost > 0) {
             ScoreManager.i.Boost();
-            SetAvailableBoost(m_availableBoost - m_speedBoostCostPerSecond * Time.deltaTime);
+            // SetAvailableBoost(m_availableBoost - m_speedBoostCostPerSecond * Time.deltaTime);
             m_isBoosting = true;
-            
+
             m_backParticles.emissionRate = 20f;
             //m_backParticles.startColor = Color.yellow;
             //CinemachineController.i.cameraShake = 1;
             Debug.Log("dooper1");
-           // DNAStrandManager.i.ActivateWalls(true);
-        } else if(!m_isVaccined) {
+            // DNAStrandManager.i.ActivateWalls(true);
+        } else if (!m_isVaccined) {
             m_isBoosting = false;
             m_backParticles.emissionRate = 5f;
             //m_backParticles.startColor = Color.white;
@@ -404,10 +405,10 @@ public class PlayerController : MonoBehaviour {
     private void SetAvailableBlue(float blue)
     {
         m_availableBlueValue = Mathf.Clamp(blue, 0, m_maxBlueValue);
-        if (m_isVaccined && blue<=0)
+        if (m_isVaccined && blue <= 0)
         {
             m_isVaccined = false;
-           // DNAStrandManager.i.ActivateWalls(false);
+            // DNAStrandManager.i.ActivateWalls(false);
         }
         if (m_availableBlueValue / m_maxBlueValue == 1)
         {
@@ -419,7 +420,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void UpdateSailRotation() {
-        
+
         float h = InputAxisRaw("Horizontal");
         if (leftClicked && rightClicked) {
             h = 0;
@@ -427,7 +428,7 @@ public class PlayerController : MonoBehaviour {
         else if (leftClicked)
         {
             h = -1;
-        }else if (rightClicked)
+        } else if (rightClicked)
         {
             h = 1;
         }
@@ -435,9 +436,9 @@ public class PlayerController : MonoBehaviour {
         {
             h = InputAxisRaw("Horizontal");
         }
-       // h = 0;
-       // h = 
-//        Debug.Log("horizontalvalue =" + h);
+        // h = 0;
+        // h = 
+        //        Debug.Log("horizontalvalue =" + h);
         m_rb.AddTorque(-h * m_turnSpeed * Time.deltaTime);
     }
 
@@ -448,7 +449,7 @@ public class PlayerController : MonoBehaviour {
         float curBoostMagnetism;
 
 
-        
+
 
         if (m_isBoosting) {
             scale *= m_boostAccelleration;
@@ -457,23 +458,23 @@ public class PlayerController : MonoBehaviour {
         }
         else
         {
-            curBoostMagnetism = 1; 
+            curBoostMagnetism = 1;
         }
 
         var playerDirection = Quaternion.Euler(0, 0, m_rb.rotation) * Vector2.up;
 
         Vector2 force = playerDirection * scale * Time.deltaTime * levelMultiplier;
-       
+
 
 
 
         force += Vector2.up * m_hillAccelleration * Time.deltaTime * levelMultiplier;
-        
-       
+
+
         // Rubber band to center of track.
         Collider2D closestGuide = null;
         Vector2 closestPoint = Vector2.zero;
-       
+
         var playerPos = m_rb.position;
         //Debug.Log("PlayerPos without Offset is: " + m_rb.position.x + ", " + playerPos.y);
         //Debug.Log("PlayerPos with Offset is: " + playerPos.x + ", " + playerPos.y);
@@ -491,9 +492,9 @@ public class PlayerController : MonoBehaviour {
         }
 
         var forceVector = closestPoint - playerPos;
-        force += new Vector2(forceVector.x, 0) * m_rubberBandForce * Time.deltaTime * curBoostMagnetism*
+        force += new Vector2(forceVector.x, 0) * m_rubberBandForce * Time.deltaTime * curBoostMagnetism *
             Mathf.Pow(m_rubberBandAttenuationPerLevel, DNAStrandManager.i.currentRubberBandReduction);
-        
+
 
         m_rb.AddForce(force);
     }
@@ -590,7 +591,13 @@ public class PlayerController : MonoBehaviour {
         if (playerNumber == 0) {
             return Input.GetAxisRaw(id);
         }
-        
+
         return Input.GetAxisRaw(id + playerNumber);
+    }
+
+    private IEnumerator BoostForSeconds()
+    {
+        yield return new WaitForSeconds(m_boostTime);
+        useAllBoost = false;
     }
 }

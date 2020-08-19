@@ -1621,11 +1621,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boost Molecule
       objectReference: {fileID: 0}
-    - target: {fileID: 2471697562375586861, guid: 3e0e747687100449d91a3a2a6d59964f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2471697562375586863, guid: 3e0e747687100449d91a3a2a6d59964f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1680,16 +1675,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2471697562375586863, guid: 3e0e747687100449d91a3a2a6d59964f,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2471697562375586863, guid: 3e0e747687100449d91a3a2a6d59964f,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e0e747687100449d91a3a2a6d59964f, type: 3}
