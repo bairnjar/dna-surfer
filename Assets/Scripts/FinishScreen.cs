@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class FinishScreen : MonoBehaviour {
     public static FinishScreen i;
 
+    [SerializeField] private GameObject loseButton;
+    [SerializeField] private GameObject continueButton;
     [SerializeField] private GameObject score1Name;
     [SerializeField] private GameObject score1Number;
     [SerializeField] private GameObject score2Name;
@@ -32,7 +34,10 @@ public class FinishScreen : MonoBehaviour {
     }
 
     public void Lose() {
+        
         m_canvas.enabled = true;
+        loseButton.SetActive(true);
+        continueButton.SetActive(false);
         winText.SetActive(false);
         continueText.SetActive(false);
         float player1Score = ScoreManager.i.GetScore(0);
@@ -54,7 +59,10 @@ public class FinishScreen : MonoBehaviour {
 
     public void Continue()
     {
+        
         m_canvas.enabled = true;
+        loseButton.SetActive(false);
+        continueButton.SetActive(true);
         continueText.SetActive(true);
         winText.SetActive(false);
         

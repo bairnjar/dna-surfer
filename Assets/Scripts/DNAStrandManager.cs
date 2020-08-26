@@ -355,12 +355,16 @@ public class DNAStrandManager : MonoBehaviour {
         {
             Debug.Log("__");
             Debug.Log("b!");
+            currentLevel = currentCheckpoint;
+            /**
             string name = SceneManager.GetActiveScene().name;
             
             SceneManager.UnloadSceneAsync(name);
 
             SceneManager.LoadScene("MenuScreen", LoadSceneMode.Single);
+
             /**
+         
             Debug.Log("Reset LIVES andcheckpoint");
             if (PlayerPrefs.GetInt("Checkpoint") != 0)
             {
