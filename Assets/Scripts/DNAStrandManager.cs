@@ -1,6 +1,7 @@
 ﻿using Btkalman.Unity.Util;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 //using ES3Internal;
 //using ES3Types;
@@ -117,6 +118,9 @@ public class DNAStrandManager : MonoBehaviour {
             currentSafe = levels[previousLevel].safe;
             if (currentSafe)
             {
+                Debug.Log("!!!!!");
+                Debug.Log("Checkpointupdated");
+                Debug.Log("!!!!!");
                 currentCheckpoint = previousLevel;
             }
             HUD.i.ActivateNextLevelText(levels[previousLevel].Name);
@@ -339,13 +343,24 @@ public class DNAStrandManager : MonoBehaviour {
             GameObject.Destroy(dna);
         }
 
+        Debug.Log("CURRENTLIVES: " + PlayerController.players[0].currentLives);
         //if has lives
         if (PlayerController.players[0].currentLives > 0)
         {
+            Debug.Log("__");
+            Debug.Log("a!");
             currentLevel = currentCheckpoint;
         }
         else
         {
+            Debug.Log("__");
+            Debug.Log("b!");
+            string name = SceneManager.GetActiveScene().name;
+            
+            SceneManager.UnloadSceneAsync(name);
+
+            SceneManager.LoadScene("MenuScreen", LoadSceneMode.Single);
+            /**
             Debug.Log("Reset LIVES andcheckpoint");
             if (PlayerPrefs.GetInt("Checkpoint") != 0)
             {
@@ -357,7 +372,8 @@ public class DNAStrandManager : MonoBehaviour {
                 currentCheckpoint = 0;
                 currentLevel = 0;
             }
-             
+            **/
+
         }
 
 

@@ -3173,6 +3173,13 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6553236860096411847}
+    - target: {fileID: 2099938183937864966, guid: d817c6786dca343168608e20a7f1b1b9,
+        type: 3}
+      propertyPath: m_Text
+      value: 'CRASH!
+
+        -CONTINUE FROM SAFE ZONE-'
+      objectReference: {fileID: 0}
     - target: {fileID: 4848246029271422098, guid: d817c6786dca343168608e20a7f1b1b9,
         type: 3}
       propertyPath: m_Name
@@ -4257,6 +4264,254 @@ PrefabInstance:
     - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
       propertyPath: levels.Array.data[5].finalTileBothEntryDNAPrefab.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[6].firstTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[6].firstTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[6].rightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[6].bothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[6].finalTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[6].finalTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[7].firstTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[7].firstTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[7].rightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[7].bothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[7].finalTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[7].finalTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[8].firstTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[8].firstTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[8].rightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[8].bothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[8].finalTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[8].finalTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[9].firstTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[9].firstTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[9].rightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[9].bothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[9].finalTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[9].finalTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[10].firstTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[10].firstTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[10].rightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[10].bothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[10].finalTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[10].finalTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[11].firstTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[11].firstTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[11].rightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[11].bothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[11].finalTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[11].finalTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[12].firstTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[12].firstTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[12].rightEntryDNAPrefab.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[12].bothEntryDNAPrefab.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[12].finalTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[12].finalTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[13].firstTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[13].firstTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[13].rightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[13].bothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[13].finalTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[13].finalTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[15].firstTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[15].firstTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[15].rightEntryDNAPrefab.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[15].bothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[15].finalTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[15].finalTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[14].firstTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[14].firstTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[14].rightEntryDNAPrefab.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[14].bothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[14].finalTileRightEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[14].finalTileBothEntryDNAPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levelKeys.Array.size
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levelValues.Array.size
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
       propertyPath: m_DNAPrefab
@@ -5486,7 +5741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
       propertyPath: levels.Array.data[6].levelLength
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
       propertyPath: levels.Array.data[6].levelThresholds.Array.data[1]
@@ -5922,7 +6177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
       propertyPath: levels.Array.data[8].safe
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
       propertyPath: levels.Array.data[5].safe
@@ -7237,11 +7492,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
       propertyPath: levels.Array.data[3].firstTileRightEntryDNAPrefab.Array.data[0]
-      value: 00Safe2
+      value: 00Safe2Checkpoint
       objectReference: {fileID: 0}
     - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
       propertyPath: levels.Array.data[3].firstTileBothEntryDNAPrefab.Array.data[0]
-      value: 00Safe2
+      value: 00Safe2Checkpoint
       objectReference: {fileID: 0}
     - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
       propertyPath: levels.Array.data[3].rightEntryDNAPrefab.Array.data[0]
@@ -7265,23 +7520,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
       propertyPath: levels.Array.data[4].bothEntryDNAPrefab.Array.data[0]
-      value: 1ThreeGumballVirus1
+      value: 1ThreeGumballLongStream
       objectReference: {fileID: 0}
     - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
       propertyPath: levels.Array.data[4].firstTileBothEntryDNAPrefab.Array.data[0]
-      value: 1ThreeGumballVirus2
+      value: 1ThreeGumballLongStream
       objectReference: {fileID: 0}
     - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
       propertyPath: levels.Array.data[4].finalTileRightEntryDNAPrefab.Array.data[0]
-      value: 1ThreeGumballExitVirus
+      value: 1ThreeGumballLongStream
       objectReference: {fileID: 0}
     - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
       propertyPath: levels.Array.data[4].finalTileBothEntryDNAPrefab.Array.data[0]
-      value: 1ThreeGumballExitVirus
+      value: 1ThreeGumballLongStream
       objectReference: {fileID: 0}
     - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
       propertyPath: levels.Array.data[4].rightEntryDNAPrefab.Array.data[0]
-      value: 1ThreeGumballVirus1
+      value: 1ThreeGumballLongStream
       objectReference: {fileID: 0}
     - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
       propertyPath: levels.Array.data[2].firstTileRightEntryDNAPrefab.Array.data[0]
@@ -7307,6 +7562,312 @@ PrefabInstance:
       propertyPath: levels.Array.data[5].finalTileBothEntryDNAPrefab.Array.data[0]
       value: 00Safe2
       objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[5].rightEntryDNAPrefab.Array.data[0]
+      value: 00Safe2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[6].firstTileRightEntryDNAPrefab.Array.data[0]
+      value: 1ThreeGumballVirus2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[6].firstTileBothEntryDNAPrefab.Array.data[0]
+      value: 1ThreeGumballVirus2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[6].rightEntryDNAPrefab.Array.data[0]
+      value: 0Corridor3Virus
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[6].finalTileBothEntryDNAPrefab.Array.data[0]
+      value: 0Corridor3Virus
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[6].finalTileRightEntryDNAPrefab.Array.data[0]
+      value: 0Corridor3Virus
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[6].bothEntryDNAPrefab.Array.data[0]
+      value: 0Corridor3Virus
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[7].firstTileRightEntryDNAPrefab.Array.data[0]
+      value: 00Safe2Checkpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[7].firstTileBothEntryDNAPrefab.Array.data[0]
+      value: 00Safe2Checkpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[7].finalTileRightEntryDNAPrefab.Array.data[0]
+      value: 00SafeExit1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[7].finalTileBothEntryDNAPrefab.Array.data[0]
+      value: 00SafeExit1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[7].rightEntryDNAPrefab.Array.data[0]
+      value: 00Safe2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[7].bothEntryDNAPrefab.Array.data[0]
+      value: 00Safe2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[8].firstTileRightEntryDNAPrefab.Array.data[0]
+      value: 2Wide1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[8].firstTileBothEntryDNAPrefab.Array.data[0]
+      value: 2Wide1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[8].rightEntryDNAPrefab.Array.data[0]
+      value: 2Wide1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[8].bothEntryDNAPrefab.Array.data[0]
+      value: 2Wide1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[8].finalTileRightEntryDNAPrefab.Array.data[0]
+      value: 2Wide1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[8].finalTileBothEntryDNAPrefab.Array.data[0]
+      value: 2Wide1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[9].firstTileRightEntryDNAPrefab.Array.data[0]
+      value: 00SafeEntry2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[9].firstTileBothEntryDNAPrefab.Array.data[0]
+      value: 00SafeEntry2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[9].rightEntryDNAPrefab.Array.data[0]
+      value: 00Safe2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[9].bothEntryDNAPrefab.Array.data[0]
+      value: 00Safe2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[9].finalTileRightEntryDNAPrefab.Array.data[0]
+      value: 00Safe2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[9].finalTileBothEntryDNAPrefab.Array.data[0]
+      value: 00Safe2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[10].firstTileRightEntryDNAPrefab.Array.data[0]
+      value: 2Wide1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[10].firstTileBothEntryDNAPrefab.Array.data[0]
+      value: 2Wide1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[10].rightEntryDNAPrefab.Array.data[0]
+      value: 2Wide1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[10].bothEntryDNAPrefab.Array.data[0]
+      value: 2Wide1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[10].finalTileRightEntryDNAPrefab.Array.data[0]
+      value: 2Wide1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[10].finalTileBothEntryDNAPrefab.Array.data[0]
+      value: 2Wide1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[11].firstTileRightEntryDNAPrefab.Array.data[0]
+      value: 00SafeEntry2Checkpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[11].firstTileBothEntryDNAPrefab.Array.data[0]
+      value: 00SafeEntry2Checkpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[11].rightEntryDNAPrefab.Array.data[0]
+      value: 00Safe2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[11].bothEntryDNAPrefab.Array.data[0]
+      value: 00Safe2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[11].finalTileRightEntryDNAPrefab.Array.data[0]
+      value: 00SafeExit1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[11].finalTileBothEntryDNAPrefab.Array.data[0]
+      value: 00SafeExit1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[12].firstTileRightEntryDNAPrefab.Array.data[0]
+      value: 2Wide1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[12].firstTileBothEntryDNAPrefab.Array.data[0]
+      value: 2Wide1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[12].bothEntryDNAPrefab.Array.data[0]
+      value: 2Wide1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[12].bothEntryDNAPrefab.Array.data[1]
+      value: 3Normal1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[12].rightEntryDNAPrefab.Array.data[0]
+      value: 2Wide1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[12].rightEntryDNAPrefab.Array.data[1]
+      value: 3Normal1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[12].finalTileRightEntryDNAPrefab.Array.data[0]
+      value: 3Normal1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[12].finalTileBothEntryDNAPrefab.Array.data[0]
+      value: 3Normal1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[13].firstTileRightEntryDNAPrefab.Array.data[0]
+      value: 00SafeEntry2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[13].firstTileBothEntryDNAPrefab.Array.data[0]
+      value: 00SafeEntry2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[13].rightEntryDNAPrefab.Array.data[0]
+      value: 00Safe2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[13].bothEntryDNAPrefab.Array.data[0]
+      value: 00Safe2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[13].finalTileRightEntryDNAPrefab.Array.data[0]
+      value: 00SafeExit1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[13].finalTileBothEntryDNAPrefab.Array.data[0]
+      value: 00SafeExit1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[14].firstTileRightEntryDNAPrefab.Array.data[0]
+      value: 1ThreeGumballVirus2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[14].firstTileBothEntryDNAPrefab.Array.data[0]
+      value: 1ThreeGumballVirus2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[14].bothEntryDNAPrefab.Array.data[0]
+      value: 1ThreeGumballExitVirus
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[14].rightEntryDNAPrefab.Array.data[0]
+      value: 2Wide1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[14].rightEntryDNAPrefab.Array.data[1]
+      value: 2WideVirus1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[14].rightEntryDNAPrefab.Array.data[2]
+      value: 3Normal1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[14].rightEntryDNAPrefab.Array.data[3]
+      value: 3NormalVirus1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[14].rightEntryDNAPrefab.Array.data[4]
+      value: 3NormalVirus2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[14].rightEntryDNAPrefab.Array.data[5]
+      value: 2WideVirus1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[14].finalTileRightEntryDNAPrefab.Array.data[0]
+      value: 3Normal1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[14].finalTileBothEntryDNAPrefab.Array.data[0]
+      value: 3Normal1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[15].firstTileRightEntryDNAPrefab.Array.data[0]
+      value: 1ThreeGumballEntryVirus1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[15].firstTileBothEntryDNAPrefab.Array.data[0]
+      value: 1ThreeGumballEntryVirus1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[15].rightEntryDNAPrefab.Array.data[0]
+      value: 3NormalVirus1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[15].bothEntryDNAPrefab.Array.data[0]
+      value: 1ThreeGumballExitVirus
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[15].rightEntryDNAPrefab.Array.data[1]
+      value: 3NormalVirus2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[15].rightEntryDNAPrefab.Array.data[2]
+      value: 2WideVirus1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[15].finalTileRightEntryDNAPrefab.Array.data[0]
+      value: 5DnaExit
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[15].finalTileBothEntryDNAPrefab.Array.data[0]
+      value: 5DnaExit
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[1].firstTileRightEntryDNAPrefab.Array.data[0]
+      value: 00Safe2Checkpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levels.Array.data[1].firstTileBothEntryDNAPrefab.Array.data[0]
+      value: 00Safe2Checkpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levelKeys.Array.data[27]
+      value: 00Safe2Checkpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levelKeys.Array.data[28]
+      value: 00SafeEntry2Checkpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levelValues.Array.data[27]
+      value: 
+      objectReference: {fileID: 9034422902104331753, guid: 16d05513d705d4e80bd1a0a3c0375345,
+        type: 3}
+    - target: {fileID: 485655622, guid: d8946710687514834981a314a370b8ce, type: 3}
+      propertyPath: levelValues.Array.data[28]
+      value: 
+      objectReference: {fileID: 9034422902104331753, guid: d6fac72bbea134e26ab17b9195f0a45c,
+        type: 3}
     - target: {fileID: 7860941478821045737, guid: d8946710687514834981a314a370b8ce,
         type: 3}
       propertyPath: m_LocalPosition.x

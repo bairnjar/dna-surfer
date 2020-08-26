@@ -146,6 +146,9 @@ public class PlayerController : MonoBehaviour {
 
                     if (!FinishScreen.i.GetComponent<Canvas>().isActiveAndEnabled) {
                         currentLives--;
+                        Debug.Log("______");
+                        Debug.Log("CurrentLives = " + currentLives);
+                        Debug.Log("______");
                         HUD.i.setLives(currentLives);
                         if (currentLives > 0)
                         {

@@ -50,7 +50,10 @@ public class BlueCoinActivator : MonoBehaviour
         if (coins.Length <= 0)
         {
             allCoinsGot = true;
-            blueCoin.gameObject.SetActive(true);
+            if (blueCoin != null)
+            {
+                blueCoin.gameObject.SetActive(true);
+            }
             
         }
 
