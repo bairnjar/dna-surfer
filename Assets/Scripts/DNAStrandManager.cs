@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-//using ES3Internal;
-//using ES3Types;
+using ES3Internal;
+using ES3Types;
 
 public class DNAStrandManager : MonoBehaviour {
     public static DNAStrandManager i;
@@ -49,8 +49,16 @@ public class DNAStrandManager : MonoBehaviour {
 
     public void StartDNAStrand()
     {
-        
+        List<LevelInfo> levelNull = new List<LevelInfo>();
 
+        // Create a new ES3Settings to enable encryption.
+        var settings = new ES3Settings(ES3.EncryptionType.AES, "myPassword");
+        // Change the save location to PlayerPrefs.
+        settings.location = ES3.Location.File;
+
+        //ES3.Save("cromulicity/levelTest4.es3", levels);
+        //ES3.Load("allLevels", levels, "levelTest3.es3");
+        levels =ES3.Load("cromulicity/levelTest4.es3", levelNull);
         if (PlayerPrefs.GetInt("Checkpoint") != 0)
         {
             int loadingLevel = PlayerPrefs.GetInt("Checkpoint");
@@ -65,6 +73,8 @@ public class DNAStrandManager : MonoBehaviour {
             currentChaseWaveSpeedMultiplier = levels[loadingLevel].chaseWaveSpeedMultipliers[0];
             currentRubberBandReduction = levels[loadingLevel].levelRubberBandReduction[0];
             currentSafe = levels[loadingLevel].safe;
+            
+
         }
 
         else
