@@ -39,11 +39,12 @@ public class DNAStrandManager : MonoBehaviour {
     private GameObject currentSegment;
     [SerializeField] private List<GameObject> m_spawned = new List<GameObject>();
     [SerializeField] private GameObject m_finalZone;
+    private VirusGenerator virusGenerator;
 
 
     private void Start()
     {
-
+        virusGenerator = GetComponent<VirusGenerator>();
     }
 
     public void StartDNAStrand()
