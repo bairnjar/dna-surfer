@@ -183,6 +183,7 @@ public class PlayerController : MonoBehaviour {
         m_isVaccined = false;
         m_startDrag = m_rb.drag;
         currentLives = startingLives;
+        HUD.i.setDistanceText(DNAStrandManager.i.distanceToCheckpoint);
         HUD.i.setLives(currentLives);
         if (playerNumber == 1) {
             HUD.i.SetIsMultiplayer(true);

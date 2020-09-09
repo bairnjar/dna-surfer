@@ -15,6 +15,10 @@ public class HUD : MonoBehaviour {
         public Text nameText;
     }
 
+ 
+
+    public Text distanceToCheckpoint;
+
     public List<Image> lives;
     public Image blueImage;
     public Image blueImageBackground;
@@ -48,6 +52,12 @@ public class HUD : MonoBehaviour {
             SetEnabled(i++, player, isMulti);
         }
     }
+
+    public void setDistanceText(int i)
+    {
+        distanceToCheckpoint.text = "NEXT CHECKPOINT IN " + i;
+    }
+
 
     public void setLives(int i)
     {

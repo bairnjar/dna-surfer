@@ -8,10 +8,11 @@ using UnityEngine.UI;
 public class mainmenu : MonoBehaviour
 {
 
+    public Text currentProgressText;
     // Start is called before the first frame update
     void Start()
     {
-
+        setProgressText();
     }
 
     // Update is called once per frame
@@ -102,5 +103,29 @@ public class mainmenu : MonoBehaviour
     public void ResetCheckPoint()
     {
         PlayerPrefs.SetInt("Checkpoint", 0);
+        setProgressText();
+    }
+
+    public void IncrementCheckPoint()
+    {
+        PlayerPrefs.SetInt("Checkpoint", PlayerPrefs.GetInt("Checkpoint") + 1);
+        setProgressText();
+    }
+
+    public void DecrementCheckPoint()
+    {
+        PlayerPrefs.SetInt("Checkpoint", PlayerPrefs.GetInt("Checkpoint")-1);
+        setProgressText();
+    }
+
+    public void setProgressText()
+    {
+        currentProgressText.text = GetCheckPoint() + "/50 ZONES COMPLETED";
+    }
+
+
+    public int GetCheckPoint()
+    {
+        return PlayerPrefs.GetInt("Checkpoint");
     }
 }

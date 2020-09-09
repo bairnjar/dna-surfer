@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hardCollider: 0
+  levelExit: 0
 --- !u!1 &768448574039732962
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +197,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blueCoin: {fileID: 1040830142604759207}
+  comboCoins: []
   allCoinsGot: 0
+  coinToCombo: 5
   coinLength: 0
 --- !u!1 &1958562936849303732
 GameObject:
@@ -279,6 +282,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -290,6 +294,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -400,6 +405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hardCollider: 0
+  levelExit: 0
 --- !u!1 &3647457932987709837
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,6 +491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hardCollider: 1
+  levelExit: 0
 --- !u!1 &3862407249257210699
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,6 +578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hardCollider: 1
+  levelExit: 0
 --- !u!1 &4200092179597112337
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,6 +688,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -691,6 +700,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -759,6 +769,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -770,6 +781,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -838,6 +850,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -849,6 +862,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1107,6 +1121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hardCollider: 0
+  levelExit: 0
 --- !u!1 &8406456482001202890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,6 +1210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hardCollider: 0
+  levelExit: 0
 --- !u!1 &8860409453466274713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,7 +1252,7 @@ GameObject:
   - component: {fileID: 669816047856257462}
   - component: {fileID: 6701221460433401519}
   m_Layer: 0
-  m_Name: 5DNAeasy
+  m_Name: 0Corridor3Virus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1286,6 +1302,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 906097257629325958}
     m_Modifications:
+    - target: {fileID: 2111100267115956110, guid: e707931a82b5a421db6ead50b2f3fc90,
+        type: 3}
+      propertyPath: m_turnSpeed
+      value: 1200
+      objectReference: {fileID: 0}
     - target: {fileID: 2471697562375586861, guid: e707931a82b5a421db6ead50b2f3fc90,
         type: 3}
       propertyPath: m_Name
@@ -1359,17 +1380,12 @@ PrefabInstance:
     - target: {fileID: 2471697562375586863, guid: e707931a82b5a421db6ead50b2f3fc90,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3120181633970596998, guid: e707931a82b5a421db6ead50b2f3fc90,
         type: 3}
       propertyPath: m_driftSpeed
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2111100267115956110, guid: e707931a82b5a421db6ead50b2f3fc90,
-        type: 3}
-      propertyPath: m_turnSpeed
-      value: 1200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e707931a82b5a421db6ead50b2f3fc90, type: 3}
@@ -1471,6 +1487,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 906097257629325958}
     m_Modifications:
+    - target: {fileID: 2111100267115956110, guid: e707931a82b5a421db6ead50b2f3fc90,
+        type: 3}
+      propertyPath: m_turnSpeed
+      value: -2000
+      objectReference: {fileID: 0}
     - target: {fileID: 2471697562375586861, guid: e707931a82b5a421db6ead50b2f3fc90,
         type: 3}
       propertyPath: m_Name
@@ -1544,17 +1565,12 @@ PrefabInstance:
     - target: {fileID: 2471697562375586863, guid: e707931a82b5a421db6ead50b2f3fc90,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3120181633970596998, guid: e707931a82b5a421db6ead50b2f3fc90,
         type: 3}
       propertyPath: m_driftSpeed
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2111100267115956110, guid: e707931a82b5a421db6ead50b2f3fc90,
-        type: 3}
-      propertyPath: m_turnSpeed
-      value: -2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e707931a82b5a421db6ead50b2f3fc90, type: 3}
@@ -1758,6 +1774,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 906097257629325958}
     m_Modifications:
+    - target: {fileID: 2111100267115956110, guid: e707931a82b5a421db6ead50b2f3fc90,
+        type: 3}
+      propertyPath: m_turnSpeed
+      value: -1200
+      objectReference: {fileID: 0}
     - target: {fileID: 2471697562375586861, guid: e707931a82b5a421db6ead50b2f3fc90,
         type: 3}
       propertyPath: m_Name
@@ -1831,17 +1852,12 @@ PrefabInstance:
     - target: {fileID: 2471697562375586863, guid: e707931a82b5a421db6ead50b2f3fc90,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3120181633970596998, guid: e707931a82b5a421db6ead50b2f3fc90,
         type: 3}
       propertyPath: m_driftSpeed
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2111100267115956110, guid: e707931a82b5a421db6ead50b2f3fc90,
-        type: 3}
-      propertyPath: m_turnSpeed
-      value: -1200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e707931a82b5a421db6ead50b2f3fc90, type: 3}
