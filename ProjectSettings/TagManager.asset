@@ -26,7 +26,7 @@ TagManager:
   - VirusBody
   - PlayerHardCollider
   - VirusGuideWall
-  - 
+  - VirusNoClip
   - 
   - 
   - 

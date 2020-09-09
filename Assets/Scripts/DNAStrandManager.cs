@@ -15,9 +15,11 @@ public class DNAStrandManager : MonoBehaviour {
     private int currentDNA = 0;
     public int previousLevel = 0;
     private int previousDNA = 0;
+    public int distanceToCheckpoint=0;
     public float currentSpeedMultiplier = 1f;
     public float currentRubberBandReduction = 1f;
     public float currentChaseWaveSpeedMultiplier = 1f;
+   // public GameObject current
 
     [SerializeField] private List<LevelInfo> levels;
 
@@ -52,13 +54,13 @@ public class DNAStrandManager : MonoBehaviour {
         List<LevelInfo> levelNull = new List<LevelInfo>();
 
         // Create a new ES3Settings to enable encryption.
-        var settings = new ES3Settings(ES3.EncryptionType.AES, "myPassword");
+       // var settings = new ES3Settings(ES3.EncryptionType.AES, "myPassword");
         // Change the save location to PlayerPrefs.
-        settings.location = ES3.Location.File;
+       // settings.location = ES3.Location.File;
 
-        //ES3.Save("cromulicity/levelTest4.es3", levels);
+        //ES3.Save("boganvillia", levels);
         //ES3.Load("allLevels", levels, "levelTest3.es3");
-        levels =ES3.Load("cromulicity/levelTest4.es3", levelNull);
+        levels =ES3.Load("boganvillia", levelNull);
         if (PlayerPrefs.GetInt("Checkpoint") != 0)
         {
             int loadingLevel = PlayerPrefs.GetInt("Checkpoint");
@@ -68,6 +70,7 @@ public class DNAStrandManager : MonoBehaviour {
             currentDNA = 0;
             previousLevel = loadingLevel;
             previousDNA = 0;
+            distanceToCheckpoint = CalculateDistanceToCheckpoint();
             currentSpeedMultiplier = levels[loadingLevel].levelSpeedMultipliers[0];
             // HUD.i.SetRightClickText(currentSpeedMultiplier);
             currentChaseWaveSpeedMultiplier = levels[loadingLevel].chaseWaveSpeedMultipliers[0];
@@ -89,6 +92,7 @@ public class DNAStrandManager : MonoBehaviour {
             currentChaseWaveSpeedMultiplier = levels[0].chaseWaveSpeedMultipliers[0];
             currentRubberBandReduction = levels[0].levelRubberBandReduction[0];
             currentSafe = false;
+            distanceToCheckpoint = CalculateDistanceToCheckpoint();
         }
 
     }
@@ -96,6 +100,8 @@ public class DNAStrandManager : MonoBehaviour {
     public void ScoreIncrement()
     {
         previousDNA++;
+        
+        
         int i = levels[previousLevel].levelThresholds.IndexOf(previousDNA);
         if (i > 0)
         {
@@ -148,6 +154,13 @@ public class DNAStrandManager : MonoBehaviour {
                 DnaEater.i.CatchUp();
             }
         }
+        distanceToCheckpoint--;
+        Debug.Log("CURRENT DISTANCE = " + distanceToCheckpoint);
+        if (distanceToCheckpoint <= 0)
+        {
+            distanceToCheckpoint=CalculateDistanceToCheckpoint();
+        }
+        HUD.i.setDistanceText(distanceToCheckpoint);
 
     }
 
@@ -194,6 +207,7 @@ public class DNAStrandManager : MonoBehaviour {
         }
 
         GameObject instantiateDNA = new GameObject();
+        
         if (PlayerController.players[0].getVaccine())
         {
             var dna = GameObject.Instantiate(m_finalZone, transform);
@@ -205,6 +219,7 @@ public class DNAStrandManager : MonoBehaviour {
         else if (currentDNA == 0 && spawnRight)
         {
             Random random = new Random();
+            Debug.Log("levelName" + levels[currentLevel].Name);
             int ran = Random.Range(0, levels[currentLevel].firstTileRightEntryDNAPrefab.Count);
             Debug.Log("CurrentLevel = " + currentLevel);
             Debug.Log("TileName = " + levels[currentLevel].firstTileRightEntryDNAPrefab[ran]);
@@ -291,6 +306,13 @@ public class DNAStrandManager : MonoBehaviour {
         }
         currentDNA++;
 
+        if (m_spawned.Count > 3)
+        {
+            GameObject gameObjectToRemove = m_spawned[0];
+            m_spawned.Remove(gameObjectToRemove);
+            Destroy(gameObjectToRemove);
+        }
+
         if (levels[currentLevel].Walls)
         {
             ActivateWalls(true);
@@ -300,6 +322,7 @@ public class DNAStrandManager : MonoBehaviour {
         {
             ActivateWalls(false);
         }
+        //Destroy(instantiateDNA);
 
     }
 
@@ -412,9 +435,11 @@ public class DNAStrandManager : MonoBehaviour {
         currentSpeedMultiplier = levels[0].levelSpeedMultipliers[0];
         // HUD.i.SetRightClickText(currentSpeedMultiplier);
         currentChaseWaveSpeedMultiplier = levels[0].chaseWaveSpeedMultipliers[0];
-        currentRubberBandReduction = levels[0].levelRubberBandReduction[0];
+        currentRubberBandReduction = levels[currentLevel].levelRubberBandReduction[0];
         m_spawned.Clear();
         m_lastSpawned = null;
+        distanceToCheckpoint=CalculateDistanceToCheckpoint();
+        HUD.i.setDistanceText(distanceToCheckpoint);
 
 
 
@@ -434,6 +459,20 @@ public class DNAStrandManager : MonoBehaviour {
 
     private void Awake() {
         Singleton.Awake(this, ref i);
+    }
+
+    public int CalculateDistanceToCheckpoint()
+    {
+        int TotalDistance = 0;
+        int i = 0;
+        do
+        {
+            TotalDistance += levels[previousLevel + i].levelLength;
+            i++;
+            //need to handle final case
+        } while (!levels[previousLevel + i].isCheckpoint());
+        Debug.Log("TOTAL DISTANCE = " + TotalDistance);
+        return TotalDistance;
     }
 
 
@@ -457,8 +496,41 @@ public class DNAStrandManager : MonoBehaviour {
         [SerializeField] public float[] chaseWaveSpeedMultipliers = { 1f, 1.2f, 1.5f, 2f };
         [SerializeField] public bool safe = false;
         [SerializeField] public bool Walls = false;
-    }
 
+        public bool isCheckpoint()
+        {
+            
+            foreach (string s in firstTileBothEntryDNAPrefab)
+            {
+                if (s.Contains("Checkpoint"))
+                {
+                    return true;
+                }
+            }
+            foreach(string s in firstTileRightEntryDNAPrefab)
+            {
+                if (s.Contains("Checkpoint"))
+                {
+                    return true;
+                }
+            }
+            foreach (string s in finalTileBothEntryDNAPrefab)
+            {
+                if (s.Contains("5DnaExit"))
+                {
+                    return true;
+                }
+            }
+            foreach (string s in finalTileRightEntryDNAPrefab)
+            {
+                if (s.Contains("5DnaExit"))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
     //[System.Serializable] public class LevelNames : SerializableDictionary<string, GameObject> { }
 
 }

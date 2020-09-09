@@ -1,0 +1,1740 @@
+{
+	"boganvillia" : {
+		"__type" : "System.Collections.Generic.List`1[[DNAStrandManager+LevelInfo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],mscorlib",
+		"value" : [
+			{
+				"Name" : "SURF THAT DNA!",
+				"firstTileRightEntryDNAPrefab" : [
+					"0CorridorEntry2"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"0CorridorEntry2"
+				],
+				"rightEntryDNAPrefab" : [
+					"0Corridor2Stream"
+				],
+				"bothEntryDNAPrefab" : [
+					"0Corridor2Stream"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"0Corridor2Stream"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"0Corridor2Stream"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 2,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1,1,1,1,1,1,1,1
+				],
+				"levelRubberBandReduction" : [
+					0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
+				],
+				"safe" : false,
+				"Walls" : true
+			},{
+				"Name" : "BLUE ENERGY FOR EXTRA LIVES",
+				"firstTileRightEntryDNAPrefab" : [
+					"00Safe2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00Safe2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1,1,1,1,1,1,1,1
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "RED ENERGY FOR FUEL",
+				"firstTileRightEntryDNAPrefab" : [
+					"0CorridorLongStream"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"0CorridorLongStream"
+				],
+				"rightEntryDNAPrefab" : [
+					""
+				],
+				"bothEntryDNAPrefab" : [
+					"0CorridorLongStream"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"0CorridorLongStream"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"0CorridorLongStream"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 2,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.1,1.15,1.15,1.15,1.15,1.15,1.15,1.15
+				],
+				"levelRubberBandReduction" : [
+					0.5,0.6,0.7,0.8,0.9,1,1,1
+				],
+				"chaseWaveSpeedMultipliers" : [
+					0.5,0.6,0.7,0.8,0.9,1,1,1
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINTS SAVE YOUR PROGRESS",
+				"firstTileRightEntryDNAPrefab" : [
+					"00Safe2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00Safe2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.15,1.15,1.15,1.15,1.15,1.15,1.15,1.15
+				],
+				"levelRubberBandReduction" : [
+				    5,5,5,5,5,5,5,5
+
+				],
+				"chaseWaveSpeedMultipliers" : [
+					0.5,0.6,0.7,0.8,0.9,1,1,1
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "HANG TEN, STAY COOL",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballVirus2"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballLongStream"
+				],
+				"rightEntryDNAPrefab" : [
+					"1ThreeGumballLongStream"
+				],
+				"bothEntryDNAPrefab" : [
+					"1ThreeGumballLongStream"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"1ThreeGumballLongStream"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"1ThreeGumballLongStream"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 3,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.2,1.3,1.3,1.3,1.3,1.3,1.3,1.3
+				],
+				"levelRubberBandReduction" : [
+					0.5,0.6,0.7,0.8,0.9,1,1,1
+				],
+				"chaseWaveSpeedMultipliers" : [
+					0.5,0.6,0.7,0.8,0.9,1,1,1
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINT 1",
+				"firstTileRightEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00Safe2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.3,1.3,1.3,1.3,1.3,1.3,1.3,1.3
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					0.5,0.6,0.7,0.8,0.9,1,1,1
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "WATCH OUT FOR THE VIRUS",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballLongStream"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballLongStream"
+				],
+				"rightEntryDNAPrefab" : [
+					"1ThreeGumballLongStreamAsteroids1","1ThreeGumballLongStreamAsteroids2","1ThreeGumballLongStreamAsteroids3"
+				],
+				"bothEntryDNAPrefab" : [
+					"1ThreeGumballLongStreamAsteroids1","1ThreeGumballLongStreamAsteroids2","1ThreeGumballLongStreamAsteroids3"
+
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"1ThreeGumballLongStreamAsteroids1","1ThreeGumballLongStreamAsteroids2","1ThreeGumballLongStreamAsteroids3"
+
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"1ThreeGumballLongStreamAsteroids1","1ThreeGumballLongStreamAsteroids2","1ThreeGumballLongStreamAsteroids3"
+
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 4,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.3,1.35,1.4,1.45,1.5,1.5,1.5,1.5
+				],
+				"levelRubberBandReduction" : [
+					1,1,1,1,1,1,1,1
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.3,1.35,1.35,1.4,1.5,1.5,1.5,1.5
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "FUEL REGENERATES IN THE SAFE ZONE",
+				"firstTileRightEntryDNAPrefab" : [
+					"00Safe2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00Safe2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "THE VIRUS IS A BUMMER!",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballVirus2"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballVirus2"
+				],
+				"rightEntryDNAPrefab" : [
+					"0Corridor3Virus"
+				],
+				"bothEntryDNAPrefab" : [
+					"0Corridor3Virus"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"0Corridor3Virus"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"0Corridor3Virus"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 4,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.3,1.35,1.4,1.45,1.5,1.5,1.5,1.5
+				],
+				"levelRubberBandReduction" : [
+					1,1,1,1,1,1,1,1
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.3,1.35,1.35,1.4,1.5,1.5,1.5,1.5
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINT 2",
+				"firstTileRightEntryDNAPrefab" : [
+					"00Safe2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00Safe2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "BOOST ARROWS TO GO FASTER!",
+				"firstTileRightEntryDNAPrefab" : [
+					"0Corridor3Straight"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"0Corridor3Straight"
+				],
+				"rightEntryDNAPrefab" : [
+					"0Corridor3StraightBoost"
+				],
+				"bothEntryDNAPrefab" : [
+					"0Corridor3StraightBoost"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"0Corridor3Straight"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"0Corridor3Straight"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 7,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.9,1.95,2,2.05,2.1,2.1,2.1,2.1
+				],
+				"levelRubberBandReduction" : [
+					1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					3.7,3.7,3.7,3.7,3.7,3.7,3.7,3.7
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINT 3",
+				"firstTileRightEntryDNAPrefab" : [
+					"00Safe2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00Safe2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "SHORT FAT DNA RIDE",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballExit"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballExit"
+				],
+				"rightEntryDNAPrefab" : [
+					"2Wide1"
+				],
+				"bothEntryDNAPrefab" : [
+					"2Wide1"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"2Wide1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"2Wide1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 2,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.5,1.55,1.6,1.65,1.7,1.7,1.7,1.7
+				],
+				"levelRubberBandReduction" : [
+					1,1.1,1.1,1.2,1.2,1.2,1.2,1.2
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.5,1.6,1.6,1.6,1.6,1.6,1.6,1.6
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINT 4",
+				"firstTileRightEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.7,1.7,1.78,1.7,1.7,1.7,1.7,1.7
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.5,1.6,1.6,1.6,1.6,1.6,1.6,1.6
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "MEDIUM FAT DNA RIDE",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballExit"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballExit"
+				],
+				"rightEntryDNAPrefab" : [
+					"2Wide1"
+				],
+				"bothEntryDNAPrefab" : [
+					"2Wide1"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"2Wide1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"2Wide1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 4,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.6,1.6,1.6,1.66,1.7,1.7,1.7,1.7
+				],
+				"levelRubberBandReduction" : [
+					1,1.1,1.1,1.2,1.2,1.2,1.2,1.2
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.5,1.6,1.6,1.6,1.6,1.6,1.6,1.6
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINT 5",
+				"firstTileRightEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.7,1.7,1.78,1.7,1.7,1.7,1.7,1.7
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.5,1.6,1.6,1.6,1.6,1.6,1.6,1.6
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "LONG FAT DNA RIDE",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballExit"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballExit"
+				],
+				"rightEntryDNAPrefab" : [
+					"2Wide1"
+				],
+				"bothEntryDNAPrefab" : [
+					"2Wide1"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"2Wide1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"2Wide1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 6,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7
+				],
+				"levelRubberBandReduction" : [
+					1,1.1,1.1,1.2,1.2,1.2,1.2,1.2
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.5,1.6,1.6,1.6,1.6,1.6,1.6,1.6
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINT 6",
+				"firstTileRightEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.7,1.7,1.78,1.7,1.7,1.7,1.7,1.7
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.5,1.6,1.6,1.6,1.6,1.6,1.6,1.6
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "SHORT SKINNY DNA RIDE",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballExit"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballExit"
+				],
+				"rightEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"bothEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 2,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7
+				],
+				"levelRubberBandReduction" : [
+					1,1.1,1.1,1.2,1.2,1.2,1.2,1.2
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINT 7",
+				"firstTileRightEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.7,1.7,1.78,1.7,1.7,1.7,1.7,1.7
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.5,1.6,1.6,1.6,1.6,1.6,1.6,1.6
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "MEDIUM SKINNY DNA RIDE",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballExit"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballExit"
+				],
+				"rightEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"bothEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 4,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7
+				],
+				"levelRubberBandReduction" : [
+					1,1.1,1.1,1.2,1.2,1.2,1.2,1.2
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINT 8",
+				"firstTileRightEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.7,1.7,1.78,1.7,1.7,1.7,1.7,1.7
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.5,1.6,1.6,1.6,1.6,1.6,1.6,1.6
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "LONG SKINNY DNA RIDE",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballExit"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballExit"
+				],
+				"rightEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"bothEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 6,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7
+				],
+				"levelRubberBandReduction" : [
+					1,1.1,1.1,1.2,1.2,1.2,1.2,1.2
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.7,1.7,1.7,1.7,1.7,1.7,1.7,1.7
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINT 9",
+				"firstTileRightEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.7,1.7,1.78,1.7,1.7,1.7,1.7,1.7
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.5,1.6,1.6,1.6,1.6,1.6,1.6,1.6
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "THE VIRUS IS LOOSE!",
+				"firstTileRightEntryDNAPrefab" : [
+					"0Corridor3Asteroids1"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"0Corridor3Asteroids1"
+				],
+				"rightEntryDNAPrefab" : [
+					"0Corridor3Asteroids1","0Corridor3Asteroids2","0Corridor3Asteroids3","0Corridor3Asteroids4","0Corridor3Asteroids5"
+				],
+				"bothEntryDNAPrefab" : [
+					"0Corridor3Asteroids1","0Corridor3Asteroids2","0Corridor3Asteroids3","0Corridor3Asteroids4","0Corridor3Asteroids5"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"0Corridor3Asteroids3"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"0Corridor3Asteroids3"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 6,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.7,1.75,1.8,1.85,1.9,1.9,1.9,1.9
+				],
+				"levelRubberBandReduction" : [
+					1,1.2,1.2,1.3,1.3,1.3,1.3,1.3
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.9,1.9,1.8,1.9,1.8,1.9,1.8,1.6
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINT 10",
+				"firstTileRightEntryDNAPrefab" : [
+					"00Safe2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00Safe2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.7,1.7,1.78,1.7,1.7,1.7,1.7,1.7
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.5,1.6,1.6,1.6,1.6,1.6,1.6,1.6
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "VIRUS IS GROWING",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballVirus2"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballVirus2"
+				],
+				"rightEntryDNAPrefab" : [
+					"0Corridor3VirusGrow"
+				],
+				"bothEntryDNAPrefab" : [
+					"0Corridor3VirusGrow"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"0Corridor3VirusGrow"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"0Corridor3VirusGrow"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 6,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.7,1.75,1.8,1.85,1.9,1.9,1.9,1.9
+				],
+				"levelRubberBandReduction" : [
+					1,1.2,1.2,1.3,1.3,1.3,1.3,1.3
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.9,1.9,1.8,1.9,1.8,1.9,1.8,1.6
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINT 11",
+				"firstTileRightEntryDNAPrefab" : [
+					"00Safe2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00Safe2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.7,1.7,1.78,1.7,1.7,1.7,1.7,1.7
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.5,1.6,1.6,1.6,1.6,1.6,1.6,1.6
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "CHILL DNA RIDE",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballExitVirus"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballExitVirus"
+				],
+				"rightEntryDNAPrefab" : [
+					"2Wide1"
+				],
+				"bothEntryDNAPrefab" : [
+					"2Wide1"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"2Wide1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"2Wide1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 6,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.7,1.75,1.8,1.85,1.9,1.9,1.9,1.9
+				],
+				"levelRubberBandReduction" : [
+					1,1.2,1.2,1.3,1.3,1.3,1.3,1.3
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.9,1.9,1.8,1.9,1.8,1.9,1.8,1.6
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINT 12",
+				"firstTileRightEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.9,1.9,1.9,1.9,1.9,1.9,1.9,1.9
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.9,1.98,1.9,1.9,1.9,1.9,1.9,1.9
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "THE CHASE",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballExit"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballExit"
+				],
+				"rightEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"bothEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"1ThreeGumballEntryBoost1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"1ThreeGumballEntryBoost1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 7,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.9,1.95,2,2.05,2.1,2.1,2.1,2.1
+				],
+				"levelRubberBandReduction" : [
+					1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					2.5,2.08,2.08,2.08,2.08,2.08,2.08,2.08
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "THE VIRUS IS SPEADING",
+				"firstTileRightEntryDNAPrefab" : [
+					"0Corridor3Straight"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"0Corridor3Straight"
+				],
+				"rightEntryDNAPrefab" : [
+					"0Corridor3AsteroidsLeft1","0Corridor3AsteroidsLeft2","0Corridor3AsteroidsLeft3","0Corridor3AsteroidsLeft4","0Corridor3AsteroidsLeft5"
+				],
+				"bothEntryDNAPrefab" : [
+					"0Corridor3AsteroidsLeft1","0Corridor3AsteroidsLeft2","0Corridor3AsteroidsLeft3","0Corridor3AsteroidsLeft4","0Corridor3AsteroidsLeft5"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"0Corridor3AsteroidsLeft1","0Corridor3AsteroidsLeft2","0Corridor3AsteroidsLeft3","0Corridor3AsteroidsLeft4","0Corridor3AsteroidsLeft5"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"0Corridor3AsteroidsLeft1","0Corridor3AsteroidsLeft2","0Corridor3AsteroidsLeft3","0Corridor3AsteroidsLeft4","0Corridor3AsteroidsLeft5"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 7,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.9,1.95,2,2.05,2.1,2.1,2.1,2.1
+				],
+				"levelRubberBandReduction" : [
+					1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					2,2,2,2,2,2,2,2
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINT 13",
+				"firstTileRightEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.9,1.9,1.9,1.9,1.9,1.9,1.9,1.9
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					1.9,1.98,1.9,1.9,1.9,1.9,1.9,1.9
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "SKINNY SURF 2",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballExitVirus"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballExitVirus"
+				],
+				"rightEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"bothEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 7,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					1.9,1.95,2,2.05,2.1,2.1,2.1,2.1
+				],
+				"levelRubberBandReduction" : [
+					1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					2,2,2,2,2,2,2,2
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "SAFE ZONE",
+				"firstTileRightEntryDNAPrefab" : [
+					"00SafeEntry2"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00SafeEntry2"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					2.1,2.1,2.1,2.1,2.1,2.1,2.1,2.1
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					2,2,2,2,2,2,2,2
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "FREESTYLE 1",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballVirus2"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballVirus2"
+				],
+				"rightEntryDNAPrefab" : [
+					"2Wide1","2WideVirus1","3Normal1","3NormalVirus1","3NormalVirus2","2WideVirus1"
+				],
+				"bothEntryDNAPrefab" : [
+					"1ThreeGumballExitVirus"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 7,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					2.1,2.15,2.2,2.2,2.2,2.2,2.2,2.2
+				],
+				"levelRubberBandReduction" : [
+					1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					2,2.2,2.1,2.1,2.12,2.12,2.12,2.12
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "FREESTYLE 2",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballEntryVirus1"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballEntryVirus1"
+				],
+				"rightEntryDNAPrefab" : [
+					"3NormalVirus1","3NormalVirus2","2WideVirus1"
+				],
+				"bothEntryDNAPrefab" : [
+					"1ThreeGumballExitVirus"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 7,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					2.2,2.25,2.3,2.35,2.4,2.45,2.5,2.55
+				],
+				"levelRubberBandReduction" : [
+					1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					2.2,2.3,2.3,2.3,2.3,2.3,2.3,0
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINT 14",
+				"firstTileRightEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "VIRUS IS GROWING 2",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballVirus2"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballVirus2"
+				],
+				"rightEntryDNAPrefab" : [
+					"0Corridor3VirusGrow"
+				],
+				"bothEntryDNAPrefab" : [
+					"0Corridor3VirusGrow"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"0Corridor3VirusGrow"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"0Corridor3VirusGrow"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 6,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5
+				],
+				"levelRubberBandReduction" : [
+					1,1.2,1.2,1.3,1.3,1.3,1.3,1.3
+				],
+				"chaseWaveSpeedMultipliers" : [
+					2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINT 15",
+				"firstTileRightEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "HYPERSTYLE 1",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballVirus2"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballVirus2"
+				],
+				"rightEntryDNAPrefab" : [
+					"2Wide1","2WideVirus1","3Normal1","3NormalVirus1","3NormalVirus2","2WideVirus1"
+				],
+				"bothEntryDNAPrefab" : [
+					"1ThreeGumballExitVirus"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 7,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					2.5,2.55,2.6,2.65,2.7,2.75,2.8,2.85
+				],
+				"levelRubberBandReduction" : [
+					1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					2.5,2.55,2.6,2.65,2.7,2.75,2.8,2.85
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "HYPERSTYLE 2",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballEntryVirus1"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballEntryVirus1"
+				],
+				"rightEntryDNAPrefab" : [
+					"3NormalVirus1","3NormalVirus2","2WideVirus1"
+				],
+				"bothEntryDNAPrefab" : [
+					"1ThreeGumballExitVirus"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"3Normal1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 7,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					2.9,2.95,3.0,3.05,3.1,3.15,3.2,3.25
+				],
+				"levelRubberBandReduction" : [
+					1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					2.9,2.95,3.0,3.05,3.1,3.15,3.2,3.25
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINT 16",
+				"firstTileRightEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					3.25,3.25,3.25,3.25,3.25,3.25,3.25,3.25
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "WARPSPEED X",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballEntryVirus1"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballEntryVirus1"
+				],
+				"rightEntryDNAPrefab" : [
+					"3NormalVirus1","3NormalVirus2","2WideVirus1"
+				],
+				"bothEntryDNAPrefab" : [
+					"1ThreeGumballExitVirus"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"3NormalVirus2"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"3NormalVirus2"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 21,
+				"levelThresholds" : [
+					0,4,8,12,16,20,25,30
+				],
+				"levelSpeedMultipliers" : [
+					3.25,3.35,3.45,3.55,3.65,3.75,3.85,3.95
+				],
+				"levelRubberBandReduction" : [
+					1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					2.9,2.95,3.0,3.05,3.1,3.15,3.2,3.25
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINT 17",
+				"firstTileRightEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					3.95,3.95,3.95,3.95,3.95,3.95,3.95,3.95
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "WARPSPEED 2",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballEntryVirus1"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballEntryVirus1"
+				],
+				"rightEntryDNAPrefab" : [
+					"3NormalVirus1","3NormalVirus2","2WideVirus1"
+				],
+				"bothEntryDNAPrefab" : [
+					"1ThreeGumballExitVirus"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"3NormalVirus2"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"3NormalVirus2"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 21,
+				"levelThresholds" : [
+					0,4,8,12,16,20,25,30
+				],
+				"levelSpeedMultipliers" : [
+					3.95,4.05,4.15,4.25,4.35,4.45,4.65,4.75
+				],
+				"levelRubberBandReduction" : [
+					1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					2.9,2.95,3.0,3.05,3.1,3.15,3.2,3.25
+				],
+				"safe" : false,
+				"Walls" : false
+			},{
+				"Name" : "CHECKPOINT 17",
+				"firstTileRightEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"00SafeEntry2Checkpoint"
+				],
+				"rightEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"bothEntryDNAPrefab" : [
+					"00Safe2"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"00SafeExit1"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 1,
+				"levelThresholds" : [
+					0,1,2,3,4,5,6,7
+				],
+				"levelSpeedMultipliers" : [
+					4.65,4.65,4.65,4.65,4.65,4.65,4.65,4.65
+				],
+				"levelRubberBandReduction" : [
+					5,5,5,5,5,5,5,5,5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					2.5,2.5,2.5,2.5,2.5,2.5,2.5,2.5
+				],
+				"safe" : true,
+				"Walls" : false
+			},{
+				"Name" : "WARPSPEED 3",
+				"firstTileRightEntryDNAPrefab" : [
+					"1ThreeGumballEntryVirus1"
+				],
+				"firstTileBothEntryDNAPrefab" : [
+					"1ThreeGumballEntryVirus1"
+				],
+				"rightEntryDNAPrefab" : [
+					"3NormalVirus1","3NormalVirus2","2WideVirus1"
+				],
+				"bothEntryDNAPrefab" : [
+					"1ThreeGumballExitVirus"
+				],
+				"finalTileRightEntryDNAPrefab" : [
+					"5DnaExit"
+				],
+				"finalTileBothEntryDNAPrefab" : [
+					"5DnaExit"
+				],
+				"boostFrequency" : 14,
+				"levelLength" : 21,
+				"levelThresholds" : [
+					0,4,8,12,16,20,25,30
+				],
+				"levelSpeedMultipliers" : [
+					4.65,4.755,4.85,4.95,5,5.1,5.2,5.3
+				],
+				"levelRubberBandReduction" : [
+					1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5
+				],
+				"chaseWaveSpeedMultipliers" : [
+					2.9,2.95,3.0,3.05,3.1,3.15,3.2,3.25
+				],
+				"safe" : false,
+				"Walls" : false
+			}
+		]
+	}
+}

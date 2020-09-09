@@ -84,12 +84,12 @@ public class BlueCoinActivator : MonoBehaviour
         {
             if (collectedCoins == comboCoins.Count)
             {
-                HUD.i.ActivateNextLevelText("Perfect");
+                //HUD.i.ActivateNextLevelText("Perfect");
             }
 
             else
             {
-                HUD.i.ActivateNextLevelText(collectedCoins.ToString() + "x Combo");
+                //HUD.i.ActivateNextLevelText(collectedCoins.ToString() + "x Combo");
             }
         }
     }
