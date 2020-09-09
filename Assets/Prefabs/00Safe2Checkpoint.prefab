@@ -255,7 +255,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -10
-  m_Sprite: {fileID: 21300000, guid: a6c9a47edc64142eeb53dedc45b7d680, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 841ca62df49b142c09c5ad2034c06d69, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -586,6 +586,7 @@ GameObject:
   - component: {fileID: 2204969293450451880}
   - component: {fileID: 2884293161361559332}
   - component: {fileID: 5031405916680355862}
+  - component: {fileID: 7832393416833237731}
   m_Layer: 0
   m_Name: ScoreGate
   m_TagString: Untagged
@@ -637,6 +638,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef434e0344cb54c0d802934335a2825c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7832393416833237731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200092179597112337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ef108a16352a34dbb867b404135e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4264371511403030667
@@ -1169,7 +1182,7 @@ GameObject:
   - component: {fileID: 669816047856257462}
   - component: {fileID: 5250845737451493995}
   m_Layer: 0
-  m_Name: 00Safe2
+  m_Name: 00Safe2Checkpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

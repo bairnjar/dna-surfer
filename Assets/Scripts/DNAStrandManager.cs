@@ -1,6 +1,7 @@
 ﻿using Btkalman.Unity.Util;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using ES3Internal;
 using ES3Types;
@@ -8,11 +9,11 @@ using ES3Types;
 public class DNAStrandManager : MonoBehaviour {
     public static DNAStrandManager i;
 
-    [SerializeField] public int currentLevel = 0;
-    private int currentCheckpoint = 0;
+    public int currentLevel = 0;
+    [SerializeField] private int currentCheckpoint = 0;
     public bool currentSafe = false;
     private int currentDNA = 0;
-    private int previousLevel = 0;
+    public int previousLevel = 0;
     private int previousDNA = 0;
     public float currentSpeedMultiplier = 1f;
     public float currentRubberBandReduction = 1f;
@@ -38,31 +39,58 @@ public class DNAStrandManager : MonoBehaviour {
     private GameObject currentSegment;
     [SerializeField] private List<GameObject> m_spawned = new List<GameObject>();
     [SerializeField] private GameObject m_finalZone;
+    private VirusGenerator virusGenerator;
 
 
     private void Start()
     {
-        //populateDictionary();
-        
-
-
+        virusGenerator = GetComponent<VirusGenerator>();
     }
 
     public void StartDNAStrand()
     {
-        Debug.Log("dnastrandstart");
-        currentCheckpoint = 0;
-        currentLevel = 0;
-        currentDNA = 0;
-        previousLevel = 0;
-        previousDNA = 0;
-        currentSpeedMultiplier = levels[0].levelSpeedMultipliers[0];
-        // HUD.i.SetRightClickText(currentSpeedMultiplier);
-        currentChaseWaveSpeedMultiplier = levels[0].chaseWaveSpeedMultipliers[0];
-        currentRubberBandReduction = levels[0].levelRubberBandReduction[0];
-        currentSafe = false;
-        int saveTest = 3;
-        ES3.Save("allLevels", levels, "levelTest3.es3");
+        List<LevelInfo> levelNull = new List<LevelInfo>();
+
+        // Create a new ES3Settings to enable encryption.
+        var settings = new ES3Settings(ES3.EncryptionType.AES, "myPassword");
+        // Change the save location to PlayerPrefs.
+        settings.location = ES3.Location.File;
+
+        //ES3.Save("cromulicity/levelTest4.es3", levels);
+        //ES3.Load("allLevels", levels, "levelTest3.es3");
+        levels =ES3.Load("cromulicity/levelTest4.es3", levelNull);
+        if (PlayerPrefs.GetInt("Checkpoint") != 0)
+        {
+            int loadingLevel = PlayerPrefs.GetInt("Checkpoint");
+
+            currentCheckpoint = loadingLevel;
+            currentLevel = loadingLevel;
+            currentDNA = 0;
+            previousLevel = loadingLevel;
+            previousDNA = 0;
+            currentSpeedMultiplier = levels[loadingLevel].levelSpeedMultipliers[0];
+            // HUD.i.SetRightClickText(currentSpeedMultiplier);
+            currentChaseWaveSpeedMultiplier = levels[loadingLevel].chaseWaveSpeedMultipliers[0];
+            currentRubberBandReduction = levels[loadingLevel].levelRubberBandReduction[0];
+            currentSafe = levels[loadingLevel].safe;
+            
+
+        }
+
+        else
+        {
+            currentCheckpoint = 0;
+            currentLevel = 0;
+            currentDNA = 0;
+            previousLevel = 0;
+            previousDNA = 0;
+            currentSpeedMultiplier = levels[0].levelSpeedMultipliers[0];
+            // HUD.i.SetRightClickText(currentSpeedMultiplier);
+            currentChaseWaveSpeedMultiplier = levels[0].chaseWaveSpeedMultipliers[0];
+            currentRubberBandReduction = levels[0].levelRubberBandReduction[0];
+            currentSafe = false;
+        }
+
     }
 
     public void ScoreIncrement()
@@ -101,6 +129,9 @@ public class DNAStrandManager : MonoBehaviour {
             currentSafe = levels[previousLevel].safe;
             if (currentSafe)
             {
+                Debug.Log("!!!!!");
+                Debug.Log("Checkpointupdated");
+                Debug.Log("!!!!!");
                 currentCheckpoint = previousLevel;
             }
             HUD.i.ActivateNextLevelText(levels[previousLevel].Name);
@@ -323,16 +354,41 @@ public class DNAStrandManager : MonoBehaviour {
             GameObject.Destroy(dna);
         }
 
+        Debug.Log("CURRENTLIVES: " + PlayerController.players[0].currentLives);
         //if has lives
         if (PlayerController.players[0].currentLives > 0)
         {
+            Debug.Log("__");
+            Debug.Log("a!");
             currentLevel = currentCheckpoint;
         }
         else
         {
+            Debug.Log("__");
+            Debug.Log("b!");
+            currentLevel = currentCheckpoint;
+            /**
+            string name = SceneManager.GetActiveScene().name;
+            
+            SceneManager.UnloadSceneAsync(name);
+
+            SceneManager.LoadScene("MenuScreen", LoadSceneMode.Single);
+
+            /**
+         
             Debug.Log("Reset LIVES andcheckpoint");
-            currentCheckpoint = 0;
-            currentLevel = 0;
+            if (PlayerPrefs.GetInt("Checkpoint") != 0)
+            {
+                currentCheckpoint = PlayerPrefs.GetInt("Checkpoint");
+                currentLevel = PlayerPrefs.GetInt("Checkpoint");
+            }
+            else
+            {
+                currentCheckpoint = 0;
+                currentLevel = 0;
+            }
+            **/
+
         }
 
 
@@ -403,6 +459,6 @@ public class DNAStrandManager : MonoBehaviour {
         [SerializeField] public bool Walls = false;
     }
 
-    [System.Serializable] public class LevelNames : SerializableDictionary<string, GameObject> { }
+    //[System.Serializable] public class LevelNames : SerializableDictionary<string, GameObject> { }
 
 }

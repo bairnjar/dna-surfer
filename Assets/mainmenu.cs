@@ -46,7 +46,7 @@ public class mainmenu : MonoBehaviour
 
         SceneManager.UnloadSceneAsync(name);
 
-        SceneManager.LoadScene("ben-dna1p 1", LoadSceneMode.Single);
+        SceneManager.LoadScene("reese-dna1p 1", LoadSceneMode.Single);
 
     }
 
@@ -97,5 +97,10 @@ public class mainmenu : MonoBehaviour
         SceneManager.UnloadSceneAsync(name);
 
         SceneManager.LoadScene("ben-dna", LoadSceneMode.Single);
+    }
+
+    public void ResetCheckPoint()
+    {
+        PlayerPrefs.SetInt("Checkpoint", 0);
     }
 }

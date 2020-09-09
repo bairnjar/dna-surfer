@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ES3Internal;
-using ES3Types;
+//using ES3Internal;
+//using ES3Types;
 
 
 [System.Serializable]
