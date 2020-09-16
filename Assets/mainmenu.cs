@@ -9,10 +9,12 @@ public class mainmenu : MonoBehaviour
 {
 
     public Text currentProgressText;
+    public bool inMainMenu;
     // Start is called before the first frame update
     void Start()
     {
-        setProgressText();
+        if (inMainMenu)
+            setProgressText();
     }
 
     // Update is called once per frame

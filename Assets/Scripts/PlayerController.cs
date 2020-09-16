@@ -530,11 +530,7 @@ public class PlayerController : MonoBehaviour {
 
     public void LoadMenu()
     {
-        string name = SceneManager.GetActiveScene().name;
         m_isVaccined = false;
-        DNAStrandManager.i.Reset();
-        SceneManager.UnloadSceneAsync(name);
-
         SceneManager.LoadScene("MenuScreen", LoadSceneMode.Single);
     }
 
@@ -603,5 +599,11 @@ public class PlayerController : MonoBehaviour {
     {
         yield return new WaitForSeconds(m_boostTime);
         useAllBoost = false;
+    }
+    
+    private void OnDestroy()
+    {
+        players.Clear();
+        Destroy(gameObject);
     }
 }
