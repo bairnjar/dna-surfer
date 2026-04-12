@@ -11,7 +11,6 @@ workflows:
         XCODE_SCHEME: "Unity-iPhone"
         BUNDLE_ID: "com.jeremyhouse.dnasurfer"
         APPLE_TEAM_ID: "F9ZJ5TC7YW"
-      unity: true
       ios_signing:
         provisioning_profiles:
           - profile_reference
