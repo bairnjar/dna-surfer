@@ -11,6 +11,7 @@ workflows:
         XCODE_SCHEME: "Unity-iPhone"
         BUNDLE_ID: "com.jarbairn.dnasurfer"
         APPLE_TEAM_ID: "F9ZJ5TC7YW"
+      unity: 2019.4.1f1
       ios_signing:
         provisioning_profiles:
           - jarbairn
