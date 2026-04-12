@@ -6,22 +6,30 @@ workflows:
     environment:
       vars:
         UNITY_VERSION: 2019.4.1f1
+        UNITY_VERSION_CHANGESET: e6c045e14e4e
         UNITY_IOS_BUILD_EXPORT_PATH: ios-build
         XCODE_PROJECT: "ios-build/Unity-iPhone.xcodeproj"
         XCODE_SCHEME: "Unity-iPhone"
         BUNDLE_ID: "com.jarbairn.dnasurfer"
         APPLE_TEAM_ID: "F9ZJ5TC7YW"
-      unity: 2019.4.1f1
       ios_signing:
         provisioning_profiles:
           - jarbairn
         certificates:
           - Codemagic
     scripts:
+      - name: Install Unity 2019.4.1f1 via Hub
+        script: |
+          /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install \
+            --version $UNITY_VERSION \
+            --changeset $UNITY_VERSION_CHANGESET \
+            --module ios
+          echo "UNITY_HOME=/Applications/Unity/Hub/Editor/${UNITY_VERSION}/Unity.app" >> $CM_ENV
+
       - name: Activate Unity license
         script: |
           echo "$UNITY_LICENSE" | tr -d '\r' > /tmp/Unity_lic.ulf
-          unity-editor \
+          "$UNITY_HOME/Contents/MacOS/Unity" \
             -batchmode \
             -quit \
             -logFile /dev/stdout \
@@ -29,13 +37,12 @@ workflows:
 
       - name: Set bundle ID
         script: |
-          cd $CM_BUILD_DIR
           sed -i '' "s/com\.Company\.ProductName/$BUNDLE_ID/g" \
             ProjectSettings/ProjectSettings.asset || true
 
       - name: Build Unity iOS project
         script: |
-          unity-editor \
+          "$UNITY_HOME/Contents/MacOS/Unity" \
             -batchmode \
             -quit \
             -logFile /dev/stdout \
