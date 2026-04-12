@@ -3,13 +3,9 @@ workflows:
     name: iOS Build
     max_build_duration: 120
     instance_type: mac_mini_m2
-    cache:
-      cache_paths:
-        - /Applications/Unity/Hub/Editor/2019.4.1f1
     environment:
+      unity: 2020.3.41f1
       vars:
-        UNITY_VERSION: 2019.4.1f1
-        UNITY_VERSION_CHANGESET: e6c045e14e4e
         UNITY_IOS_BUILD_EXPORT_PATH: ios-build
         XCODE_PROJECT: "ios-build/Unity-iPhone.xcodeproj"
         XCODE_SCHEME: "Unity-iPhone"
@@ -21,24 +17,10 @@ workflows:
         certificates:
           - Codemagic
     scripts:
-      - name: Install Unity 2019.4.1f1 via Hub (cached)
-        script: |
-          if [ ! -d "/Applications/Unity/Hub/Editor/$UNITY_VERSION" ]; then
-            echo "Unity not cached, installing..."
-            /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install \
-              --version $UNITY_VERSION \
-              --changeset $UNITY_VERSION_CHANGESET \
-              --module ios \
-              --architecture x86_64
-          else
-            echo "Unity $UNITY_VERSION found in cache, skipping install."
-          fi
-          echo "UNITY_HOME=/Applications/Unity/Hub/Editor/${UNITY_VERSION}/Unity.app" >> $CM_ENV
-
       - name: Activate Unity license
         script: |
           echo "$UNITY_LICENSE" | tr -d '\r' > /tmp/Unity_lic.ulf
-          "$UNITY_HOME/Contents/MacOS/Unity" \
+          unity-editor \
             -batchmode \
             -quit \
             -logFile /dev/stdout \
@@ -51,7 +33,7 @@ workflows:
 
       - name: Build Unity iOS project
         script: |
-          "$UNITY_HOME/Contents/MacOS/Unity" \
+          unity-editor \
             -batchmode \
             -quit \
             -logFile /dev/stdout \
