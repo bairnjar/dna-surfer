@@ -9,13 +9,13 @@ workflows:
         UNITY_IOS_BUILD_EXPORT_PATH: ios-build
         XCODE_PROJECT: "ios-build/Unity-iPhone.xcodeproj"
         XCODE_SCHEME: "Unity-iPhone"
-        BUNDLE_ID: "com.jeremyhouse.dnasurfer"
+        BUNDLE_ID: "com.jarbairn.dnasurfer"
         APPLE_TEAM_ID: "F9ZJ5TC7YW"
       ios_signing:
         provisioning_profiles:
-          - profile_reference
+          - jarbairn
         certificates:
-          - certificate_reference
+          - Codemagic
     scripts:
       - name: Activate Unity license
         script: |
