@@ -1,0 +1,74 @@
+workflows:
+  ios-workflow:
+    name: iOS Build
+    max_build_duration: 120
+    instance_type: mac_mini_m2
+    environment:
+      vars:
+        UNITY_VERSION: 2019.4.1f1
+        UNITY_IOS_BUILD_EXPORT_PATH: ios-build
+        XCODE_PROJECT: "ios-build/Unity-iPhone.xcodeproj"
+        XCODE_SCHEME: "Unity-iPhone"
+        BUNDLE_ID: "com.jeremyhouse.dnasurfer"
+        APPLE_TEAM_ID: "F9ZJ5TC7YW"
+      unity: true
+      ios_signing:
+        provisioning_profiles:
+          - profile_reference
+        certificates:
+          - certificate_reference
+    scripts:
+      - name: Activate Unity license
+        script: |
+          echo "$UNITY_LICENSE" | tr -d '\r' > /tmp/Unity_lic.ulf
+          unity-editor \
+            -batchmode \
+            -quit \
+            -logFile /dev/stdout \
+            -manualLicenseFile /tmp/Unity_lic.ulf || true
+
+      - name: Set bundle ID
+        script: |
+          cd $CM_BUILD_DIR
+          sed -i '' "s/com\.Company\.ProductName/$BUNDLE_ID/g" \
+            ProjectSettings/ProjectSettings.asset || true
+
+      - name: Build Unity iOS project
+        script: |
+          unity-editor \
+            -batchmode \
+            -quit \
+            -logFile /dev/stdout \
+            -projectPath "$CM_BUILD_DIR" \
+            -executeMethod BuildScript.BuildIos \
+            -buildTarget iOS
+
+      - name: Build Xcode project
+        script: |
+          xcode-project use-profiles
+          xcodebuild \
+            -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -configuration Release \
+            -archivePath build/Unity-iPhone.xcarchive \
+            archive \
+            CODE_SIGN_STYLE=MANUAL \
+            DEVELOPMENT_TEAM="$APPLE_TEAM_ID"
+
+      - name: Export IPA
+        script: |
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
+
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+
+    publishing:
+      email:
+        recipients:
+          - jeremywhouse@gmail.com
+        notify:
+          success: true
+          failure: true
