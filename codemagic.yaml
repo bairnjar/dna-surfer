@@ -3,6 +3,9 @@ workflows:
     name: iOS Build
     max_build_duration: 120
     instance_type: mac_mini_m2
+    cache:
+      cache_paths:
+        - /Applications/Unity/Hub/Editor/2019.4.1f1
     environment:
       vars:
         UNITY_VERSION: 2019.4.1f1
@@ -18,12 +21,17 @@ workflows:
         certificates:
           - Codemagic
     scripts:
-      - name: Install Unity 2019.4.1f1 via Hub
+      - name: Install Unity 2019.4.1f1 via Hub (cached)
         script: |
-          /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install \
-            --version $UNITY_VERSION \
-            --changeset $UNITY_VERSION_CHANGESET \
-            --module ios
+          if [ ! -d "/Applications/Unity/Hub/Editor/$UNITY_VERSION" ]; then
+            echo "Unity not cached, installing..."
+            /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install \
+              --version $UNITY_VERSION \
+              --changeset $UNITY_VERSION_CHANGESET \
+              --module ios
+          else
+            echo "Unity $UNITY_VERSION found in cache, skipping install."
+          fi
           echo "UNITY_HOME=/Applications/Unity/Hub/Editor/${UNITY_VERSION}/Unity.app" >> $CM_ENV
 
       - name: Activate Unity license
