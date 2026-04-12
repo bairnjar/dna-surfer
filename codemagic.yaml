@@ -28,7 +28,8 @@ workflows:
             /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install \
               --version $UNITY_VERSION \
               --changeset $UNITY_VERSION_CHANGESET \
-              --module ios
+              --module ios \
+              --architecture x86_64
           else
             echo "Unity $UNITY_VERSION found in cache, skipping install."
           fi
