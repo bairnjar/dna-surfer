@@ -218,7 +218,7 @@ public class DNAStrandManager : MonoBehaviour {
         
         else if (currentDNA == 0 && spawnRight)
         {
-            Random random = new Random();
+
             Debug.Log("levelName" + levels[currentLevel].Name);
             int ran = Random.Range(0, levels[currentLevel].firstTileRightEntryDNAPrefab.Count);
             Debug.Log("CurrentLevel = " + currentLevel);
@@ -233,7 +233,7 @@ public class DNAStrandManager : MonoBehaviour {
         }
         else if (currentDNA == 0 && !spawnRight)
         {
-            Random random = new Random();
+
             int ran = Random.Range(0, levels[currentLevel].firstTileBothEntryDNAPrefab.Count);
             levelDictionary.TryGetValue(levels[currentLevel].firstTileBothEntryDNAPrefab[ran], out instantiateDNA);
 
@@ -246,7 +246,7 @@ public class DNAStrandManager : MonoBehaviour {
 
         else if ((currentDNA == levels[currentLevel].levelLength - 1) && spawnRight)
         {
-            Random random = new Random();
+
             int ran = Random.Range(0, levels[currentLevel].finalTileRightEntryDNAPrefab.Count);
             
             levelDictionary.TryGetValue(levels[currentLevel].finalTileRightEntryDNAPrefab[ran], out instantiateDNA);
@@ -257,7 +257,7 @@ public class DNAStrandManager : MonoBehaviour {
         }
         else if ((currentDNA == levels[currentLevel].levelLength - 1) && !spawnRight)
         {
-            Random random = new Random();
+
             int ran = Random.Range(0, levels[currentLevel].finalTileBothEntryDNAPrefab.Count);
             levelDictionary.TryGetValue(levels[currentLevel].finalTileBothEntryDNAPrefab[ran], out instantiateDNA);
 
@@ -268,7 +268,7 @@ public class DNAStrandManager : MonoBehaviour {
         }
         else if (spawnRight && !spawnBoost)
         {
-            Random random = new Random();
+
             int ran = Random.Range(0, levels[currentLevel].rightEntryDNAPrefab.Count);
             levelDictionary.TryGetValue(levels[currentLevel].rightEntryDNAPrefab[ran], out instantiateDNA);
             var dna = GameObject.Instantiate(instantiateDNA, transform);
@@ -277,7 +277,7 @@ public class DNAStrandManager : MonoBehaviour {
             m_spawned.Add(dna);
         } else if (spawnRight && spawnBoost)
         {
-            Random random = new Random();
+
             // int ran = Random.Range(0, levels[currentLevel].m_boostRightEntryDNAPrefab.Count);
             // var dna = GameObject.Instantiate(levels[currentLevel].m_boostRightEntryDNAPrefab[ran], transform);
             // dna.transform.position = position;
@@ -286,7 +286,7 @@ public class DNAStrandManager : MonoBehaviour {
         }
         else if (!spawnRight && !spawnBoost)
         {
-            Random random = new Random();
+
             int ran = Random.Range(0, levels[currentLevel].bothEntryDNAPrefab.Count);
             levelDictionary.TryGetValue(levels[currentLevel].bothEntryDNAPrefab[ran], out instantiateDNA);
 
@@ -297,7 +297,7 @@ public class DNAStrandManager : MonoBehaviour {
         }
         else
         {
-            Random random = new Random();
+
             // int ran = Random.Range(0, levels[currentLevel].m_boostBothEntryDNAPrefab.Count);
             //var dna = GameObject.Instantiate(levels[currentLevel].m_boostBothEntryDNAPrefab[ran], transform);
             // dna.transform.position = position;

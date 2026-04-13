@@ -181,7 +181,7 @@ public class PlayerController : MonoBehaviour {
         m_mirror = GameObject.Instantiate(new GameObject(), transform);
         m_startRotation = Quaternion.Euler(0, 0, playerNumber == 0 ? 30f : -30f);
         m_isVaccined = false;
-        m_startDrag = m_rb.drag;
+        m_startDrag = m_rb.linearDamping;
         currentLives = startingLives;
         HUD.i.setDistanceText(DNAStrandManager.i.distanceToCheckpoint);
         HUD.i.setLives(currentLives);
@@ -229,7 +229,7 @@ public class PlayerController : MonoBehaviour {
         m_rb.MovePosition(ScoreGateController.StartPosition(playerNumber, start));
         m_rb.MoveRotation(m_startRotation);
         m_rb.angularVelocity = 0;
-        m_rb.velocity = Vector2.zero;
+        m_rb.linearVelocity = Vector2.zero;
         m_distressFlashTimer = 0;
         m_isLose = false;
         SetAvailableBoost(m_maxSpeedBoost);
@@ -548,7 +548,7 @@ public class PlayerController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.name.Equals("shallows")) {
-            SetDrag("shallows", m_rb.drag + m_shallowsFriction);
+            SetDrag("shallows", m_rb.linearDamping + m_shallowsFriction);
         }
     }
 
@@ -561,8 +561,8 @@ public class PlayerController : MonoBehaviour {
     private void SetDrag(string key, float val) {
         m_dragMods[key] = val;
         foreach (var kv in m_dragMods) {
-            if (m_rb.drag < kv.Value) {
-                m_rb.drag = kv.Value;
+            if (m_rb.linearDamping < kv.Value) {
+                m_rb.linearDamping = kv.Value;
             }
         }
     }
@@ -570,12 +570,12 @@ public class PlayerController : MonoBehaviour {
     private void RestoreDrag(string key) {
         m_dragMods.Remove(key);
         if (m_dragMods.Count == 0) {
-            m_rb.drag = m_startDrag;
+            m_rb.linearDamping = m_startDrag;
             return;
         }
         foreach (var kv in m_dragMods) {
-            if (m_rb.drag < kv.Value) {
-                m_rb.drag = kv.Value;
+            if (m_rb.linearDamping < kv.Value) {
+                m_rb.linearDamping = kv.Value;
             }
         }
     }
