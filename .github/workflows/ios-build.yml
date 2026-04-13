@@ -49,13 +49,14 @@ jobs:
           security set-key-partition-list -S apple-tool:,apple: -k "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
           security list-keychain -d user -s $KEYCHAIN_PATH
 
+          PP_UUID=$(security cms -D -i $PP_PATH | plutil -extract UUID raw -)
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-          cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
+          cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles/${PP_UUID}.mobileprovision
+          echo "PP_UUID=$PP_UUID" >> $GITHUB_ENV
+          echo "Installed profile: $PP_UUID"
 
       - name: Find and build Xcode project
         run: |
-          echo "=== Finding xcodeproj ==="
-          find build -name "*.xcodeproj" 2>/dev/null || find . -name "Unity-iPhone.xcodeproj" 2>/dev/null | head -5
           XCODE_PROJECT=$(find . -name "Unity-iPhone.xcodeproj" | head -1)
           echo "Found: $XCODE_PROJECT"
           xcodebuild \
@@ -63,11 +64,11 @@ jobs:
             -scheme Unity-iPhone \
             -configuration Release \
             -archivePath $RUNNER_TEMP/Unity-iPhone.xcarchive \
-            -allowProvisioningUpdates \
             archive \
-            CODE_SIGN_STYLE=AUTOMATIC \
+            CODE_SIGN_STYLE=MANUAL \
             DEVELOPMENT_TEAM=F9ZJ5TC7YW \
-            PRODUCT_BUNDLE_IDENTIFIER=com.jarbairn.dnasurfer
+            PRODUCT_BUNDLE_IDENTIFIER=com.jarbairn.dnasurfer \
+            PROVISIONING_PROFILE_SPECIFIER="$PP_UUID"
 
       - name: Export IPA
         run: |
