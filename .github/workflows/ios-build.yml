@@ -69,7 +69,7 @@ jobs:
             DEVELOPMENT_TEAM=F9ZJ5TC7YW \
             PRODUCT_BUNDLE_IDENTIFIER=com.jarbairn.dnasurfer \
             PROVISIONING_PROFILE_SPECIFIER="$PP_UUID" \
-            CODE_SIGN_IDENTITY="iPhone Distribution"
+            CODE_SIGN_IDENTITY="iPhone Developer"
 
       - name: Export IPA
         run: |
