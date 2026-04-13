@@ -63,9 +63,11 @@ jobs:
             -scheme Unity-iPhone \
             -configuration Release \
             -archivePath $RUNNER_TEMP/Unity-iPhone.xcarchive \
+            -allowProvisioningUpdates \
             archive \
             CODE_SIGN_STYLE=AUTOMATIC \
-            DEVELOPMENT_TEAM=F9ZJ5TC7YW
+            DEVELOPMENT_TEAM=F9ZJ5TC7YW \
+            PRODUCT_BUNDLE_IDENTIFIER=com.jarbairn.dnasurfer
 
       - name: Export IPA
         run: |
