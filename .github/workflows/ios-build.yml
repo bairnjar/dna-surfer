@@ -20,14 +20,16 @@ jobs:
 
       - name: Install Unity
         run: |
-          # Download and install Unity Hub
           brew install --cask unity-hub || true
-          # Install Unity 6
           /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install \
             --version 6000.0.47f1 \
             --module ios || true
-          # Auto-detect Unity binary path
-          UNITY_BIN=$(find /Applications/Unity/Hub/Editor -name "Unity" -type f | head -1)
+          echo "=== Searching for Unity binary ==="
+          find / -name "Unity" -type f 2>/dev/null | grep -v proc | head -20
+          UNITY_BIN=$(find / -path "*/Editor/6000*" -name "Unity" -type f 2>/dev/null | head -1)
+          if [ -z "$UNITY_BIN" ]; then
+            UNITY_BIN=$(find / -name "Unity" -type f 2>/dev/null | grep -i "editor" | head -1)
+          fi
           echo "Found Unity at: $UNITY_BIN"
           echo "UNITY_BIN=$UNITY_BIN" >> $GITHUB_ENV
 
