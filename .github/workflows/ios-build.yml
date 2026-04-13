@@ -52,10 +52,14 @@ jobs:
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
 
-      - name: Build Xcode project
+      - name: Find and build Xcode project
         run: |
+          echo "=== Finding xcodeproj ==="
+          find build -name "*.xcodeproj" 2>/dev/null || find . -name "Unity-iPhone.xcodeproj" 2>/dev/null | head -5
+          XCODE_PROJECT=$(find . -name "Unity-iPhone.xcodeproj" | head -1)
+          echo "Found: $XCODE_PROJECT"
           xcodebuild \
-            -project build/iOS/Unity-iPhone.xcodeproj \
+            -project "$XCODE_PROJECT" \
             -scheme Unity-iPhone \
             -configuration Release \
             -archivePath $RUNNER_TEMP/Unity-iPhone.xcarchive \
