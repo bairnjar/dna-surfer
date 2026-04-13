@@ -4,7 +4,7 @@ workflows:
     max_build_duration: 120
     instance_type: mac_mini_m2
     environment:
-      unity: 6000.4.1f1
+      unity: 6000.0.47f1
       vars:
         UNITY_IOS_BUILD_EXPORT_PATH: ios-build
         XCODE_PROJECT: "ios-build/Unity-iPhone.xcodeproj"
