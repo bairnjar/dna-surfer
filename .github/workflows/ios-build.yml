@@ -12,41 +12,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Cache Unity installation
-        uses: actions/cache@v4
+      - uses: actions/cache@v4
         with:
-          path: /Applications/Unity/Hub/Editor
-          key: unity-6000.0.47f1
-
-      - name: Install Unity
-        run: |
-          brew install --cask unity-hub || true
-          /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install \
-            --version 6000.0.47f1 \
-            --module ios || true
-          echo "=== Searching for Unity binary ==="
-          find / -name "Unity" -type f 2>/dev/null | grep -v proc | head -20
-          UNITY_BIN=$(find / -path "*/Editor/6000*" -name "Unity" -type f 2>/dev/null | head -1)
-          if [ -z "$UNITY_BIN" ]; then
-            UNITY_BIN=$(find / -name "Unity" -type f 2>/dev/null | grep -i "editor" | head -1)
-          fi
-          echo "Found Unity at: $UNITY_BIN"
-          echo "UNITY_BIN=$UNITY_BIN" >> $GITHUB_ENV
-
-      - name: Activate Unity (Personal License)
-        run: |
-          echo "${{ secrets.UNITY_LICENSE }}" > /tmp/Unity_lic.ulf
-          "$UNITY_BIN" -batchmode -quit -logFile - -manualLicenseFile /tmp/Unity_lic.ulf || true
+          path: Library
+          key: Library-iOS-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: Library-iOS-
 
       - name: Build Unity iOS project
-        run: |
-          "$UNITY_BIN" \
-            -batchmode \
-            -quit \
-            -logFile - \
-            -projectPath "$GITHUB_WORKSPACE" \
-            -executeMethod BuildScript.BuildIos \
-            -buildTarget iOS
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: iOS
+          unityVersion: 6000.0.47f1
 
       - name: Install certificate and provisioning profile
         env:
@@ -75,7 +55,7 @@ jobs:
       - name: Build Xcode project
         run: |
           xcodebuild \
-            -project ios-build/Unity-iPhone.xcodeproj \
+            -project build/iOS/Unity-iPhone.xcodeproj \
             -scheme Unity-iPhone \
             -configuration Release \
             -archivePath $RUNNER_TEMP/Unity-iPhone.xcarchive \
@@ -102,7 +82,7 @@ jobs:
             -exportOptionsPlist /tmp/ExportOptions.plist \
             -exportPath $RUNNER_TEMP/ipa
 
-      - name: Upload IPA artifact
+      - name: Upload IPA
         uses: actions/upload-artifact@v4
         with:
           name: DNA-Surfer-iOS
