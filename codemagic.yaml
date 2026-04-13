@@ -4,8 +4,8 @@ workflows:
     max_build_duration: 120
     instance_type: mac_mini_m2
     environment:
+      unity: 6000.4.1f1
       vars:
-        UNITY_VERSION: 2020.3.41f1
         UNITY_IOS_BUILD_EXPORT_PATH: ios-build
         XCODE_PROJECT: "ios-build/Unity-iPhone.xcodeproj"
         XCODE_SCHEME: "Unity-iPhone"
@@ -17,18 +17,10 @@ workflows:
         certificates:
           - Codemagic
     scripts:
-      - name: Install Unity via Hub
-        script: |
-          /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install \
-            --version $UNITY_VERSION \
-            --module ios
-          UNITY_BIN="/Applications/Unity/Hub/Editor/${UNITY_VERSION}/Unity.app/Contents/MacOS/Unity"
-          echo "UNITY_BIN=$UNITY_BIN" >> $CM_ENV
-
       - name: Activate Unity license
         script: |
           echo "$UNITY_LICENSE" | tr -d '\r' > /tmp/Unity_lic.ulf
-          "$UNITY_BIN" \
+          unity-editor \
             -batchmode \
             -quit \
             -logFile /dev/stdout \
@@ -41,7 +33,7 @@ workflows:
 
       - name: Build Unity iOS project
         script: |
-          "$UNITY_BIN" \
+          unity-editor \
             -batchmode \
             -quit \
             -logFile /dev/stdout \
