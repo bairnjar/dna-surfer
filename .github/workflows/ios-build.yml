@@ -26,7 +26,10 @@ jobs:
           /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install \
             --version 6000.0.47f1 \
             --module ios || true
-          echo "UNITY_BIN=/Applications/Unity/Hub/Editor/6000.0.47f1/Unity.app/Contents/MacOS/Unity" >> $GITHUB_ENV
+          # Auto-detect Unity binary path
+          UNITY_BIN=$(find /Applications/Unity/Hub/Editor -name "Unity" -type f | head -1)
+          echo "Found Unity at: $UNITY_BIN"
+          echo "UNITY_BIN=$UNITY_BIN" >> $GITHUB_ENV
 
       - name: Activate Unity (Personal License)
         run: |
